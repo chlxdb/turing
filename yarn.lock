@@ -1483,6 +1483,7 @@
     "chalk" "^4.0.0"
 
 "@jest/types@^27.2.4":
+  "integrity" "sha1-JDAEKmbgDcWxQMNjb0R01GTCHug="
   "version" "27.2.4"
   dependencies:
     "@types/istanbul-lib-coverage" "^2.0.0"
@@ -6577,6 +6578,7 @@
     "pretty-format" "^26.6.2"
 
 "jest-diff@^27.0.0":
+  "integrity" "sha1-FxxR09LBBcRXEA/ubnv3zuUcjYw="
   "version" "27.2.4"
   dependencies:
     "chalk" "^4.0.0"
@@ -6743,6 +6745,7 @@
     "jest-snapshot" "^26.6.2"
 
 "jest-resolve@*":
+  "integrity" "sha1-Bw/nFZr4ewPlD1LqXhfulbvuQOE="
   "version" "26.6.0"
   dependencies:
     "@jest/types" "^26.6.0"
@@ -9172,6 +9175,7 @@
     "react-is" "^17.0.1"
 
 "pretty-format@^27.0.0", "pretty-format@^27.2.4":
+  "integrity" "sha1-COo5xeq0GwgoUtcJMFmgkfbdx0g="
   "version" "27.2.4"
   dependencies:
     "@jest/types" "^27.2.4"
