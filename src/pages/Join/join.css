@@ -1,0 +1,28 @@
+.join {
+  margin: 5vw;
+  background-color: #fff;
+  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+}
+
+.join h5 {
+  text-align: center;
+  font-size: 2vw;
+  font-weight: 800;
+  line-height: 1.5;
+}
+@page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  html,
+  body {
+    min-width: 0;
+    width: 210mm;
+    height: 297mm;
+  }
+  .print-hide {
+    visibility: hidden !important;
+    display: none !important;
+  }
+}

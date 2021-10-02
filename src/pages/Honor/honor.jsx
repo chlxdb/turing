@@ -31,7 +31,7 @@ export default class honor extends Component {
   }
 
   render() {
-    const honorlists = this.state
+    const { honorlists } = this.state
     console.log(honorlists)
     return (
       <div>
