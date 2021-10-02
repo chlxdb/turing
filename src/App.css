@@ -1,0 +1,12 @@
+@import '~antd/dist/antd.css';
+.content{
+ background-color: aquamarine;
+ height: 800px;
+ width:200px ;
+}
+.ant-layout-header{
+    color:white;
+    background-color: gray;
+    height:100px ;
+    
+}
