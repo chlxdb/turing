@@ -10,6 +10,7 @@ import React, { Component } from 'react'
 
 const { Header, Footer, Content } = Layout
 
+
 export default class App extends Component {
   render() {
     return (
@@ -17,11 +18,14 @@ export default class App extends Component {
         <Layout>
           <Header>
             <Menu
-              style={{ marginTop: '20px' }}
+              style={{ marginTop: '30px', fontSize: 'large' }}
               className="nar"
               mode="horizontal"
               defaultSelectedKeys={['1']}
             >
+              <Menu.Item key={7} style={{ marginLeft: 'auto' }}>
+                图灵智能创新团队
+              </Menu.Item>
               <Link to="/index">
                 <Menu.Item key={1}>首页</Menu.Item>
               </Link>

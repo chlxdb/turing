@@ -1,22 +1,13 @@
 import React, { Component } from 'react'
+import jpg from "./01.jpg"
 
-export default class index extends Component {
-  goRouter = (path) => {
-    return () => {
-      this.props.history.push({
-        pathname: path,
-        state: null,
-      })
+export default class index extends Component {    
+    render () {
+        return (
+            <div>
+                <h3>index页面</h3>
+               <img src={jpg} alt="none"></img>
+            </div>
+        )
     }
-  }
-
-  render() {
-    return (
-      <div>
-        <h3>index页面</h3>
-        <div onClick={this.goRouter('/login')}>Go Login</div>
-        <div onClick={this.goRouter('/leader')}>Go </div>
-      </div>
-    )
-  }
 }
