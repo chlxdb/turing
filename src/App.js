@@ -21,7 +21,7 @@ function App() {
           >
             <NavLink to="/index">
               {" "}
-              <Menu.Item key={1}>首页123</Menu.Item>
+              <Menu.Item key={1}>首页chl</Menu.Item>
             </NavLink>
             <NavLink to="/leader">
               {" "}
