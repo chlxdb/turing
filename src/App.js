@@ -12,7 +12,6 @@ function App() {
     <div className="App">
       <Layout>
         <Header>
-
           <Menu
             style={{ marginTop: "20px" }}
             className="nar"
@@ -25,7 +24,7 @@ function App() {
             </NavLink>
             <NavLink to="/leader">
               {" "}
-              <Menu.Item key={2}>领导视察123</Menu.Item>
+              <Menu.Item key={2}>领导视察12</Menu.Item>
             </NavLink>
             <NavLink to="/index">
               {" "}
@@ -43,7 +42,6 @@ function App() {
               {" "}
               <Menu.Item key={6}>加入我们</Menu.Item>
             </NavLink>
-
           </Menu>
         </Header>
         <Content>
