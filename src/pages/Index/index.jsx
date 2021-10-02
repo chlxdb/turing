@@ -16,6 +16,7 @@ export default class index extends Component {
             <div>
                 <h3>index页面</h3>
                 <div onClick={this.goRouter('/login')}>Go Login</div>
+                <div onClick={this.goRouter('/leader')}>Go </div>
             </div>
         )
     }

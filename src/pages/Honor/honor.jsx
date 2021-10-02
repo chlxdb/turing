@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class leader extends Component {
+export default class honor extends Component {
 
     goRouter = (path) => {
         return () => {
@@ -14,9 +14,8 @@ export default class leader extends Component {
     render() {
         return (
             <div>
-                <h3>leader页面</h3>
-                <p>dsfafaads</p>
-                {/* <div onClick={this.goRouter('/login')}>Go Login</div> */}
+                <h3>HHHHHOR页面</h3>
+                
             </div>
         )
     }
