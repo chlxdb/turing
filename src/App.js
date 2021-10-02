@@ -23,7 +23,7 @@ function App() {
             <Menu.Item key={7} style={{ marginLeft: 'auto' }}>
               图灵智能创新团队
             </Menu.Item>
-            <Link to="/index" className="menus">
+            <Link to="/index">
               <Menu.Item key={1}>首页</Menu.Item>
             </Link>
             <Link to="/leader">
