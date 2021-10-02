@@ -7,5 +7,8 @@
 .ant-layout-header {
   color: white;
   background-color: gray;
-  height: 100px;
+  height: 120px;
+}
+.menus {
+  margin-left: auto;
 }

@@ -1,6 +1,8 @@
 import { lazy } from 'react'
 
 const routes = [
+    
+ 
     {
         path: '/test',
         component: lazy(() => import('../pages/Test')),
@@ -76,8 +78,6 @@ const routes = [
             title: '加入我们'
         }
     },
-
-
 ]
 
 export default routes
