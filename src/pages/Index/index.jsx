@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import jpg from "./01.jpg"
 
-export default class index extends Component {
-
-    
+export default class index extends Component {    
     render () {
         return (
             <div>
@@ -13,4 +11,3 @@ export default class index extends Component {
         )
     }
 }
-
