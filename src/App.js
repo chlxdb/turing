@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
-import ViewRouter from "./router/index";
+import { Link } from 'react-router-dom'
+import ViewRouter from './router/index'
 // 封装好的路由
-import "./App.css";
+import './App.css'
 
-import { Layout, Menu } from "antd";
-import React, { Component } from "react";
+import { Layout, Menu } from 'antd'
+import React, { Component } from 'react'
 // import leader from './pages/Leader'
 // import RouterView from './router/router-view'
 
-const { Header, Footer, Content } = Layout;
+const { Header, Footer, Content } = Layout
 
 export default class App extends Component {
   render() {
@@ -17,10 +17,10 @@ export default class App extends Component {
         <Layout>
           <Header>
             <Menu
-              style={{ marginTop: "20px" }}
+              style={{ marginTop: '20px' }}
               className="nar"
               mode="horizontal"
-              defaultSelectedKeys={["1"]}
+              defaultSelectedKeys={['1']}
             >
               <Link to="/index">
                 <Menu.Item key={1}>首页</Menu.Item>
@@ -48,6 +48,6 @@ export default class App extends Component {
           <Footer>Footer</Footer>
         </Layout>
       </div>
-    );
+    )
   }
 }
