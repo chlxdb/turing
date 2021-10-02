@@ -54,7 +54,7 @@ export default class App extends Component {
           </Content>
           <Footer
             style={{
-              height: '250px',
+              height: '200px',
               backgroundColor: 'black',
               opacity: '0.8',
             }}
