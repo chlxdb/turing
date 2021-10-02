@@ -19,18 +19,6 @@ const routes = [
             }
         ]
     },
-    // 若有子页面，此为参考
-    routes: [
-      {
-        path: '/test/demo',
-        component: lazy(() => import('../pages/Test/Demo')),
-      },
-      {
-        path: '/test/demo2',
-        component: lazy(() => import('../pages/Test/Demo2')),
-      },
-    ],
-  },
   {
     path: '/index',
     component: lazy(() => import('../pages/Index')),
@@ -80,13 +68,14 @@ const routes = [
       title: '团队荣誉',
     },
   },
-  {
-    path: '/join',
-    component: lazy(() => import('../pages/Join/join')),
-    isExact: true,
-    meta: {
-      title: '加入我们',
-    },
+    {
+        path: '/join',
+        component: lazy(() => import('../pages/Join/join')),
+        isExact: true,
+        meta: {
+            title: '加入我们',
+        }
+    }
 ]
 
 export default routes
