@@ -5,11 +5,8 @@ import './App.css'
 
 import { Layout, Menu } from 'antd'
 import React, { Component } from 'react'
-// import leader from './pages/Leader'
-// import RouterView from './router/router-view'
 
 const { Header, Footer, Content } = Layout
-
 
 export default class App extends Component {
   render() {
@@ -23,33 +20,52 @@ export default class App extends Component {
               mode="horizontal"
               defaultSelectedKeys={['1']}
             >
-              <Menu.Item key={7} style={{ marginLeft: 'auto' }}>
+              <Menu.Item
+                key={8}
+                style={{ marginLeft: 'auto', fontSize: '32px' }}
+              >
                 图灵智能创新团队
               </Menu.Item>
-              <Link to="/index">
+              <Link to="/index" className="menus">
                 <Menu.Item key={1}>首页</Menu.Item>
               </Link>
+              <Link to="/index">
+                <Menu.Item key={2}>团队简介</Menu.Item>
+              </Link>
               <Link to="/leader">
-                <Menu.Item key={2}>领导视察</Menu.Item>
+                <Menu.Item key={3}>领导视察</Menu.Item>
               </Link>
               <Link to="/scale">
-                <Menu.Item key={3}>团队规模</Menu.Item>
+                <Menu.Item key={4}>团队规模</Menu.Item>
               </Link>
               <Link to="/project">
-                <Menu.Item key={4}>团队项目</Menu.Item>
+                <Menu.Item key={5}>团队项目</Menu.Item>
               </Link>
               <Link to="/honor">
-                <Menu.Item key={5}>团队荣誉</Menu.Item>
+                <Menu.Item key={6}>团队荣誉</Menu.Item>
               </Link>
               <Link to="/join">
-                <Menu.Item key={6}>加入我们</Menu.Item>
+                <Menu.Item key={7}>加入我们</Menu.Item>
               </Link>
             </Menu>
           </Header>
           <Content>
             <ViewRouter></ViewRouter>
           </Content>
-          <Footer>Footer</Footer>
+          <Footer
+            style={{
+              height: '250px',
+              backgroundColor: 'black',
+              opacity: '0.8',
+            }}
+          >
+            <div style={{ color: 'white', margin: '0 550px' }}>
+              <h style={{ fontSize: '28px' }}>图灵智能创新团队</h>
+              <p style={{ fontSize: '12px' }}>
+                TURING©广东海洋大学第一个人工智能团队
+              </p>
+            </div>
+          </Footer>
         </Layout>
       </div>
     )
