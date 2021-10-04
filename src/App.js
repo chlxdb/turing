@@ -68,8 +68,14 @@ export default class App extends Component {
               opacity: '0.8',
             }}
           >
-            <div style={{ color: 'white', margin: '0 550px' }}>
-              <h style={{ fontSize: '28px' }}>图灵智能创新团队</h>
+            <div style={{ color: 'white', textAlign: 'center' }}>
+              <p
+                style={{
+                  fontSize: '28px',
+                }}
+              >
+                图灵智能创新团队
+              </p>
               <p style={{ fontSize: '12px' }}>
                 TURING©广东海洋大学第一个人工智能团队
               </p>
