@@ -4553,8 +4553,13 @@
   "version" "1.3.671"
 
 "element-react@^1.4.34":
+<<<<<<< HEAD
   "integrity" "sha512-O9OlLAhlRmfC5s2AQTB99gOn/DZICs0nHdEB96IKvl/OA84ZVHtsUdD7b0lo8nL8S7h9/gDJ+0TPZV02QzwZQw=="
   "resolved" "https://registry.npmjs.org/element-react/-/element-react-1.4.34.tgz"
+=======
+  "integrity" "sha1-4nzAyjH4b+1G/kb7yP0zDBVsODw="
+  "resolved" "https://registry.npm.taobao.org/element-react/download/element-react-1.4.34.tgz"
+>>>>>>> 9a7dde1248375f14fda4ebb0849dd7ecb06349e0
   "version" "1.4.34"
   dependencies:
     "async-validator" "^1.10.1"
