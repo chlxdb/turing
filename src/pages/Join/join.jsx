@@ -181,10 +181,9 @@ export default class join extends Component {
             <Col span="6">
               <Button
                 onClick={this.change}
-                style={{ 'margin-left': '3vw' }}
                 type="primary"
                 ghost
-                className="no-print"
+                className="no-print change-type-btn"
               >
                 {placeholders.buttonname}
               </Button>
