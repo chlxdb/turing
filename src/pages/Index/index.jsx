@@ -1,13 +1,70 @@
 import React, { Component } from 'react'
-import jpg from "./01.jpg"
+import { Row, Col } from 'antd'
 
-export default class index extends Component {    
-    render () {
-        return (
-            <div>
-                <h3>index页面</h3>
-               <img src={jpg} alt="none"></img>
-            </div>
-        )
-    }
+import jpg from './01.jpg'
+
+export default class index extends Component {
+  render() {
+    return (
+      <div>
+        <div
+          style={{ width: '100%', height: '300px', backgroundColor: 'black' }}
+        >
+          <img
+            style={{ width: '100%', height: '300px', opacity: '0.4' }}
+            src={jpg}
+            alt="none"
+          ></img>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <h>指导老师&&团队介绍</h>
+          <Row>
+            <Col flex={2}>
+              <p>图</p>
+            </Col>
+            <Col flex={2}>
+              <p> 指导老师 </p>
+            </Col>
+            <Col flex={3}>
+              <p> 团队介绍 </p>
+            </Col>
+          </Row>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <h>团队项目</h>
+          <Row style={{ height: '300px' }}>
+            <Col flex={3} style={{ backgroundColor: 'grey', margin: '12px' }}>
+              <p>图</p>
+            </Col>
+            <Col flex={3} style={{ backgroundColor: 'grey', margin: '12px' }}>
+              <p> 图 </p>
+            </Col>
+            <Col flex={3} style={{ backgroundColor: 'grey', margin: '12px' }}>
+              <p> 图 </p>
+            </Col>
+            <Col flex={3} style={{ backgroundColor: 'grey', margin: '12px' }}>
+              <p> 图 </p>
+            </Col>
+          </Row>
+        </div>
+        <div style={{ margin: '15px' }}>
+          <h>团队活动</h>
+          <Row style={{ height: '300px' }}>
+            <Col flex={3} style={{ backgroundColor: 'grey', margin: '12px' }}>
+              <p>图</p>
+            </Col>
+            <Col flex={3} style={{ backgroundColor: 'grey', margin: '12px' }}>
+              <p> 图 </p>
+            </Col>
+            <Col flex={3} style={{ backgroundColor: 'grey', margin: '12px' }}>
+              <p> 图 </p>
+            </Col>
+            <Col flex={3} style={{ backgroundColor: 'grey', margin: '12px' }}>
+              <p> 图 </p>
+            </Col>
+          </Row>
+        </div>
+      </div>
+    )
+  }
 }
