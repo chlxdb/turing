@@ -72,6 +72,7 @@ export default class App extends Component {
               <p
                 style={{
                   fontSize: '28px',
+                  marginBottom: '0.1em',
                 }}
               >
                 图灵智能创新团队
