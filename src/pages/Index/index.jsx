@@ -1,11 +1,30 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'antd'
+import axios from 'axios'
 
 import jpg from './01.jpg'
 
 export default class index extends Component {
+  constructor(props) {
+    super(props)
+    this.setState({
+      teamintroduct: {},
+    })
+
+    /**
+     * 获取团队简介
+     */
+    axios.get(`http://150.158.171.105:8080/guest/introduction`).then((e) => {
+      const teamintroduct = e.data[0]
+      this.setState({ teamintroduct })
+    })
+    console.log(1)
+  }
+
   render() {
-    return false ? (
+    // const { teamintroduct } = this.state
+    // console.log(teamintroduct)
+    return (
       <div>
         <div
           style={{ width: '100%', height: '300px', backgroundColor: 'black' }}
@@ -65,8 +84,6 @@ export default class index extends Component {
           </Row>
         </div>
       </div>
-    ) : (
-      <h1>维护中...</h1>
     )
   }
 }

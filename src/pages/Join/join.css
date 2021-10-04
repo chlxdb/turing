@@ -31,3 +31,22 @@
   margin-left: 4.2vw;
   font-size: 1.2vw;
 }
+
+@media print {
+  .no-print {
+    display: none;
+  }
+  .join {
+    margin: 0;
+  }
+  .ant-col-xs-24 {
+    display: block;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .ant-col-xs-8 {
+    display: block;
+    flex: 0 0 16.66666667%;
+    max-width: 16.66666667%;
+  }
+}

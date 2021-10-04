@@ -4,6 +4,7 @@ import { DownloadOutlined } from '@ant-design/icons'
 import { Card } from 'element-react'
 import 'element-theme-default'
 import axios from 'axios'
+import ReactToPrint from 'react-to-print'
 
 import evaluation from './img/evaluation.png'
 import class1 from './img/class1.png'
@@ -171,7 +172,7 @@ export default class join extends Component {
   render() {
     const { placeholders } = this.state
     return (
-      <div class="join">
+      <div class="join" ref={(el) => (this.componentRef = el)}>
         <Card>
           <Row>
             <Col span="12" offset="6">
@@ -183,6 +184,7 @@ export default class join extends Component {
                 style={{ 'margin-left': '3vw' }}
                 type="primary"
                 ghost
+                className="no-print"
               >
                 {placeholders.buttonname}
               </Button>
@@ -410,7 +412,7 @@ export default class join extends Component {
             </Col>
           </Row>
           <Divider />
-          <Row>
+          <Row className="no-print">
             <div style={{ margin: '0 auto 20px' }}>
               <Button
                 onClick={this.submit}
@@ -419,6 +421,18 @@ export default class join extends Component {
               >
                 提交
               </Button>
+              <ReactToPrint
+                trigger={() => {
+                  // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
+                  // to the root node of the returned component as it will be overwritten.
+                  return (
+                    <Button type="primary" style={{ marginRight: '1vw' }}>
+                      打印
+                    </Button>
+                  )
+                }}
+                content={() => this.componentRef}
+              />
               <Button
                 onClick={this.downloadtemplate}
                 type="primary"
