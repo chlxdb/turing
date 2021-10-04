@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class scale extends Component {
+export default class scaletea extends Component {
   goRouter = (path) => {
     return () => {
       this.props.history.push({
