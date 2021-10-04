@@ -1,24 +1,24 @@
 import { lazy } from 'react'
 
-const routes = [  
-    {
-        path: '/test',
-        component: lazy(() => import('../pages/Test')),
-        meta: {
-            title: '测试页面'
-        },
-        // 若有子页面，此为参考
-        routes: [
-            {
-                path: '/test/demo',
-                component: lazy(() => import('../pages/Test/Demo'))
-            },
-            {
-                path: '/test/demo2',
-                component: lazy(() => import('../pages/Test/Demo2'))
-            }
-        ]
+const routes = [
+  {
+    path: '/test',
+    component: lazy(() => import('../pages/Test')),
+    meta: {
+      title: '测试页面',
     },
+    // 若有子页面，此为参考
+    routes: [
+      {
+        path: '/test/demo',
+        component: lazy(() => import('../pages/Test/Demo')),
+      },
+      {
+        path: '/test/demo2',
+        component: lazy(() => import('../pages/Test/Demo2')),
+      },
+    ],
+  },
   {
     path: '/index',
     component: lazy(() => import('../pages/Index')),
@@ -45,11 +45,19 @@ const routes = [
     },
   },
   {
-    path: '/scale',
-    component: lazy(() => import('../pages/Scale/scale')),
+    path: '/scaleteacher',
+    component: lazy(() => import('../pages/Scaleteacher/scale')),
     isExact: true,
     meta: {
-      title: '团队规模',
+      title: '教师',
+    },
+  },
+  {
+    path: '/scalestuden',
+    component: lazy(() => import('../pages/Scalestuden/scale')),
+    isExact: true,
+    meta: {
+      title: '学生',
     },
   },
   {
@@ -68,14 +76,14 @@ const routes = [
       title: '团队荣誉',
     },
   },
-    {
-        path: '/join',
-        component: lazy(() => import('../pages/Join/join')),
-        isExact: true,
-        meta: {
-            title: '加入我们',
-        }
-    }
+  {
+    path: '/join',
+    component: lazy(() => import('../pages/Join/join')),
+    isExact: true,
+    meta: {
+      title: '加入我们',
+    },
+  },
 ]
 
 export default routes

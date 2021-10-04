@@ -7,6 +7,7 @@ import { Layout, Menu } from 'antd'
 import React, { Component } from 'react'
 
 const { Header, Footer, Content } = Layout
+const { SubMenu } = Menu
 
 export default class App extends Component {
   render() {
@@ -35,18 +36,26 @@ export default class App extends Component {
               <Link to="/leader">
                 <Menu.Item key={3}>领导视察</Menu.Item>
               </Link>
-              <Link to="/scale">
-                <Menu.Item key={4}>团队规模</Menu.Item>
-              </Link>
+
               <Link to="/project">
                 <Menu.Item key={5}>团队项目</Menu.Item>
               </Link>
               <Link to="/honor">
                 <Menu.Item key={6}>团队荣誉</Menu.Item>
               </Link>
+
               <Link to="/join">
                 <Menu.Item key={7}>加入我们</Menu.Item>
               </Link>
+
+              <SubMenu title="团队规模">
+                <Link to="/scaleteacher">
+                  <Menu.Item key="1">指导老师</Menu.Item>
+                </Link>
+                <Link to="/scalestuden">
+                  <Menu.Item key="2">团队学生</Menu.Item>
+                </Link>
+              </SubMenu>
             </Menu>
           </Header>
           <Content>
