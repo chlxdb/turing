@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Row, Col } from 'antd'
 export default class project extends Component {
   render() {
-    return (
+    return false ? (
       <div>
         <h3>project页面</h3>
         <div style={{ margin: '150px' }}>
@@ -40,6 +40,8 @@ export default class project extends Component {
           </Row>
         </div>
       </div>
+    ) : (
+      <h1>维护中...</h1>
     )
   }
 }

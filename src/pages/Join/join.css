@@ -2,27 +2,32 @@
   margin: 5vw;
   background-color: #fff;
   box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+  line-height: 1.5;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, '\5FAE\8F6F\96C5\9ED1', Arial, sans-serif;
+  color: #515a6e;
 }
 
 .join h5 {
   text-align: center;
   font-size: 2vw;
-  font-weight: 800;
-  line-height: 1.5;
+  font-weight: bold;
 }
-@page {
-  size: A4;
+
+.join .col-img {
+  width: 2vw;
+  height: 2vw;
+  margin-left: 2vw;
+}
+
+.join .col-title {
+  font-weight: bold;
+  font-size: 1.5vw;
+  display: inline-block;
+  margin-bottom: 0;
+}
+.join .col-english {
   margin: 0;
-}
-@media print {
-  html,
-  body {
-    min-width: 0;
-    width: 210mm;
-    height: 297mm;
-  }
-  .print-hide {
-    visibility: hidden !important;
-    display: none !important;
-  }
+  margin-left: 4.2vw;
+  font-size: 1.2vw;
 }

@@ -11,12 +11,14 @@ export default class scale extends Component {
   }
 
   render() {
-    return (
+    return false ? (
       <div>
         <h3>scael页面</h3>
         <p>dsfafaads</p>
         <div onClick={this.goRouter('/login')}>Go Login</div>
       </div>
+    ) : (
+      <h1>维护中...</h1>
     )
   }
 }

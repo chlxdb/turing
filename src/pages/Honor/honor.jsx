@@ -33,10 +33,12 @@ export default class honor extends Component {
   render() {
     const { honorlists } = this.state
     console.log(honorlists)
-    return (
+    return false ? (
       <div>
         <h3>HHHHHOR页面</h3>
       </div>
+    ) : (
+      <h1>维护中...</h1>
     )
   }
 }

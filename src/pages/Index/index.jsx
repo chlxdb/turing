@@ -5,7 +5,7 @@ import jpg from './01.jpg'
 
 export default class index extends Component {
   render() {
-    return (
+    return false ? (
       <div>
         <div
           style={{ width: '100%', height: '300px', backgroundColor: 'black' }}
@@ -65,6 +65,8 @@ export default class index extends Component {
           </Row>
         </div>
       </div>
+    ) : (
+      <h1>维护中...</h1>
     )
   }
 }
