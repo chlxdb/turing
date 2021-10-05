@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Divider, Row, Col, Input, Modal } from 'antd'
+import { Button, Divider, Row, Col, Input, Modal, Popover } from 'antd'
 import { DownloadOutlined } from '@ant-design/icons'
 import { Card } from 'element-react'
 import 'element-theme-default'
@@ -60,6 +60,7 @@ export default class join extends Component {
       experience: '',
       others: '',
       visible: true,
+      issubmit: false,
     }
     // 获取模板下载链接
     axios
@@ -176,6 +177,7 @@ export default class join extends Component {
       expectation,
       experience,
       others,
+      issubmit,
     } = this.state
     axios({
       method: 'post',
@@ -193,12 +195,17 @@ export default class join extends Component {
         resumeOther: others,
       },
     }).then((res) => {
-      console.log(res.data)
       let outputstring = ''
       for (let i in res.data) {
         outputstring += res.data[i] + '\n'
       }
-      alert(outputstring)
+      setTimeout(() => {
+        alert(outputstring)
+      }, 0)
+
+      if (res.data.result === 'success') {
+        this.setState({ issubmit: !issubmit })
+      }
     })
   }
   // 模板下载
@@ -213,8 +220,9 @@ export default class join extends Component {
     downloadElement.click()
     document.body.removeChild(downloadElement)
   }
+
   render() {
-    const { placeholders } = this.state
+    const { placeholders, issubmit } = this.state
     return (
       <div class="join" ref={(el) => (this.componentRef = el)}>
         <Card>
@@ -228,18 +236,18 @@ export default class join extends Component {
             </Col>
           </Row>
           <Row>
-            <Col span="24">
+            <Col span="24" className="no-print">
               <Button
                 onClick={this.change}
                 type="primary"
                 ghost
-                className="no-print change-type-btn"
+                className="change-type-btn no-print"
               >
                 {placeholders.buttonname}
               </Button>
             </Col>
           </Row>
-          <Divider />
+          <Divider className="no-print" />
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
@@ -383,6 +391,7 @@ export default class join extends Component {
             </Col>
             <Col span="20">
               <Input.TextArea
+                id="myinput"
                 placeholder="简单介绍一下自己，性格、兴趣爱好等等。你觉得你最大的优点是什么？"
                 onChange={this.handleevaluationchange}
               />
@@ -460,15 +469,16 @@ export default class join extends Component {
               />
             </Col>
           </Row>
-          <Divider />
+          <Divider className="no-print" />
           <Row className="no-print">
             <div style={{ margin: '0 auto 20px' }}>
               <Button
                 onClick={this.submit}
                 type="primary"
                 style={{ marginRight: '1vw' }}
+                disabled={issubmit}
               >
-                提交
+                {issubmit ? '已提交' : '提交'}
               </Button>
               {IsPC() ? (
                 <ReactToPrint
@@ -476,9 +486,14 @@ export default class join extends Component {
                     // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
                     // to the root node of the returned component as it will be overwritten.
                     return (
-                      <Button type="primary" style={{ marginRight: '1vw' }}>
-                        打印
-                      </Button>
+                      <Popover
+                        content="拉动文本框右下角调整打印布局 ^_^"
+                        placement="bottom"
+                      >
+                        <Button type="primary" style={{ marginRight: '1vw' }}>
+                          打印
+                        </Button>
+                      </Popover>
                     )
                   }}
                   content={() => this.componentRef}
@@ -492,13 +507,15 @@ export default class join extends Component {
                   打印
                 </Button>
               )}
-              <Button
-                onClick={this.downloadtemplate}
-                type="primary"
-                icon={<DownloadOutlined />}
-              >
-                模板下载
-              </Button>
+              <Popover content="备用方案 @_@" placement="bottom">
+                <Button
+                  onClick={this.downloadtemplate}
+                  type="primary"
+                  icon={<DownloadOutlined />}
+                >
+                  模板下载
+                </Button>
+              </Popover>
             </div>
           </Row>
         </Card>
