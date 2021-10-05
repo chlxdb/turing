@@ -70,29 +70,61 @@ export default class join extends Component {
         this.setState({ downloadurls })
       })
 
-    let secondsToGo = 5
-    const modal = Modal.info({
+    Modal.info({
       title: '小提示',
-      content:
-        `点击标题下面的按钮可以在创新组和创业组之间切换简历哦(${secondsToGo} 秒后自动关闭)` +
-        (IsPC()
-          ? ''
-          : '\n请在电脑端打印哦!!!\n请在电脑端打印哦!!!\n请在电脑端打印哦!!!'),
+
+      content: (
+        <div>
+          <span>点击标题下面的按钮可以在创新组和创业组之间切换简历哦</span>
+          {IsPC() ? (
+            ''
+          ) : (
+            <>
+              <br />
+              <br />
+              <span>请在电脑端打印哦!!!</span>
+              <br />
+              <span>请在电脑端打印哦!!!</span>
+              <br />
+              <span>请在电脑端打印哦!!!</span>
+              <br />
+            </>
+          )}
+        </div>
+      ),
       centered: IsPC() ? false : true,
     })
-    const timer = setInterval(() => {
-      secondsToGo -= 1
-      if (secondsToGo)
-        modal.update({
-          content:
-            `点击标题下面的按钮可以在创新组和创业组之间切换简历哦(${secondsToGo} 秒后自动关闭)` +
-            (IsPC() ? '' : '请在电脑端打印哦'),
-        })
-    }, 1000)
-    setTimeout(() => {
-      clearInterval(timer)
-      modal.destroy()
-    }, secondsToGo * 1000)
+    // const timer = setInterval(() => {
+    //   secondsToGo -= 1
+    //   if (secondsToGo)
+    //     modal.update({
+    //       content: (
+    //         <div>
+    //           <p>
+    //             点击标题下面的按钮可以在创新组和创业组之间切换简历哦(
+    //             {secondsToGo}
+    //             秒后自动关闭)
+    //           </p>
+    //           {IsPC() ? (
+    //             ''
+    //           ) : (
+    //             <>
+    //               <span>请在电脑端打印哦!!!</span>
+    //               <br />
+    //               <span>请在电脑端打印哦!!!</span>
+    //               <br />
+    //               <span>请在电脑端打印哦!!!</span>
+    //               <br />
+    //             </>
+    //           )}
+    //         </div>
+    //       ),
+    //     })
+    // }, 1000)
+    // setTimeout(() => {
+    //   clearInterval(timer)
+    //   modal.destroy()
+    // }, secondsToGo * 1000)
   }
 
   handlenamechange = (e) => {
