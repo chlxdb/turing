@@ -31,9 +31,7 @@ export default class App extends Component {
               <Link to="/index" className="menus">
                 <Menu.Item key={1}>首页</Menu.Item>
               </Link>
-              <Link to="/index">
-                <Menu.Item key={2}>团队简介</Menu.Item>
-              </Link>
+
               <Link to="/leader">
                 <Menu.Item key={3}>领导视察</Menu.Item>
               </Link>
@@ -44,11 +42,12 @@ export default class App extends Component {
               <Link to="/honor">
                 <Menu.Item key={6}>团队荣誉</Menu.Item>
               </Link>
-
+              <Link to="/active">
+                <Menu.Item key={6}>团队活动</Menu.Item>
+              </Link>
               <Link to="/join">
                 <Menu.Item key={7}>加入我们</Menu.Item>
               </Link>
-
               <SubMenu title="团队规模">
                 <Link to="/scaleteacher">
                   <Menu.Item key="1">指导老师</Menu.Item>
