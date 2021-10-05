@@ -24,6 +24,7 @@ export default class App extends Component {
               <Menu.Item
                 key={8}
                 style={{ marginLeft: 'auto', fontSize: '32px' }}
+                className="turing-title"
               >
                 图灵智能创新团队
               </Menu.Item>
