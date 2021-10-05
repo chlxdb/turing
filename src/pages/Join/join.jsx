@@ -73,14 +73,20 @@ export default class join extends Component {
     let secondsToGo = 5
     const modal = Modal.info({
       title: '小提示',
-      content: `点击标题下面的按钮可以在创新组和创业组之间切换简历哦(${secondsToGo} 秒后自动关闭)`,
+      content:
+        `点击标题下面的按钮可以在创新组和创业组之间切换简历哦(${secondsToGo} 秒后自动关闭)` +
+        (IsPC()
+          ? ''
+          : '\n请在电脑端打印哦!!!\n请在电脑端打印哦!!!\n请在电脑端打印哦!!!'),
       centered: IsPC() ? false : true,
     })
     const timer = setInterval(() => {
       secondsToGo -= 1
       if (secondsToGo)
         modal.update({
-          content: `点击标题下面的按钮可以在创新组和创业组之间切换简历哦(${secondsToGo} 秒后自动关闭)`,
+          content:
+            `点击标题下面的按钮可以在创新组和创业组之间切换简历哦(${secondsToGo} 秒后自动关闭)` +
+            (IsPC() ? '' : '请在电脑端打印哦'),
         })
     }, 1000)
     setTimeout(() => {
