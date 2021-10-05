@@ -40,7 +40,6 @@ const IsPC = () => {
 export default class join extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       placeholders: {
         title: '图灵智能创新团队创新组招新简历',
@@ -72,7 +71,6 @@ export default class join extends Component {
 
     Modal.info({
       title: '小提示',
-
       content: (
         <div>
           <span>点击标题下面的按钮可以在创新组和创业组之间切换简历哦</span>
@@ -231,13 +229,12 @@ export default class join extends Component {
   render() {
     const { placeholders, issubmit } = this.state
     return (
-      <div className="join" ref={(el) => (this.componentRef = el)}>
-        <Card>
+      <div
+        className={`join ${IsPC() ? '' : 'isphone'}`}
+        ref={(el) => (this.componentRef = el)}
+      >
+        <Card className={` ${IsPC() ? '' : 'isphone-card'}`}>
           <Row>
-            {/* <Col span="6" className="mobile-nodisplay" />
-            <Col span="12" xs={22} sm={18} md={12} lg={12}>
-              <h5>{placeholders.title}</h5>
-            </Col> */}
             <Col span="24">
               <h5>{placeholders.title}</h5>
             </Col>
