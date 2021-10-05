@@ -14,7 +14,7 @@ export default class scalestu extends Component {
     return false ? (
       <div>
         <h3>scael页面</h3>
-        <p>dsfafaads</p>
+        <p>d</p>
         <div onClick={this.goRouter('/login')}>Go Login</div>
       </div>
     ) : (
