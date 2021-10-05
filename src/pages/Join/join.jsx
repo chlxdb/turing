@@ -94,37 +94,6 @@ export default class join extends Component {
       ),
       centered: IsPC() ? false : true,
     })
-    // const timer = setInterval(() => {
-    //   secondsToGo -= 1
-    //   if (secondsToGo)
-    //     modal.update({
-    //       content: (
-    //         <div>
-    //           <p>
-    //             点击标题下面的按钮可以在创新组和创业组之间切换简历哦(
-    //             {secondsToGo}
-    //             秒后自动关闭)
-    //           </p>
-    //           {IsPC() ? (
-    //             ''
-    //           ) : (
-    //             <>
-    //               <span>请在电脑端打印哦!!!</span>
-    //               <br />
-    //               <span>请在电脑端打印哦!!!</span>
-    //               <br />
-    //               <span>请在电脑端打印哦!!!</span>
-    //               <br />
-    //             </>
-    //           )}
-    //         </div>
-    //       ),
-    //     })
-    // }, 1000)
-    // setTimeout(() => {
-    //   clearInterval(timer)
-    //   modal.destroy()
-    // }, secondsToGo * 1000)
   }
 
   handlenamechange = (e) => {
@@ -262,7 +231,7 @@ export default class join extends Component {
   render() {
     const { placeholders, issubmit } = this.state
     return (
-      <div class="join" ref={(el) => (this.componentRef = el)}>
+      <div className="join" ref={(el) => (this.componentRef = el)}>
         <Card>
           <Row>
             {/* <Col span="6" className="mobile-nodisplay" />
@@ -296,13 +265,13 @@ export default class join extends Component {
                 <p class="col-english">Individual</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Row>
                 <Col
                   span="8"
                   xs={24}
-                  sm={12}
-                  md={8}
+                  sm={24}
+                  md={10}
                   lg={6}
                   style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
@@ -324,8 +293,8 @@ export default class join extends Component {
                 <Col
                   span="8"
                   xs={24}
-                  sm={12}
-                  md={8}
+                  sm={24}
+                  md={10}
                   lg={6}
                   style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
@@ -347,8 +316,8 @@ export default class join extends Component {
                 <Col
                   span="8"
                   xs={24}
-                  sm={12}
-                  md={8}
+                  sm={24}
+                  md={10}
                   lg={6}
                   style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
@@ -370,8 +339,8 @@ export default class join extends Component {
                 <Col
                   span="8"
                   xs={24}
-                  sm={12}
-                  md={8}
+                  sm={24}
+                  md={10}
                   lg={6}
                   style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
@@ -393,8 +362,8 @@ export default class join extends Component {
                 <Col
                   span="8"
                   xs={24}
-                  sm={12}
-                  md={8}
+                  sm={24}
+                  md={10}
                   lg={6}
                   style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
@@ -427,7 +396,7 @@ export default class join extends Component {
                 <p class="col-english">Evaluation</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Input.TextArea
                 id="myinput"
                 placeholder="简单介绍一下自己，性格、兴趣爱好等等。你觉得你最大的优点是什么？"
@@ -446,7 +415,7 @@ export default class join extends Component {
                 <p class="col-english">Skills</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Input.TextArea
                 placeholder={placeholders.skill}
                 onChange={this.handleskillschange}
@@ -464,7 +433,7 @@ export default class join extends Component {
                 <p class="col-english">Expectation</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Input.TextArea
                 placeholder="为什么想加入我们团队？ 你期望以后在团队里做怎么样的一个角色？以后想从事什么职业？简单说一说，你来到团队后的学习安排？"
                 onChange={this.handleexpectationchange}
@@ -482,7 +451,7 @@ export default class join extends Component {
                 <p class="col-english">Experience</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Input.TextArea
                 placeholder={placeholders.experience}
                 onChange={this.handleexperiencechange}
@@ -500,7 +469,7 @@ export default class join extends Component {
                 <p class="col-english">Others</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Input.TextArea
                 placeholder="你还参加了哪些学生组织或社团面试？实验室有严格的管理条例，你觉得自己能适应吗？"
                 onChange={this.handleotherschange}
