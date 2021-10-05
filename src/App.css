@@ -22,3 +22,12 @@
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected::after {
   border-bottom: solid white;
 }
+
+@media screen and (max-width: 768px) {
+  .nar {
+    font-size: 16px;
+  }
+  .turing-title .ant-menu-title-content {
+    font-size: 20px;
+  }
+}

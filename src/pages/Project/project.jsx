@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'antd'
+
 export default class project extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      projects: {},
+    }
+  }
   render() {
+    const { projects } = this.state
+    // 团队项目们 （接口未开放）
+    console.log(projects)
     return false ? (
       <div>
         <h3>project页面</h3>

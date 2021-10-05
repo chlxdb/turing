@@ -38,7 +38,7 @@ const routes = [
 
   {
     path: '/leader',
-    component: lazy(() => import('../pages/Leader/leader')),
+    component: lazy(() => import('../pages/Leader/leader.jsx')),
     isExact: true,
     meta: {
       title: '领导视察',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Divider, Row, Col, Input } from 'antd'
+import { Button, Divider, Row, Col, Input, Modal, Popover } from 'antd'
 import { DownloadOutlined } from '@ant-design/icons'
 import { Card } from 'element-react'
 import 'element-theme-default'
@@ -18,13 +18,33 @@ import phone from './img/phone.png'
 import skill from './img/skill.png'
 import './join.css'
 
+const IsPC = () => {
+  var userAgentInfo = navigator.userAgent
+  var Agents = [
+    'Android',
+    'iPhone',
+    'SymbianOS',
+    'Windows Phone',
+    'iPad',
+    'iPod',
+  ]
+  var flag = true
+  for (var v = 0; v < Agents.length; v++) {
+    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+      flag = false
+      break
+    }
+  }
+  return flag
+}
 export default class join extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
       placeholders: {
         title: '图灵智能创新团队创新组招新简历',
-        buttonname: '创业组简历',
+        buttonname: '切换创业组',
         skill: '高中是否有编程语言基础？或者在其它领域是否有较突出的技能？',
         experience: '是否有项目经验，若无请填暂无',
       },
@@ -39,8 +59,9 @@ export default class join extends Component {
       expectation: '',
       experience: '',
       others: '',
+      visible: true,
+      issubmit: false,
     }
-
     // 获取模板下载链接
     axios
       .get(`http://150.158.171.105:8080/guest/resume/getMobanUrl`)
@@ -48,7 +69,32 @@ export default class join extends Component {
         const downloadurls = e.data
         this.setState({ downloadurls })
       })
+
+    let secondsToGo = 5
+    const modal = Modal.info({
+      title: '小提示',
+      content:
+        `点击标题下面的按钮可以在创新组和创业组之间切换简历哦(${secondsToGo} 秒后自动关闭)` +
+        (IsPC()
+          ? ''
+          : '\n请在电脑端打印哦!!!\n请在电脑端打印哦!!!\n请在电脑端打印哦!!!'),
+      centered: IsPC() ? false : true,
+    })
+    const timer = setInterval(() => {
+      secondsToGo -= 1
+      if (secondsToGo)
+        modal.update({
+          content:
+            `点击标题下面的按钮可以在创新组和创业组之间切换简历哦(${secondsToGo} 秒后自动关闭)` +
+            (IsPC() ? '' : '请在电脑端打印哦'),
+        })
+    }, 1000)
+    setTimeout(() => {
+      clearInterval(timer)
+      modal.destroy()
+    }, secondsToGo * 1000)
   }
+
   handlenamechange = (e) => {
     this.setState({
       name: e.target.value,
@@ -100,12 +146,17 @@ export default class join extends Component {
     })
   }
 
+  checkagain = () => {
+    if (!IsPC()) {
+      alert('请在电脑端打印！')
+    }
+  }
   // 模板切换
   change = () => {
-    if (this.state.placeholders.buttonname === '创业组简历') {
+    if (this.state.placeholders.buttonname === '切换创业组') {
       const placeholders = {
         title: '图灵智能创新团队创业组招新简历',
-        buttonname: '创新组简历',
+        buttonname: '切换创新组',
         skill: `以前是否在产品设计、PPT制作、策划书编写上这方面有一定基础？例如：之前是否有文档撰写和需求分析等经验，之前是否有演讲、商业策划、ppt制作、运营的经历，或者在其它领域是否有较突出的技能、证书？`,
         experience: '是否有一些社会实践或是参与过其他创业项目？',
       }
@@ -113,7 +164,7 @@ export default class join extends Component {
     } else {
       const placeholders = {
         title: '图灵智能创新团队创新组招新简历',
-        buttonname: '创业组简历',
+        buttonname: '切换创业组',
         skill: '高中是否有编程语言基础？或者在其它领域是否有较突出的技能？',
         experience: '是否有项目经验，若无请填暂无',
       }
@@ -132,6 +183,7 @@ export default class join extends Component {
       expectation,
       experience,
       others,
+      issubmit,
     } = this.state
     axios({
       method: 'post',
@@ -149,12 +201,17 @@ export default class join extends Component {
         resumeOther: others,
       },
     }).then((res) => {
-      console.log(res.data)
       let outputstring = ''
       for (let i in res.data) {
         outputstring += res.data[i] + '\n'
       }
-      alert(outputstring)
+      setTimeout(() => {
+        alert(outputstring)
+      }, 0)
+
+      if (res.data.result === 'success') {
+        this.setState({ issubmit: !issubmit })
+      }
     })
   }
   // 模板下载
@@ -169,30 +226,36 @@ export default class join extends Component {
     downloadElement.click()
     document.body.removeChild(downloadElement)
   }
+
   render() {
-    const { placeholders } = this.state
+    const { placeholders, issubmit } = this.state
     return (
       <div class="join" ref={(el) => (this.componentRef = el)}>
         <Card>
           <Row>
-            <Col span="12" offset="6">
+            {/* <Col span="6" className="mobile-nodisplay" />
+            <Col span="12" xs={22} sm={18} md={12} lg={12}>
+              <h5>{placeholders.title}</h5>
+            </Col> */}
+            <Col span="24">
               <h5>{placeholders.title}</h5>
             </Col>
-            <Col span="6">
+          </Row>
+          <Row>
+            <Col span="24" className="no-print">
               <Button
                 onClick={this.change}
-                style={{ 'margin-left': '3vw' }}
                 type="primary"
                 ghost
-                className="no-print"
+                className="change-type-btn no-print"
               >
                 {placeholders.buttonname}
               </Button>
             </Col>
           </Row>
-          <Divider />
+          <Divider className="no-print" />
           <Row>
-            <Col span="4" xs={8} sm={4} md={4} lg={4}>
+            <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
                 <img class="col-img" src={evaluation} alt="" />
                 <h1 class="col-title">个人信息</h1>
@@ -209,7 +272,7 @@ export default class join extends Component {
                   sm={12}
                   md={8}
                   lg={6}
-                  style={{ 'margin-right': '1vw' }}
+                  style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
                   <Row>
                     <img
@@ -232,7 +295,7 @@ export default class join extends Component {
                   sm={12}
                   md={8}
                   lg={6}
-                  style={{ 'margin-right': '1vw' }}
+                  style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
                   <Row>
                     <img
@@ -255,7 +318,7 @@ export default class join extends Component {
                   sm={12}
                   md={8}
                   lg={6}
-                  style={{ 'margin-right': '1vw' }}
+                  style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
                   <Row>
                     <img
@@ -278,7 +341,7 @@ export default class join extends Component {
                   sm={12}
                   md={8}
                   lg={6}
-                  style={{ 'margin-right': '1vw' }}
+                  style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
                   <Row>
                     <img
@@ -301,7 +364,7 @@ export default class join extends Component {
                   sm={12}
                   md={8}
                   lg={6}
-                  style={{ 'margin-right': '1vw' }}
+                  style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
                   <Row>
                     <img
@@ -323,7 +386,7 @@ export default class join extends Component {
           </Row>
           <Divider />
           <Row>
-            <Col span="4" xs={8} sm={4} md={4} lg={4}>
+            <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
                 <img class="col-img" src={evaluation1} alt="" />
                 <h1 class="col-title">自我评价</h1>
@@ -334,6 +397,7 @@ export default class join extends Component {
             </Col>
             <Col span="20">
               <Input.TextArea
+                id="myinput"
                 placeholder="简单介绍一下自己，性格、兴趣爱好等等。你觉得你最大的优点是什么？"
                 onChange={this.handleevaluationchange}
               />
@@ -341,7 +405,7 @@ export default class join extends Component {
           </Row>
           <Divider />
           <Row>
-            <Col span="4" xs={8} sm={4} md={4} lg={4}>
+            <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
                 <img class="col-img" src={skill} alt="" />
                 <h1 class="col-title">技能水平</h1>
@@ -359,7 +423,7 @@ export default class join extends Component {
           </Row>
           <Divider />
           <Row>
-            <Col span="4" xs={8} sm={4} md={4} lg={4}>
+            <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
                 <img class="col-img" src={expectation} alt="" />
                 <h1 class="col-title">期望</h1>
@@ -377,7 +441,7 @@ export default class join extends Component {
           </Row>
           <Divider />
           <Row>
-            <Col span="4" xs={8} sm={4} md={4} lg={4}>
+            <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
                 <img class="col-img" src={other} alt="" />
                 <h1 class="col-title">项目经验</h1>
@@ -395,7 +459,7 @@ export default class join extends Component {
           </Row>
           <Divider />
           <Row>
-            <Col span="4" xs={8} sm={4} md={4} lg={4}>
+            <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
                 <img class="col-img" src={other} alt="" />
                 <h1 class="col-title">其它</h1>
@@ -411,35 +475,53 @@ export default class join extends Component {
               />
             </Col>
           </Row>
-          <Divider />
+          <Divider className="no-print" />
           <Row className="no-print">
             <div style={{ margin: '0 auto 20px' }}>
               <Button
                 onClick={this.submit}
                 type="primary"
                 style={{ marginRight: '1vw' }}
+                disabled={issubmit}
               >
-                提交
+                {issubmit ? '已提交' : '提交'}
               </Button>
-              <ReactToPrint
-                trigger={() => {
-                  // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
-                  // to the root node of the returned component as it will be overwritten.
-                  return (
-                    <Button type="primary" style={{ marginRight: '1vw' }}>
-                      打印
-                    </Button>
-                  )
-                }}
-                content={() => this.componentRef}
-              />
-              <Button
-                onClick={this.downloadtemplate}
-                type="primary"
-                icon={<DownloadOutlined />}
-              >
-                模板下载
-              </Button>
+              {IsPC() ? (
+                <ReactToPrint
+                  trigger={() => {
+                    // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
+                    // to the root node of the returned component as it will be overwritten.
+                    return (
+                      <Popover
+                        content="拉动文本框右下角调整打印布局 ^_^"
+                        placement="bottom"
+                      >
+                        <Button type="primary" style={{ marginRight: '1vw' }}>
+                          打印
+                        </Button>
+                      </Popover>
+                    )
+                  }}
+                  content={() => this.componentRef}
+                />
+              ) : (
+                <Button
+                  type="primary"
+                  style={{ marginRight: '1vw' }}
+                  onClick={this.checkagain}
+                >
+                  打印
+                </Button>
+              )}
+              <Popover content="备用方案 @_@" placement="bottom">
+                <Button
+                  onClick={this.downloadtemplate}
+                  type="primary"
+                  icon={<DownloadOutlined />}
+                >
+                  模板下载
+                </Button>
+              </Popover>
             </div>
           </Row>
         </Card>
