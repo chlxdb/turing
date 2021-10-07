@@ -6,16 +6,16 @@ import 'element-theme-default'
 import axios from 'axios'
 import ReactToPrint from 'react-to-print'
 
-import evaluation from './img/evaluation.png'
-import class1 from './img/class1.png'
-import direction from './img/direction.png'
-import evaluation1 from './img/evaluation1.png'
-import expectation from './img/expectation.png'
-import name from './img/name.png'
-import number from './img/number.png'
-import other from './img/other.png'
-import phone from './img/phone.png'
-import skill from './img/skill.png'
+import evaluationpng from './img/evaluation.png'
+import class1png from './img/class1.png'
+import directionpng from './img/direction.png'
+import evaluation1png from './img/evaluation1.png'
+import expectationpng from './img/expectation.png'
+import namepng from './img/name.png'
+import numberpng from './img/number.png'
+import otherpng from './img/other.png'
+import phonepng from './img/phone.png'
+import skillpng from './img/skill.png'
 import './join.css'
 
 const IsPC = () => {
@@ -40,6 +40,16 @@ const IsPC = () => {
 export default class join extends Component {
   constructor(props) {
     super(props)
+    const name = localStorage.getItem('name')
+    const direction = localStorage.getItem('direction')
+    const number = localStorage.getItem('number')
+    const phone = localStorage.getItem('phone')
+    const class1 = localStorage.getItem('class')
+    const evaluation = localStorage.getItem('evaluation')
+    const skills = localStorage.getItem('skills')
+    const expectation = localStorage.getItem('expectation')
+    const experience = localStorage.getItem('experience')
+    const others = localStorage.getItem('others')
     this.state = {
       placeholders: {
         title: '图灵智能创新团队创新组招新简历',
@@ -48,19 +58,20 @@ export default class join extends Component {
         experience: '是否有项目经验，若无请填暂无',
       },
       downloadurls: {},
-      name: '',
-      direction: '',
-      number: '',
-      phone: '',
-      class: '',
-      evaluation: '',
-      skills: '',
-      expectation: '',
-      experience: '',
-      others: '',
+      name,
+      direction,
+      number,
+      phone,
+      class: class1,
+      evaluation,
+      skills,
+      expectation,
+      experience,
+      others,
       visible: true,
       issubmit: false,
     }
+
     // 获取模板下载链接
     axios
       .get(`http://150.158.171.105:8080/guest/resume/getMobanUrl`)
@@ -95,54 +106,104 @@ export default class join extends Component {
   }
 
   handlenamechange = (e) => {
-    this.setState({
-      name: e.target.value,
-    })
+    this.setState(
+      {
+        name: e.target.value,
+      },
+      () => {
+        localStorage.setItem('name', this.state.name)
+      }
+    )
   }
   handledirectionchange = (e) => {
-    this.setState({
-      direction: e.target.value,
-    })
+    this.setState(
+      {
+        direction: e.target.value,
+      },
+      () => {
+        localStorage.setItem('direction', this.state.direction)
+      }
+    )
   }
   handlenumberchange = (e) => {
-    this.setState({
-      number: e.target.value,
-    })
+    this.setState(
+      {
+        number: e.target.value,
+      },
+      () => {
+        localStorage.setItem('number', this.state.number)
+      }
+    )
   }
   handlephonechange = (e) => {
-    this.setState({
-      phone: e.target.value,
-    })
+    this.setState(
+      {
+        phone: e.target.value,
+      },
+      () => {
+        localStorage.setItem('phone', this.state.phone)
+      }
+    )
   }
   handleclasschange = (e) => {
-    this.setState({
-      class: e.target.value,
-    })
+    this.setState(
+      {
+        class: e.target.value,
+      },
+      () => {
+        localStorage.setItem('class', this.state.class)
+      }
+    )
   }
   handleevaluationchange = (e) => {
-    this.setState({
-      evaluation: e.target.value,
-    })
+    this.setState(
+      {
+        evaluation: e.target.value,
+      },
+      () => {
+        localStorage.setItem('evaluation', this.state.evaluation)
+      }
+    )
   }
   handleskillschange = (e) => {
-    this.setState({
-      skills: e.target.value,
-    })
+    this.setState(
+      {
+        skills: e.target.value,
+      },
+      () => {
+        localStorage.setItem('skills', this.state.skills)
+      }
+    )
   }
   handleexpectationchange = (e) => {
-    this.setState({
-      expectation: e.target.value,
-    })
+    this.setState(
+      {
+        expectation: e.target.value,
+      },
+      () => {
+        localStorage.setItem('expectation', this.state.expectation)
+      }
+    )
   }
   handleexperiencechange = (e) => {
-    this.setState({
-      experience: e.target.value,
-    })
+    this.setState(
+      {
+        experience: e.target.value,
+      },
+      () => {
+        localStorage.setItem('experience', this.state.experience)
+      }
+    )
   }
   handleotherschange = (e) => {
-    this.setState({
-      others: e.target.value,
-    })
+    this.setState(
+      {
+        others: e.target.value,
+      },
+      () => {
+        localStorage.setItem('others', this.state.others)
+      }
+    )
   }
 
   checkagain = () => {
@@ -228,6 +289,17 @@ export default class join extends Component {
 
   render() {
     const { placeholders, issubmit } = this.state
+    const {
+      name,
+      direction,
+      number,
+      phone,
+      evaluation,
+      skills,
+      expectation,
+      experience,
+      others,
+    } = this.state
     return (
       <div
         className={`join ${IsPC() ? '' : 'isphone'}`}
@@ -255,7 +327,7 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={evaluation} alt="" />
+                <img class="col-img" src={evaluationpng} alt="" />
                 <h1 class="col-title">个人信息</h1>
               </Row>
               <Row>
@@ -275,7 +347,7 @@ export default class join extends Component {
                   <Row>
                     <img
                       class="col-img"
-                      src={name}
+                      src={namepng}
                       alt=""
                       style={{ 'margin-left': 0 }}
                     />
@@ -285,6 +357,7 @@ export default class join extends Component {
                     placeholder="请输入正确的姓名"
                     size="large"
                     onChange={this.handlenamechange}
+                    value={name}
                   />
                 </Col>
                 <Col
@@ -298,7 +371,7 @@ export default class join extends Component {
                   <Row>
                     <img
                       class="col-img"
-                      src={direction}
+                      src={directionpng}
                       alt=""
                       style={{ 'margin-left': 0 }}
                     />
@@ -307,6 +380,7 @@ export default class join extends Component {
                   <Input
                     placeholder="可先不填"
                     size="large"
+                    value={direction}
                     onChange={this.handledirectionchange}
                   />
                 </Col>
@@ -321,7 +395,7 @@ export default class join extends Component {
                   <Row>
                     <img
                       class="col-img"
-                      src={number}
+                      src={numberpng}
                       alt=""
                       style={{ 'margin-left': 0 }}
                     />
@@ -330,6 +404,7 @@ export default class join extends Component {
                   <Input
                     placeholder="请输入正确的12位学号"
                     size="large"
+                    value={number}
                     onChange={this.handlenumberchange}
                   />
                 </Col>
@@ -344,7 +419,7 @@ export default class join extends Component {
                   <Row>
                     <img
                       class="col-img"
-                      src={phone}
+                      src={phonepng}
                       alt=""
                       style={{ 'margin-left': 0 }}
                     />
@@ -353,6 +428,7 @@ export default class join extends Component {
                   <Input
                     placeholder="请输入正确的11位手机号码"
                     size="large"
+                    value={phone}
                     onChange={this.handlephonechange}
                   />
                 </Col>
@@ -367,7 +443,7 @@ export default class join extends Component {
                   <Row>
                     <img
                       class="col-img"
-                      src={class1}
+                      src={class1png}
                       alt=""
                       style={{ 'margin-left': 0 }}
                     />
@@ -376,6 +452,7 @@ export default class join extends Component {
                   <Input
                     placeholder="如电气1202"
                     size="large"
+                    value={this.state.class}
                     onChange={this.handleclasschange}
                   />
                 </Col>
@@ -386,7 +463,7 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={evaluation1} alt="" />
+                <img class="col-img" src={evaluation1png} alt="" />
                 <h1 class="col-title">自我评价</h1>
               </Row>
               <Row>
@@ -398,6 +475,7 @@ export default class join extends Component {
                 id="myinput"
                 placeholder="简单介绍一下自己，性格、兴趣爱好等等。你觉得你最大的优点是什么？"
                 onChange={this.handleevaluationchange}
+                value={evaluation}
               />
             </Col>
           </Row>
@@ -405,7 +483,7 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={skill} alt="" />
+                <img class="col-img" src={skillpng} alt="" />
                 <h1 class="col-title">技能水平</h1>
               </Row>
               <Row>
@@ -416,6 +494,7 @@ export default class join extends Component {
               <Input.TextArea
                 placeholder={placeholders.skill}
                 onChange={this.handleskillschange}
+                value={skills}
               />
             </Col>
           </Row>
@@ -423,7 +502,7 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={expectation} alt="" />
+                <img class="col-img" src={expectationpng} alt="" />
                 <h1 class="col-title">期望</h1>
               </Row>
               <Row>
@@ -434,6 +513,7 @@ export default class join extends Component {
               <Input.TextArea
                 placeholder="为什么想加入我们团队？ 你期望以后在团队里做怎么样的一个角色？以后想从事什么职业？简单说一说，你来到团队后的学习安排？"
                 onChange={this.handleexpectationchange}
+                value={expectation}
               />
             </Col>
           </Row>
@@ -441,7 +521,7 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={other} alt="" />
+                <img class="col-img" src={otherpng} alt="" />
                 <h1 class="col-title">项目经验</h1>
               </Row>
               <Row>
@@ -452,6 +532,7 @@ export default class join extends Component {
               <Input.TextArea
                 placeholder={placeholders.experience}
                 onChange={this.handleexperiencechange}
+                value={experience}
               />
             </Col>
           </Row>
@@ -459,7 +540,7 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={other} alt="" />
+                <img class="col-img" src={otherpng} alt="" />
                 <h1 class="col-title">其它</h1>
               </Row>
               <Row>
@@ -470,6 +551,7 @@ export default class join extends Component {
               <Input.TextArea
                 placeholder="你还参加了哪些学生组织或社团面试？实验室有严格的管理条例，你觉得自己能适应吗？"
                 onChange={this.handleotherschange}
+                value={others}
               />
             </Col>
           </Row>
