@@ -245,9 +245,13 @@ export default class join extends Component {
       others,
       issubmit,
     } = this.state
+    const tailurl =
+      this.state.placeholders.buttonname === '切换创新组'
+        ? 'postEntrepreneurshipResume'
+        : 'postResume'
     axios({
       method: 'post',
-      url: `http://150.158.171.105:8080/guest/resume/postEntrepreneurshipResume`,
+      url: `http://150.158.171.105:8080/guest/resume/${tailurl}`,
       params: {
         resumeName: name,
         resumeStudentId: number,
