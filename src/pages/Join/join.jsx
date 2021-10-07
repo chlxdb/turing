@@ -50,7 +50,6 @@ export default class join extends Component {
     const expectation = localStorage.getItem('expectation')
     const experience = localStorage.getItem('experience')
     const others = localStorage.getItem('others')
-    console.log(JSON.parse(localStorage.getItem('placeholders')))
     const storageplaceholders = JSON.parse(localStorage.getItem('placeholders'))
     const defaultplaceholders = {
       title: '图灵智能创新团队创新组招新简历',
