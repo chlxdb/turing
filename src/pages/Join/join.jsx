@@ -50,13 +50,19 @@ export default class join extends Component {
     const expectation = localStorage.getItem('expectation')
     const experience = localStorage.getItem('experience')
     const others = localStorage.getItem('others')
+    console.log(JSON.parse(localStorage.getItem('placeholders')))
+    const storageplaceholders = JSON.parse(localStorage.getItem('placeholders'))
+    const defaultplaceholders = {
+      title: '图灵智能创新团队创新组招新简历',
+      buttonname: '切换创业组',
+      skill: '高中是否有编程语言基础？或者在其它领域是否有较突出的技能？',
+      experience: '是否有项目经验，若无请填暂无',
+    }
+    const placeholders = storageplaceholders
+      ? storageplaceholders
+      : defaultplaceholders
     this.state = {
-      placeholders: {
-        title: '图灵智能创新团队创新组招新简历',
-        buttonname: '切换创业组',
-        skill: '高中是否有编程语言基础？或者在其它领域是否有较突出的技能？',
-        experience: '是否有项目经验，若无请填暂无',
-      },
+      placeholders,
       downloadurls: {},
       name,
       direction,
@@ -220,7 +226,9 @@ export default class join extends Component {
         skill: `以前是否在产品设计、PPT制作、策划书编写上这方面有一定基础？例如：之前是否有文档撰写和需求分析等经验，之前是否有演讲、商业策划、ppt制作、运营的经历，或者在其它领域是否有较突出的技能、证书？`,
         experience: '是否有一些社会实践或是参与过其他创业项目？',
       }
-      this.setState({ placeholders })
+      this.setState({ placeholders }, () => {
+        localStorage.setItem('placeholders', JSON.stringify(placeholders))
+      })
     } else {
       const placeholders = {
         title: '图灵智能创新团队创新组招新简历',
@@ -228,7 +236,9 @@ export default class join extends Component {
         skill: '高中是否有编程语言基础？或者在其它领域是否有较突出的技能？',
         experience: '是否有项目经验，若无请填暂无',
       }
-      this.setState({ placeholders })
+      this.setState({ placeholders }, () => {
+        localStorage.setItem('placeholders', JSON.stringify(placeholders))
+      })
     }
   }
 
