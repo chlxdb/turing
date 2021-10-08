@@ -1,2 +1,2 @@
 (this.webpackJsonpreactdemo=this.webpackJsonpreactdemo||[]).push([[8],{601:function(t,e,n){"use strict";n.r(e),n.d(e,"default",(function(){return i}));var r=n(75),a=n(76),c=n(78),o=n(77),s=n(0),u=n(6),i=function(t){Object(c.a)(n,t);var e=Object(o.a)(n);function n(t){var a;return Object(r.a)(this,n),(a=e.call(this,t)).goRouter=function(t){return function(){a.props.history.push({pathname:t,state:null})}},a.state={leaders:{}},a}return Object(a.a)(n,[{key:"render",value:function(){var t=this.state.leaders;return console.log(t),Object(u.jsx)("h1",{children:"\u7ef4\u62a4\u4e2d..."})}}]),n}(s.Component)}}]);
-//# sourceMappingURL=8.50a41d1c.chunk.js.map
+//# sourceMappingURL=8.37cb8bfc.chunk.js.map

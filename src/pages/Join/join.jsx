@@ -6,16 +6,16 @@ import 'element-theme-default'
 import axios from 'axios'
 import ReactToPrint from 'react-to-print'
 
-import evaluation from './img/evaluation.png'
-import class1 from './img/class1.png'
-import direction from './img/direction.png'
-import evaluation1 from './img/evaluation1.png'
-import expectation from './img/expectation.png'
-import name from './img/name.png'
-import number from './img/number.png'
-import other from './img/other.png'
-import phone from './img/phone.png'
-import skill from './img/skill.png'
+import evaluationpng from './img/evaluation.png'
+import class1png from './img/class1.png'
+import directionpng from './img/direction.png'
+import evaluation1png from './img/evaluation1.png'
+import expectationpng from './img/expectation.png'
+import namepng from './img/name.png'
+import numberpng from './img/number.png'
+import otherpng from './img/other.png'
+import phonepng from './img/phone.png'
+import skillpng from './img/skill.png'
 import './join.css'
 
 const IsPC = () => {
@@ -40,28 +40,43 @@ const IsPC = () => {
 export default class join extends Component {
   constructor(props) {
     super(props)
-
+    const name = localStorage.getItem('name')
+    const direction = localStorage.getItem('direction')
+    const number = localStorage.getItem('number')
+    const phone = localStorage.getItem('phone')
+    const class1 = localStorage.getItem('class')
+    const evaluation = localStorage.getItem('evaluation')
+    const skills = localStorage.getItem('skills')
+    const expectation = localStorage.getItem('expectation')
+    const experience = localStorage.getItem('experience')
+    const others = localStorage.getItem('others')
+    const storageplaceholders = JSON.parse(localStorage.getItem('placeholders'))
+    const defaultplaceholders = {
+      title: '图灵智能创新团队创新组招新简历',
+      buttonname: '切换创业组',
+      skill: '高中是否有编程语言基础？或者在其它领域是否有较突出的技能？',
+      experience: '是否有项目经验，若无请填暂无',
+    }
+    const placeholders = storageplaceholders
+      ? storageplaceholders
+      : defaultplaceholders
     this.state = {
-      placeholders: {
-        title: '图灵智能创新团队创新组招新简历',
-        buttonname: '切换创业组',
-        skill: '高中是否有编程语言基础？或者在其它领域是否有较突出的技能？',
-        experience: '是否有项目经验，若无请填暂无',
-      },
+      placeholders,
       downloadurls: {},
-      name: '',
-      direction: '',
-      number: '',
-      phone: '',
-      class: '',
-      evaluation: '',
-      skills: '',
-      expectation: '',
-      experience: '',
-      others: '',
+      name,
+      direction,
+      number,
+      phone,
+      class: class1,
+      evaluation,
+      skills,
+      expectation,
+      experience,
+      others,
       visible: true,
       issubmit: false,
     }
+
     // 获取模板下载链接
     axios
       .get(`http://150.158.171.105:8080/guest/resume/getMobanUrl`)
@@ -70,80 +85,130 @@ export default class join extends Component {
         this.setState({ downloadurls })
       })
 
-    let secondsToGo = 5
-    const modal = Modal.info({
+    Modal.info({
       title: '小提示',
-      content:
-        `点击标题下面的按钮可以在创新组和创业组之间切换简历哦(${secondsToGo} 秒后自动关闭)` +
-        (IsPC()
-          ? ''
-          : '\n请在电脑端打印哦!!!\n请在电脑端打印哦!!!\n请在电脑端打印哦!!!'),
+      content: (
+        <div>
+          <span>点击标题下面的按钮可以在创新组和创业组之间切换简历哦</span>
+          {IsPC() ? (
+            ''
+          ) : (
+            <>
+              <br />
+              <br />
+              <span>请在电脑端打印哦!!!</span>
+              <br />
+              <span>请在电脑端打印哦!!!</span>
+              <br />
+              <span>请在电脑端打印哦!!!</span>
+              <br />
+            </>
+          )}
+        </div>
+      ),
       centered: IsPC() ? false : true,
     })
-    const timer = setInterval(() => {
-      secondsToGo -= 1
-      if (secondsToGo)
-        modal.update({
-          content:
-            `点击标题下面的按钮可以在创新组和创业组之间切换简历哦(${secondsToGo} 秒后自动关闭)` +
-            (IsPC() ? '' : '请在电脑端打印哦'),
-        })
-    }, 1000)
-    setTimeout(() => {
-      clearInterval(timer)
-      modal.destroy()
-    }, secondsToGo * 1000)
   }
 
   handlenamechange = (e) => {
-    this.setState({
-      name: e.target.value,
-    })
+    this.setState(
+      {
+        name: e.target.value,
+      },
+      () => {
+        localStorage.setItem('name', this.state.name)
+      }
+    )
   }
   handledirectionchange = (e) => {
-    this.setState({
-      direction: e.target.value,
-    })
+    this.setState(
+      {
+        direction: e.target.value,
+      },
+      () => {
+        localStorage.setItem('direction', this.state.direction)
+      }
+    )
   }
   handlenumberchange = (e) => {
-    this.setState({
-      number: e.target.value,
-    })
+    this.setState(
+      {
+        number: e.target.value,
+      },
+      () => {
+        localStorage.setItem('number', this.state.number)
+      }
+    )
   }
   handlephonechange = (e) => {
-    this.setState({
-      phone: e.target.value,
-    })
+    this.setState(
+      {
+        phone: e.target.value,
+      },
+      () => {
+        localStorage.setItem('phone', this.state.phone)
+      }
+    )
   }
   handleclasschange = (e) => {
-    this.setState({
-      class: e.target.value,
-    })
+    this.setState(
+      {
+        class: e.target.value,
+      },
+      () => {
+        localStorage.setItem('class', this.state.class)
+      }
+    )
   }
   handleevaluationchange = (e) => {
-    this.setState({
-      evaluation: e.target.value,
-    })
+    this.setState(
+      {
+        evaluation: e.target.value,
+      },
+      () => {
+        localStorage.setItem('evaluation', this.state.evaluation)
+      }
+    )
   }
   handleskillschange = (e) => {
-    this.setState({
-      skills: e.target.value,
-    })
+    this.setState(
+      {
+        skills: e.target.value,
+      },
+      () => {
+        localStorage.setItem('skills', this.state.skills)
+      }
+    )
   }
   handleexpectationchange = (e) => {
-    this.setState({
-      expectation: e.target.value,
-    })
+    this.setState(
+      {
+        expectation: e.target.value,
+      },
+      () => {
+        localStorage.setItem('expectation', this.state.expectation)
+      }
+    )
   }
   handleexperiencechange = (e) => {
-    this.setState({
-      experience: e.target.value,
-    })
+    this.setState(
+      {
+        experience: e.target.value,
+      },
+      () => {
+        localStorage.setItem('experience', this.state.experience)
+      }
+    )
   }
   handleotherschange = (e) => {
-    this.setState({
-      others: e.target.value,
-    })
+    this.setState(
+      {
+        others: e.target.value,
+      },
+      () => {
+        localStorage.setItem('others', this.state.others)
+      }
+    )
   }
 
   checkagain = () => {
@@ -160,7 +225,9 @@ export default class join extends Component {
         skill: `以前是否在产品设计、PPT制作、策划书编写上这方面有一定基础？例如：之前是否有文档撰写和需求分析等经验，之前是否有演讲、商业策划、ppt制作、运营的经历，或者在其它领域是否有较突出的技能、证书？`,
         experience: '是否有一些社会实践或是参与过其他创业项目？',
       }
-      this.setState({ placeholders })
+      this.setState({ placeholders }, () => {
+        localStorage.setItem('placeholders', JSON.stringify(placeholders))
+      })
     } else {
       const placeholders = {
         title: '图灵智能创新团队创新组招新简历',
@@ -168,7 +235,9 @@ export default class join extends Component {
         skill: '高中是否有编程语言基础？或者在其它领域是否有较突出的技能？',
         experience: '是否有项目经验，若无请填暂无',
       }
-      this.setState({ placeholders })
+      this.setState({ placeholders }, () => {
+        localStorage.setItem('placeholders', JSON.stringify(placeholders))
+      })
     }
   }
 
@@ -185,9 +254,13 @@ export default class join extends Component {
       others,
       issubmit,
     } = this.state
+    const tailurl =
+      this.state.placeholders.buttonname === '切换创新组'
+        ? 'postEntrepreneurshipResume'
+        : 'postResume'
     axios({
       method: 'post',
-      url: `http://150.158.171.105:8080/guest/resume/postEntrepreneurshipResume`,
+      url: `http://150.158.171.105:8080/guest/resume/${tailurl}`,
       params: {
         resumeName: name,
         resumeStudentId: number,
@@ -229,14 +302,24 @@ export default class join extends Component {
 
   render() {
     const { placeholders, issubmit } = this.state
+    const {
+      name,
+      direction,
+      number,
+      phone,
+      evaluation,
+      skills,
+      expectation,
+      experience,
+      others,
+    } = this.state
     return (
-      <div class="join" ref={(el) => (this.componentRef = el)}>
-        <Card>
+      <div
+        className={`join ${IsPC() ? '' : 'isphone'}`}
+        ref={(el) => (this.componentRef = el)}
+      >
+        <Card className={` ${IsPC() ? '' : 'isphone-card'}`}>
           <Row>
-            {/* <Col span="6" className="mobile-nodisplay" />
-            <Col span="12" xs={22} sm={18} md={12} lg={12}>
-              <h5>{placeholders.title}</h5>
-            </Col> */}
             <Col span="24">
               <h5>{placeholders.title}</h5>
             </Col>
@@ -257,27 +340,27 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={evaluation} alt="" />
+                <img class="col-img" src={evaluationpng} alt="" />
                 <h1 class="col-title">个人信息</h1>
               </Row>
               <Row>
                 <p class="col-english">Individual</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Row>
                 <Col
                   span="8"
                   xs={24}
-                  sm={12}
-                  md={8}
+                  sm={24}
+                  md={10}
                   lg={6}
                   style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
                   <Row>
                     <img
                       class="col-img"
-                      src={name}
+                      src={namepng}
                       alt=""
                       style={{ 'margin-left': 0 }}
                     />
@@ -287,20 +370,21 @@ export default class join extends Component {
                     placeholder="请输入正确的姓名"
                     size="large"
                     onChange={this.handlenamechange}
+                    value={name}
                   />
                 </Col>
                 <Col
                   span="8"
                   xs={24}
-                  sm={12}
-                  md={8}
+                  sm={24}
+                  md={10}
                   lg={6}
                   style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
                   <Row>
                     <img
                       class="col-img"
-                      src={direction}
+                      src={directionpng}
                       alt=""
                       style={{ 'margin-left': 0 }}
                     />
@@ -309,21 +393,22 @@ export default class join extends Component {
                   <Input
                     placeholder="可先不填"
                     size="large"
+                    value={direction}
                     onChange={this.handledirectionchange}
                   />
                 </Col>
                 <Col
                   span="8"
                   xs={24}
-                  sm={12}
-                  md={8}
+                  sm={24}
+                  md={10}
                   lg={6}
                   style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
                   <Row>
                     <img
                       class="col-img"
-                      src={number}
+                      src={numberpng}
                       alt=""
                       style={{ 'margin-left': 0 }}
                     />
@@ -332,21 +417,22 @@ export default class join extends Component {
                   <Input
                     placeholder="请输入正确的12位学号"
                     size="large"
+                    value={number}
                     onChange={this.handlenumberchange}
                   />
                 </Col>
                 <Col
                   span="8"
                   xs={24}
-                  sm={12}
-                  md={8}
+                  sm={24}
+                  md={10}
                   lg={6}
                   style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
                   <Row>
                     <img
                       class="col-img"
-                      src={phone}
+                      src={phonepng}
                       alt=""
                       style={{ 'margin-left': 0 }}
                     />
@@ -355,21 +441,22 @@ export default class join extends Component {
                   <Input
                     placeholder="请输入正确的11位手机号码"
                     size="large"
+                    value={phone}
                     onChange={this.handlephonechange}
                   />
                 </Col>
                 <Col
                   span="8"
                   xs={24}
-                  sm={12}
-                  md={8}
+                  sm={24}
+                  md={10}
                   lg={6}
                   style={{ 'margin-right': '1vw', marginTop: '5px' }}
                 >
                   <Row>
                     <img
                       class="col-img"
-                      src={class1}
+                      src={class1png}
                       alt=""
                       style={{ 'margin-left': 0 }}
                     />
@@ -378,6 +465,7 @@ export default class join extends Component {
                   <Input
                     placeholder="如电气1202"
                     size="large"
+                    value={this.state.class}
                     onChange={this.handleclasschange}
                   />
                 </Col>
@@ -388,18 +476,19 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={evaluation1} alt="" />
+                <img class="col-img" src={evaluation1png} alt="" />
                 <h1 class="col-title">自我评价</h1>
               </Row>
               <Row>
                 <p class="col-english">Evaluation</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Input.TextArea
                 id="myinput"
                 placeholder="简单介绍一下自己，性格、兴趣爱好等等。你觉得你最大的优点是什么？"
                 onChange={this.handleevaluationchange}
+                value={evaluation}
               />
             </Col>
           </Row>
@@ -407,17 +496,18 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={skill} alt="" />
+                <img class="col-img" src={skillpng} alt="" />
                 <h1 class="col-title">技能水平</h1>
               </Row>
               <Row>
                 <p class="col-english">Skills</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Input.TextArea
                 placeholder={placeholders.skill}
                 onChange={this.handleskillschange}
+                value={skills}
               />
             </Col>
           </Row>
@@ -425,17 +515,18 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={expectation} alt="" />
+                <img class="col-img" src={expectationpng} alt="" />
                 <h1 class="col-title">期望</h1>
               </Row>
               <Row>
                 <p class="col-english">Expectation</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Input.TextArea
                 placeholder="为什么想加入我们团队？ 你期望以后在团队里做怎么样的一个角色？以后想从事什么职业？简单说一说，你来到团队后的学习安排？"
                 onChange={this.handleexpectationchange}
+                value={expectation}
               />
             </Col>
           </Row>
@@ -443,17 +534,18 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={other} alt="" />
+                <img class="col-img" src={otherpng} alt="" />
                 <h1 class="col-title">项目经验</h1>
               </Row>
               <Row>
                 <p class="col-english">Experience</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Input.TextArea
                 placeholder={placeholders.experience}
                 onChange={this.handleexperiencechange}
+                value={experience}
               />
             </Col>
           </Row>
@@ -461,17 +553,18 @@ export default class join extends Component {
           <Row>
             <Col span="4" xs={10} sm={4} md={4} lg={4}>
               <Row>
-                <img class="col-img" src={other} alt="" />
+                <img class="col-img" src={otherpng} alt="" />
                 <h1 class="col-title">其它</h1>
               </Row>
               <Row>
                 <p class="col-english">Others</p>
               </Row>
             </Col>
-            <Col span="20">
+            <Col span="20" xs={24} sm={20} md={20} lg={20}>
               <Input.TextArea
                 placeholder="你还参加了哪些学生组织或社团面试？实验室有严格的管理条例，你觉得自己能适应吗？"
                 onChange={this.handleotherschange}
+                value={others}
               />
             </Col>
           </Row>
