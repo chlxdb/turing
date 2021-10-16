@@ -20,13 +20,6 @@ const routes = [
   //   ],
   // },
 
-  // {
-  //   path: '/login',
-  //   component: lazy(() => import('../pages/Login')),
-  //   meta: {
-  //     title: '登录页面',
-  //   },
-  // },
   {
     path: '/index',
     component: lazy(() => import('../pages/Index')),
@@ -35,6 +28,14 @@ const routes = [
     meta: {
       title: '首页',
     },
+
+    // routes: [
+    //   {
+    //     path: '/Index/projectdetil/:id',
+    //     component: lazy(() => import('../pages/Index/Prodetail/prodetail')),
+    //   },
+
+    //      ],
   },
   {
     path: '/leader',
@@ -91,6 +92,14 @@ const routes = [
     meta: {
       title: '加入我们',
     },
+  },
+  {
+    path: '/projectdetail/:id',
+    component: lazy(() => import('../pages/Prodetail/prodetail')),
+  },
+  {
+    path: '/leaderdetail/:id',
+    component: lazy(() => import('../pages/Leaderdetail/leaderdetail')),
   },
 ]
 

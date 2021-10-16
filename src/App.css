@@ -11,7 +11,10 @@
 }
 .menus {
   margin-left: auto;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bolder;
 }
+
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover::after,
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover::after,
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active::after,

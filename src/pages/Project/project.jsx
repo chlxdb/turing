@@ -1,57 +1,67 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'antd'
+import { Row, Col, Badge } from 'antd'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import './project.css'
 
 export default class project extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      projects: {},
+      projects: [],
     }
   }
+
+  componentDidMount() {
+    this.get()
+  }
+  get = () => {
+    axios.get(`http://150.158.171.105:7777/guest/project`).then((e) => {
+      const projects = e.data.data
+      this.setState({ projects })
+      console.log(projects)
+    })
+  }
+
   render() {
     const { projects } = this.state
-    // 团队项目们 （接口未开放）
-    console.log(projects)
-    return false ? (
+    return (
       <div>
-        <h3>project页面</h3>
-        <div style={{ margin: '150px' }}>
-          <h>团队项目</h>
-          <Row
-            style={{
-              marginBottom: '80px',
-              width: '100%',
-              height: '220px',
-              backgroundColor: 'grey',
-            }}
-          >
-            <Col flex={4}>
-              <p>图</p>
-            </Col>
-            <Col flex={5}>
-              <p>介绍</p>
-            </Col>
-          </Row>
-
-          <Row
-            style={{
-              marginBottom: '80px',
-              width: '100%',
-              height: '220px',
-              backgroundColor: 'grey',
-            }}
-          >
-            <Col flex={4}>
-              <p>图</p>
-            </Col>
-            <Col flex={5}>
-              <p>介绍</p>
-            </Col>
-          </Row>
-        </div>
+        {projects.map((element, id) => {
+          return (
+            <div className="paper" key={id}>
+              <Link to={`/projectdetail/${element.projectId}`}>
+                <Badge.Ribbon text="更多详情>>>" color="red"></Badge.Ribbon>
+              </Link>
+              <Row style={{ margin: '0 15%' }}>
+                <Col span={24} style={{}}>
+                  <h1
+                    style={{
+                      fontSize: '200%',
+                      textAlign: 'center',
+                      color: '#515a6e',
+                    }}
+                  >
+                    {element.projectName}
+                  </h1>
+                  <p style={{ color: '', fontSize: '150%' }}>
+                    {element.projectContent}
+                  </p>
+                </Col>
+              </Row>
+              <Row style={{ margin: '0 15%' }}>
+                <Col span={24}>
+                  <img
+                    style={{ width: '100%', height: '60%' }}
+                    src={'http://150.158.171.105:7777/' + element.projectGif}
+                    alt="none"
+                  />
+                </Col>
+              </Row>
+            </div>
+          )
+        })}
       </div>
-    ) : (
-      <h1>维护中...</h1>
     )
   }
 }

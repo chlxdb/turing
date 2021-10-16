@@ -1,0 +1,11 @@
+.paper {
+  width: 80%;
+  height: auto;
+  margin: 15px auto;
+  padding: 30px 0;
+  border: 1px solid #efefef;
+  background-color: #fffffd;
+  /* background-image: url(paper.png); */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.27),
+    0 0 40px rgba(0, 0, 0, 0.06) inset;
+}
