@@ -99,8 +99,8 @@ export default class App extends Component {
               </p>
               <p style={{ fontSize: '12px' }}>
                 TURING©广东海洋大学第一个人工智能团队
+                {/* <img style={{ width: '100%' }} src={gif}></img> */}
               </p>
-              <img src={gif}></img>
             </div>
           </Footer>
         </Layout>

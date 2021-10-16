@@ -128,7 +128,7 @@ export default class index extends Component {
           >
             指导老师
           </h>
-          <Link to="/scaleteacher"> 查看全部教师{'>>>'}</Link>
+
           <Row>
             <Col span={3} style={{ margin: '15px' }}>
               <br />
@@ -162,6 +162,7 @@ export default class index extends Component {
               </p>
             </Col>
           </Row>
+          <Link to="/scaleteacher"> 查看全部教师{'>>>'}</Link>
         </div>
 
         <div style={{ boxShadow: '0px 6px 12px -4px #888888', margin: '15px' }}>
@@ -174,7 +175,6 @@ export default class index extends Component {
             团队荣誉
           </h>
 
-          <Link to="/honor"> 查看全部荣誉{'>>>'}</Link>
           <Row style={{ height: '300px', textAlign: 'center' }}>
             {this.state.preFourAwards.map((element, id) => {
               return (
@@ -188,6 +188,7 @@ export default class index extends Component {
               )
             })}
           </Row>
+          <Link to="/honor"> 查看全部荣誉{'>>>'}</Link>
         </div>
 
         <div style={{ boxShadow: '0px 6px 12px -4px #888888', margin: '15px' }}>
@@ -199,7 +200,7 @@ export default class index extends Component {
           >
             团队项目
           </h>
-          <Link to="/project">查看全部项目{'>>>'}</Link>
+
           <Row style={{ height: '250px' }}>
             {this.state.project.map((element, id) => {
               return (
@@ -237,6 +238,7 @@ export default class index extends Component {
               )
             })}
           </Row>
+          <Link to="/project">查看全部项目{'>>>'}</Link>
         </div>
         <div style={{ boxShadow: '0px 6px 12px -4px #888888', margin: '15px' }}>
           <a
@@ -247,7 +249,7 @@ export default class index extends Component {
           >
             团队活动
           </a>
-          <Link to="/active">查看全部活动{'>>>'}</Link>
+
           <Row style={{ height: '250px' }}>
             {this.state.teamactive.map((element, id) => {
               return (
@@ -283,6 +285,7 @@ export default class index extends Component {
               )
             })}
           </Row>
+          <Link to="/active">查看全部活动{'>>>'}</Link>
         </div>
       </div>
     )
