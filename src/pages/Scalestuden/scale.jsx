@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './scale.css'
-import '../Leaderdetail/leaderdetail.css'
-import { BackTop, Tabs } from 'antd'
+import { Tabs } from 'antd'
 import All from './all'
 import Cv from './cv'
 import Nlp from './nlp'
@@ -38,7 +37,7 @@ export default class scalestu extends Component {
     console.log(this.state.teachers)
     return (
       <div>
-        <div className="paper">
+        <div className="box_div">
           <Tabs
             style={{ margin: '0 50px' }}
             defaultActiveKey="1"

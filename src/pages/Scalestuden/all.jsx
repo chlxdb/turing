@@ -25,27 +25,29 @@ export default class All extends Component {
   getall = () => {
     axios
       .get(
-        'http://150.158.171.105:7777/guest/member/findAllMembersByPage?page=1&size=3',
-        {}
+        'http://150.158.171.105:7777/guest/member/findAllMembersByPage?page=1&size=3'
       )
       .then((response) => {
-        // this.setState({ all: response.data })
-        console.log(response.data.records)
+        this.setState({ all: response.data.data.records })
+
+        // console.log(response)
+        // console.log(response.data.data.records)
       })
   }
-  // onChange = (page, pageSize) => {
-  //   console.log(page, pageSize)
-  //   axios
-  //     .get('http://150.158.171.105:7777/guest/member/findAllMembersByPage', {
-  //       params: {
-  //         pageNo: page,
-  //         pageSize: pageSize,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       console.log(response.data)
-  //     })
-  // }
+  onChange = (page, pageSize) => {
+    console.log(page, pageSize)
+    axios
+      .get('http://150.158.171.105:7777/guest/member/findAllMembersByPage', {
+        params: {
+          pageNo: page,
+          pageSize: pageSize,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.data.records)
+        this.setState({ all: response.data.data.records })
+      })
+  }
 
   render() {
     return (

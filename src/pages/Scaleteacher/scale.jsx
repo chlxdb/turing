@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import './scale.css'
 import { List, Card, Row, Col } from 'antd'
-import '../Leaderdetail/leaderdetail.css'
 
 export default class scaletea extends Component {
   constructor(props) {
@@ -25,7 +24,7 @@ export default class scaletea extends Component {
     console.log(this.state.teachers)
     return (
       <div>
-        <div className="paper">
+        <div className="box_div">
           <List
             grid={{
               gutter: 16,

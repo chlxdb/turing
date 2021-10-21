@@ -1,18 +1,35 @@
 @import '~antd/dist/antd.css';
+
+.nar {
+  /* margin-top: 30px; */
+  background-color: white;
+}
+/* .ant-layout-header {
+  position: fixed;
+  z-index: 5;
+} */
+
 .content {
-  background-color: aquamarine;
-  height: 800px;
-  width: 200px;
+  background-color: white;
 }
 .ant-layout-header {
-  color: white;
+  color: rgba(0, 0, 0, 0.5);
   background-color: white;
-  height: 120px;
 }
+
+.ant-menu-title-content {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.ant-menu-title-content:hover {
+  color: black;
+}
+
 .menus {
-  margin-left: auto;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-weight: bolder;
+  /* margin-left: auto; */
+  font-size: 1rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover::after,
@@ -25,7 +42,22 @@
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected::after {
   border-bottom: solid white;
 }
-
+.ant-menu-item-selected {
+  color: rgba(0, 0, 0, 0.5);
+}
+.ant-menu-overflow-item
+  ant-menu-item
+  ant-menu-item-active
+  ant-menu-item-only-child {
+  color: rgba(0, 0, 0, 0.5);
+}
+.ant-menu-light .ant-menu-item:hover,
+.ant-menu-light .ant-menu-item-active,
+.ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-light .ant-menu-submenu-active,
+.ant-menu-light .ant-menu-submenu-title:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
 @media screen and (max-width: 768px) {
   .nar {
     font-size: 16px;

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import ViewRouter from './router/index'
 // 封装好的路由
 
-import gif from './logo1.gif'
+import jpg from './logo.jpg'
 import './App.css'
 
 import { Layout, Menu } from 'antd'
@@ -17,58 +17,54 @@ export default class App extends Component {
       <div className="App">
         <Layout>
           <Header>
-            <Menu
-              style={{ marginTop: '30px' }}
-              className="nar"
-              mode="horizontal"
-              defaultSelectedKeys={['1']}
-            >
+            <Menu className="nar" mode="horizontal" defaultSelectedKeys={['1']}>
               <Menu.Item
                 key={8}
                 style={{
                   marginLeft: 'auto',
-                  fontSize: '42px',
-                  fontFamily: 'cursive',
+                  marginRight: '30px',
+                  fontSize: '20px',
                 }}
                 className="turing-title"
               >
+                <img
+                  style={{ width: '50px', height: '50px' }}
+                  src={jpg}
+                  alt="none"
+                ></img>{' '}
                 图灵智能创新团队
               </Menu.Item>
               <Link to="/index" className="menus">
-                <Menu.Item style={{ fontSize: '22px' }} key={1}>
+                <Menu.Item style={{}} key={1}>
                   首页
                 </Menu.Item>
               </Link>
               <Link to="/leader" className="menus">
-                <Menu.Item style={{ fontSize: '22px' }} key={3}>
+                <Menu.Item style={{}} key={3}>
                   领导视察
                 </Menu.Item>
               </Link>
               <Link to="/project" className="menus">
-                <Menu.Item style={{ fontSize: '22px' }} key={5}>
+                <Menu.Item style={{}} key={5}>
                   团队项目
                 </Menu.Item>
               </Link>
               <Link to="/honor" className="menus">
-                <Menu.Item style={{ fontSize: '22px' }} key={6}>
+                <Menu.Item style={{}} key={6}>
                   团队荣誉
                 </Menu.Item>
               </Link>
               <Link to="/active" className="menus">
-                <Menu.Item style={{ fontSize: '22px' }} key={6}>
+                <Menu.Item style={{}} key={6}>
                   团队活动
                 </Menu.Item>
               </Link>
               <Link to="/join" className="menus">
-                <Menu.Item style={{ fontSize: '22px' }} key={7}>
+                <Menu.Item style={{}} key={7}>
                   加入我们
                 </Menu.Item>
               </Link>
-              <SubMenu
-                style={{ fontSize: '22px' }}
-                title="团队规模"
-                className="menus"
-              >
+              <SubMenu style={{}} title="团队规模" className="menus">
                 <Link to="/scaleteacher">
                   <Menu.Item key="1">指导老师</Menu.Item>
                 </Link>
@@ -78,7 +74,7 @@ export default class App extends Component {
               </SubMenu>
             </Menu>
           </Header>
-          <Content style={{ backgroundColor: '' }}>
+          <Content className="content">
             <ViewRouter></ViewRouter>
           </Content>
           <Footer

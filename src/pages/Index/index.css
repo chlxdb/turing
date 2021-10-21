@@ -1,112 +1,60 @@
-.flash-container {
-  width: 300px;
-  height: 500px;
-  background: #333333;
-  margin: 0 auto;
-  position: relative;
+.video {
+  margin: 10% 0px 0px 0px;
+  width: 100%;
+}
+.projectcard {
+  background-color: #007bff;
+}
+.ant-card-head {
+  background-color: #6610f2;
+  color: #fff;
+}
+.ant-card-body {
+  background-color: #228bfc;
+  color: #fff;
+}
+.notice-noout {
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-
-.flash-container::after {
-  content: '';
-  height: 120%;
-  width: 25px;
-  background: #fff;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  opacity: 0.6;
-  filter: blur(8px);
-  animation: move 2s infinite ease-out;
+.right-text-head {
+  font-size: 1.3rem;
 }
-
-@keyframes move {
-  0% {
-    transform: translate(-600px, -600px) rotate(45deg);
-  }
-  100% {
-    transform: translate(200px, 200px) rotate(45deg);
-  }
+.ant-col
+  ant-col-xs-10
+  ant-col-xs-offset-3
+  ant-col-sm-10
+  ant-col-sm-offset-3
+  ant-col-md-10
+  ant-col-md-offset-3
+  ant-col-lg-10
+  ant-col-lg-offset-3
+  ant-col-xl-8
+  ant-col-xl-offset-8 {
+  margin: 0px 0px 0px 0px;
 }
-
-/* .col {
-  background-color: black;
-  opacity: 0.8;
-} */
-
-/* 手风琴图片
-
-.accordion-container {
-  overflow: hidden;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.accordion-container .accordion-item {
-  list-style: none;
+.project-img {
+  width: 100%;
   height: 250px;
-  transition: width 0.5s;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-.accordion-container .accordion-item :not(:hover) {
-  width: 300px;
+.project-img:hover {
+  box-shadow: 2px 8px 4px rgba(91, 163, 245, 0.904),
+    0 0 40px rgba(0, 0, 0, 0.06) inset;
 }
-.accordion-container .accordion-item :hover {
-  width: 400px;
+.project_content {
+  font-size: 1.2rem;
+  color: #515a6e;
 }
-.accordion-container .accordion-item :hover ::after {
-  opacity: 1;
+.ant-card-head {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
-
-.accordion-container .accordion-item ::after {
-  content: '';
-  width: 200px;
-  height: 50%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.5s;
+.ant-card-body {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
-
-.accordion-container .accordion-item .accordion-title {
-  color: black;
-  font-size: 18px;
-  z-index: 2;
-} */
-
-/* <Row>
-          <Col span={24}>
-            <ul className="accordion-container">
-              {this.state.project.map((element, id) => {
-                return (
-                  <li
-                    key={id}
-                    className="accordion-item"
-                    style={{
-                      backgroundImage:
-                        'url(' +
-                        'http://150.158.171.105:7777/' +
-                        element.projectPhotos[0].projectPhotoLoc +
-                        ')',
-                    }}
-                  >
-                    <p className="accordion-title">背景1</p>
-                  </li>
-                )
-              })}
-            </ul>
-          </Col>
-        </Row>
-         */
+.link {
+  margin-left: 3%;
+  font-size: large;
+}

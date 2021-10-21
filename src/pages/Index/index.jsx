@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import './index.css'
-import { Row, Col, Badge } from 'antd'
+import { Row, Col, Card } from 'antd'
 import axios from 'axios'
 
-import jpg from './01.jpg'
 import { Link } from 'react-router-dom'
 
 export default class index extends Component {
@@ -16,9 +15,10 @@ export default class index extends Component {
       project: [],
       preFourTeamActivity: {},
       teamactive: [],
+      notice: [],
     }
 
-    /**
+    /**s
      * 获取团队简介
      */
     axios.get(`http://150.158.171.105:7777/guest/introduction`).then((e) => {
@@ -26,15 +26,15 @@ export default class index extends Component {
       this.setState({ teamintroduct })
     })
 
-    /**
-     * 获取国保老师的信息
-     */
-    axios
-      .get(`http://150.158.171.105:7777/guest/teacher/getTeacherById/1`)
-      .then((e) => {
-        const teacherguobao = e.data.data
-        this.setState({ teacherguobao })
-      })
+    //   /**
+    //    * 获取国保老师的信息
+    //    */
+    //   axios
+    //     .get(`http://150.158.171.105:7777/guest/teacher/getTeacherById/1`)
+    //     .then((e) => {
+    //       const teacherguobao = e.data.data
+    //       this.setState({ teacherguobao })
+    //     })
 
     /**
      * 获取团队项目的信息
@@ -55,15 +55,22 @@ export default class index extends Component {
         this.setState({ preFourAwards })
       })
 
-    // 获取团队活动信息
-    axios.get(`http://150.158.171.105:7777/guest/live`).then((e) => {
-      console.log(e.data.data)
-      const teamactive = e.data.data.slice(-4)
-      this.setState({ teamactive })
-    })
+    axios
+      .get(`http://150.158.171.105:7777/guest/inform/top7Informs`)
+      .then((e) => {
+        console.log(e.data)
+        const notice = e.data.data
+        this.setState({ notice })
+      })
+    //   // 获取团队活动信息
+    //   axios.get(`http://150.158.171.105:7777/guest/live`).then((e) => {
+    //     console.log(e.data.data)
+    //     const teamactive = e.data.data.slice(-4)
+    //     this.setState({ teamactive })
+    //   })
   }
   render() {
-    const { teamintroduct, teacherguobao } = this.state
+    const { teamintroduct } = this.state
     // 团队介绍
     // console.log(teamintroduct)
     // 国保老师的信息
@@ -72,221 +79,205 @@ export default class index extends Component {
     // 最新的四个奖项
     // console.log(preFourAwards)
     // console.log(preFourTeamActivity)
-
     return (
-      <div style={{ textAlign: 'center' }}>
-        <div
-          className="flash-container"
-          style={{ width: '100%', height: '300px', backgroundColor: 'black' }}
-        >
-          <img
-            style={{ width: '100%', height: '300px', opacity: '0.4' }}
-            src={jpg}
-            alt="none"
-          ></img>
-        </div>
-
-        <div
-          style={{
-            boxShadow: '0px 6px 12px -4px #888888',
-            margin: '15px',
-          }}
-        >
-          <h
-            style={{
-              color: '#515a6e',
-              fontSize: '26px',
-            }}
+      <div className="paper">
+        <Row>
+          <Col
+            xs={{ span: 20, offset: 2 }}
+            sm={{ span: 18, offset: 3 }}
+            md={{ span: 18, offset: 3 }}
+            lg={{ span: 10, offset: 3 }}
+            xl={{ span: 10, offset: 3 }}
           >
-            团队简介
-          </h>
+            <video controls className="video">
+              <source
+                src={'http://150.158.171.105:7777/' + this.state.historyVideo}
+                type="video/mp4"
+              ></source>
+            </video>
+          </Col>
+          <Col
+            xs={{ span: 8, offset: 3 }}
+            sm={{ span: 8, offset: 3 }}
+            md={{ span: 8, offset: 3 }}
+            lg={{ span: 8, offset: 3 }}
+            xl={{ span: 8, offset: 3 }}
+          >
+            <p style={{ margin: '10% 0px 0px 0px' }}>
+              {' '}
+              {teamintroduct.historyInfo}
+            </p>
+          </Col>
+        </Row>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <Row>
           <Row>
-            <Col span={10} style={{ margin: '15px' }}>
-              <p> {teamintroduct.historyInfo}</p>
-            </Col>
-            <Col span={10}>
-              <video controls style={{ width: '80%' }}>
-                <source
-                  src={'http://150.158.171.105:7777/' + this.state.historyVideo}
-                  type="video/mp4"
-                ></source>
-              </video>
+            <Col
+              xs={{ span: 18, offset: 3 }}
+              sm={{ span: 18, offset: 6 }}
+              md={{ span: 24, offset: 10 }}
+              lg={{ span: 24, offset: 5 }}
+              xl={{ span: 24, offset: 10 }}
+            >
+              <Card
+                className="card"
+                title="最近公告"
+                extra={
+                  <a style={{ color: 'white' }} href="#">
+                    更多公告
+                  </a>
+                }
+              >
+                {this.state.notice.map((element, id) => {
+                  return (
+                    <Row>
+                      <Col
+                        className="notice-noout"
+                        xs={{ span: 18 }}
+                        sm={{ span: 20 }}
+                        md={{ span: 20 }}
+                        lg={{ span: 18 }}
+                        xl={{ span: 20 }}
+                        key={id}
+                      >
+                        {element.informContent}
+                      </Col>
+                      <Col>{element.informCreateTime}</Col>
+                    </Row>
+                  )
+                })}
+              </Card>
             </Col>
           </Row>
-        </div>
-        <div
-          style={{
-            boxShadow: '0px 6px 12px -4px #888888',
-            marginLeft: '15px',
-          }}
-        >
-          <h
-            style={{
-              color: '#515a6e',
-              fontSize: '26px',
-            }}
-          >
-            指导老师
-          </h>
-
           <Row>
-            <Col span={3} style={{ margin: '15px' }}>
-              <br />
-              <br />
-
+            <Col
+              xs={{ span: 10, offset: 3 }}
+              sm={{ span: 6, offset: 8 }}
+              md={{ span: 5, offset: 10 }}
+              lg={{ span: 4, offset: 10 }}
+              xl={{ span: 4, offset: 6, push: 16 }}
+              className="right-col"
+            >
               <img
+                src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs/icons/layers.svg"
                 style={{
-                  marginTop: '-45px',
-                  width: '70%',
-                  height: '150px',
-                  verticalAalign: 'middle',
+                  margin: '10% 0px 0px 0px',
                 }}
-                src="http://150.158.171.105:7777/teacherIcon/徐国保.jpg"
               ></img>
             </Col>
-            <Col span={15} style={{ margin: '0px' }}>
-              <p>
-                {' '}
-                {teacherguobao.teacherName} /
-                <sapn> {teacherguobao.teacherJob}</sapn>/
-                <sapn> {teacherguobao.teacherPosition}</sapn>
-              </p>
+            <Col
+              xs={{ span: 10, offset: 3 }}
+              sm={{ span: 10, offset: 3 }}
+              md={{ span: 5, offset: 10 }}
+              lg={{ span: 10, offset: 0 }}
+              xl={{ span: 9, offset: 0, push: 16 }}
+              style={{
+                margin: '3% 0px 0px 0px',
+              }}
+            >
+              <span className="right-text-head">团队成员</span>
+              <Link to="/active">详情{'>>>'}</Link>
+            </Col>
 
-              <p style={{ textIndent: '50px' }}>
-                {' '}
-                {teacherguobao.teacherResearch}
-              </p>
-              <p style={{ textIndent: '50px' }}>
-                {' '}
-                {teacherguobao.teacherScientificResearch}
-              </p>
+            <Col
+              xs={{ span: 10, offset: 3 }}
+              sm={{ span: 6, offset: 8 }}
+              md={{ span: 5, offset: 10 }}
+              lg={{ span: 4, offset: 10 }}
+              xl={{ span: 4, offset: 6, push: 16 }}
+            >
+              <img src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs/icons/monitor.svg"></img>
+            </Col>
+            <Col
+              xs={{ span: 10, offset: 1 }}
+              sm={{ span: 8, offset: 0 }}
+              md={{ span: 5, offset: 0 }}
+              lg={{ span: 10, offset: 0 }}
+              xl={{ span: 9, offset: 0, push: 16 }}
+            >
+              <sapn className="right-text-head">团队荣誉</sapn>
+              <Link to="/honor">详情{'>>>'}</Link>
+            </Col>
+            <Col
+              xs={{ span: 10, offset: 3 }}
+              sm={{ span: 6, offset: 8 }}
+              md={{ span: 5, offset: 10 }}
+              lg={{ span: 4, offset: 10 }}
+              xl={{ span: 4, offset: 6, push: 16 }}
+            >
+              <img src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs/icons/cloud.svg"></img>
+            </Col>
+
+            <Col
+              xs={{ span: 10, offset: 1 }}
+              sm={{ span: 8, offset: 0 }}
+              md={{ span: 5, offset: 0 }}
+              lg={{ span: 10, offset: 0 }}
+              xl={{ span: 9, offset: 0, push: 16 }}
+            >
+              <span className="right-text-head">团队活动</span>
+              <Link to="/active">详情{'>>>'}</Link>
             </Col>
           </Row>
-          <Link to="/scaleteacher"> 查看全部教师{'>>>'}</Link>
-        </div>
-
-        <div style={{ boxShadow: '0px 6px 12px -4px #888888', margin: '15px' }}>
-          <h
-            style={{
-              color: '#515a6e',
-              fontSize: '26px',
-            }}
+        </Row>
+        <br /> <br /> <br /> <br />
+        <Row>
+          <Col
+            xs={12}
+            sm={12}
+            md={12}
+            lg={{ span: 10, offset: 3 }}
+            xl={{ span: 5 }}
+            style={{ margin: '50px' }}
           >
-            团队荣誉
-          </h>
-
-          <Row style={{ height: '300px', textAlign: 'center' }}>
-            {this.state.preFourAwards.map((element, id) => {
-              return (
-                <Col span={5} key={id} style={{ margin: '20px' }}>
+            {' '}
+            <span className="right-text-head"> 团队项目</span>
+          </Col>
+        </Row>
+        <Row>
+          {this.state.project.map((element, id) => {
+            return (
+              <Col
+                xs={{ span: 20, offset: 3 }}
+                sm={{ span: 20, offset: 3 }}
+                md={{ span: 10, offset: 1 }}
+                lg={{ span: 5, offset: 1 }}
+                xl={{ span: 5, offset: 1 }}
+                key={id}
+              >
+                <Link to={`/projectdetail/${element.projectId}`}>
                   <img
-                    style={{ width: '100%', height: '250px' }}
-                    alt="example"
-                    src={'http://150.158.171.105:7777/' + element.awardPhoto[0]}
-                  />
-                </Col>
-              )
-            })}
-          </Row>
-          <Link to="/honor"> 查看全部荣誉{'>>>'}</Link>
-        </div>
-
-        <div style={{ boxShadow: '0px 6px 12px -4px #888888', margin: '15px' }}>
-          <h
-            style={{
-              color: '#515a6e',
-              fontSize: '26px',
-            }}
-          >
-            团队项目
-          </h>
-
-          <Row style={{ height: '250px' }}>
-            {this.state.project.map((element, id) => {
-              return (
-                <Col span={5} key={id} style={{ margin: '15px' }}>
-                  <Link to={`/projectdetail/${element.projectId}`}>
-                    <img
-                      style={{ width: '100%', height: '250px' }}
-                      alt="example"
-                      src={
-                        'http://150.158.171.105:7777/' +
-                        element.projectPhotos[0].projectPhotoLoc
-                      }
-                    />
-                  </Link>
-                </Col>
-              )
-            })}
-          </Row>
-          <Row style={{ marginTop: '15px' }}>
-            {this.state.project.map((element, id) => {
-              return (
-                <Col span={5} key={id} style={{ margin: '15px' }}>
-                  <Link to={`/projectdetail/${element.projectId}`}>
-                    <h
-                      style={{
-                        fontSize: '23px',
-
-                        color: '#515a6e',
-                      }}
-                    >
-                      {element.projectName}
-                    </h>
-                  </Link>
-                </Col>
-              )
-            })}
-          </Row>
-          <Link to="/project">查看全部项目{'>>>'}</Link>
-        </div>
-        <div style={{ boxShadow: '0px 6px 12px -4px #888888', margin: '15px' }}>
-          <a
-            style={{
-              color: '#515a6e',
-              fontSize: '26px',
-            }}
-          >
-            团队活动
-          </a>
-
-          <Row style={{ height: '250px' }}>
-            {this.state.teamactive.map((element, id) => {
-              return (
-                <Col span={5} key={id} style={{ margin: '15px' }}>
-                  {/* < Link to={`/basic/detail/${element[0].id}`}> */}
-                  <img
-                    style={{ width: '100%', height: '250px' }}
+                    className="project-img"
                     alt="example"
                     src={
                       'http://150.158.171.105:7777/' +
-                      element.livePhotos[id].livePhotoLoc
+                      element.projectPhotos[0].projectPhotoLoc
                     }
                   />
-                  {/* </Link> */}
+                </Link>
+                <Col
+                  xs={{ span: 24, offset: 0 }}
+                  sm={{ span: 24, offset: 0 }}
+                  md={{ span: 24, offset: 0 }}
+                  lg={{ span: 24, offset: 0 }}
+                  xl={{ span: 24, offset: 0 }}
+                  key={id}
+                >
+                  <Link to={`/projectdetail/${element.projectId}`}>
+                    <h1 className="project_content">{element.projectName}</h1>
+                  </Link>
                 </Col>
-              )
-            })}
-          </Row>
-          <Row style={{ marginTop: '15px', textAlign: 'center' }}>
-            {this.state.teamactive.map((element, id) => {
-              return (
-                <Col span={5} key={id} style={{ margin: '15px' }}>
-                  <a
-                    style={{
-                      fontSize: '23px',
-
-                      color: '#515a6e',
-                    }}
-                  >
-                    {element.liveName}
-                  </a>
-                </Col>
-              )
-            })}
-          </Row>
-          <Link to="/active">查看全部活动{'>>>'}</Link>
-        </div>
+              </Col>
+            )
+          })}
+          <Link to="/project" className=" link">
+            查看全部项目{'>>>'}
+          </Link>
+        </Row>
       </div>
     )
   }
