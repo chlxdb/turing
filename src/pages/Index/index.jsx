@@ -42,7 +42,7 @@ export default class index extends Component {
 
     axios.get(`http://150.158.171.105:7777/guest/project`).then((e) => {
       console.log(e.data.data)
-      const project = e.data.data
+      const project = e.data.data.slice(0, 4)
       this.setState({ project })
     })
 
@@ -83,11 +83,11 @@ export default class index extends Component {
       <div className="paper">
         <Row>
           <Col
-            xs={{ span: 20, offset: 2 }}
+            xs={{ span: 18, offset: 3 }}
             sm={{ span: 18, offset: 3 }}
-            md={{ span: 18, offset: 3 }}
-            lg={{ span: 10, offset: 3 }}
-            xl={{ span: 10, offset: 3 }}
+            md={{ span: 15, offset: 3 }}
+            lg={{ span: 15, offset: 3 }}
+            xl={{ span: 10, offset: 2 }}
           >
             <video controls className="video">
               <source
@@ -97,11 +97,11 @@ export default class index extends Component {
             </video>
           </Col>
           <Col
-            xs={{ span: 8, offset: 3 }}
-            sm={{ span: 8, offset: 3 }}
-            md={{ span: 8, offset: 3 }}
-            lg={{ span: 8, offset: 3 }}
-            xl={{ span: 8, offset: 3 }}
+            xs={{ span: 18, offset: 3 }}
+            sm={{ span: 18, offset: 3 }}
+            md={{ span: 15, offset: 3 }}
+            lg={{ span: 15, offset: 3 }}
+            xl={{ span: 10, offset: 1 }}
           >
             <p style={{ margin: '10% 0px 0px 0px' }}>
               {' '}
@@ -119,7 +119,7 @@ export default class index extends Component {
             <Col
               xs={{ span: 18, offset: 3 }}
               sm={{ span: 18, offset: 6 }}
-              md={{ span: 24, offset: 10 }}
+              md={{ span: 24, offset: 5 }}
               lg={{ span: 24, offset: 5 }}
               xl={{ span: 24, offset: 10 }}
             >
@@ -159,7 +159,7 @@ export default class index extends Component {
               sm={{ span: 6, offset: 8 }}
               md={{ span: 5, offset: 10 }}
               lg={{ span: 4, offset: 10 }}
-              xl={{ span: 4, offset: 6, push: 16 }}
+              xl={{ span: 3, offset: 6, push: 16 }}
               className="right-col"
             >
               <img
@@ -180,7 +180,9 @@ export default class index extends Component {
               }}
             >
               <span className="right-text-head">团队成员</span>
-              <Link to="/active">详情{'>>>'}</Link>
+              <Link className="link" to="/active">
+                详情{'>>>'}
+              </Link>
             </Col>
 
             <Col
@@ -188,7 +190,7 @@ export default class index extends Component {
               sm={{ span: 6, offset: 8 }}
               md={{ span: 5, offset: 10 }}
               lg={{ span: 4, offset: 10 }}
-              xl={{ span: 4, offset: 6, push: 16 }}
+              xl={{ span: 3, offset: 6, push: 16 }}
             >
               <img src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs/icons/monitor.svg"></img>
             </Col>
@@ -200,14 +202,16 @@ export default class index extends Component {
               xl={{ span: 9, offset: 0, push: 16 }}
             >
               <sapn className="right-text-head">团队荣誉</sapn>
-              <Link to="/honor">详情{'>>>'}</Link>
+              <Link className="link" to="/honor">
+                详情{'>>>'}
+              </Link>
             </Col>
             <Col
               xs={{ span: 10, offset: 3 }}
               sm={{ span: 6, offset: 8 }}
               md={{ span: 5, offset: 10 }}
               lg={{ span: 4, offset: 10 }}
-              xl={{ span: 4, offset: 6, push: 16 }}
+              xl={{ span: 3, offset: 6, push: 16 }}
             >
               <img src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs/icons/cloud.svg"></img>
             </Col>
@@ -220,7 +224,9 @@ export default class index extends Component {
               xl={{ span: 9, offset: 0, push: 16 }}
             >
               <span className="right-text-head">团队活动</span>
-              <Link to="/active">详情{'>>>'}</Link>
+              <Link className="link" to="/active">
+                详情{'>>>'}
+              </Link>
             </Col>
           </Row>
         </Row>
@@ -238,25 +244,22 @@ export default class index extends Component {
             <span className="right-text-head"> 团队项目</span>
           </Col>
         </Row>
-        <Row>
+        <Row style={{ margin: '2%' }}>
           {this.state.project.map((element, id) => {
             return (
               <Col
-                xs={{ span: 20, offset: 3 }}
-                sm={{ span: 20, offset: 3 }}
+                xs={{ span: 15, offset: 5 }}
+                sm={{ span: 15, offset: 4 }}
                 md={{ span: 10, offset: 1 }}
-                lg={{ span: 5, offset: 1 }}
-                xl={{ span: 5, offset: 1 }}
+                lg={{ span: 4, offset: 1 }}
+                xl={{ span: 5 }}
                 key={id}
               >
                 <Link to={`/projectdetail/${element.projectId}`}>
                   <img
                     className="project-img"
                     alt="example"
-                    src={
-                      'http://150.158.171.105:7777/' +
-                      element.projectPhotos[0].projectPhotoLoc
-                    }
+                    src={'http://150.158.171.105:7777/' + element.projectGif}
                   />
                 </Link>
                 <Col
@@ -274,10 +277,10 @@ export default class index extends Component {
               </Col>
             )
           })}
-          <Link to="/project" className=" link">
-            查看全部项目{'>>>'}
-          </Link>
         </Row>
+        <Link to="/project" className=" link">
+          查看全部项目{'>>>'}
+        </Link>
       </div>
     )
   }

@@ -77,13 +77,7 @@ export default class App extends Component {
           <Content className="content">
             <ViewRouter></ViewRouter>
           </Content>
-          <Footer
-            style={{
-              height: '200px',
-              backgroundColor: 'black',
-              opacity: '0.8',
-            }}
-          >
+          <Footer className="footer">
             <div style={{ color: 'white', textAlign: 'center' }}>
               <p
                 style={{

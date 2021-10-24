@@ -5,21 +5,33 @@
 .projectcard {
   background-color: #007bff;
 }
+.card {
+  font-size: 1.2vm;
+}
 .ant-card-head {
   background-color: #6610f2;
   color: #fff;
 }
 .ant-card-body {
-  background-color: #228bfc;
-  color: #fff;
+  background-color: #fff;
+  color: rgb(53, 51, 51);
 }
+
+/* .ant-card-head {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.ant-card-body {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+} */
 .notice-noout {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 .right-text-head {
-  font-size: 1.3rem;
+  font-size: 1.8vw;
 }
 .ant-col
   ant-col-xs-10
@@ -36,25 +48,18 @@
 }
 .project-img {
   width: 100%;
-  height: 250px;
 }
 .project-img:hover {
   box-shadow: 2px 8px 4px rgba(91, 163, 245, 0.904),
     0 0 40px rgba(0, 0, 0, 0.06) inset;
 }
 .project_content {
-  font-size: 1.2rem;
+  font-size: 1.2vw;
+  font-weight: bolder;
   color: #515a6e;
 }
-.ant-card-head {
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-.ant-card-body {
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
+
 .link {
   margin-left: 3%;
-  font-size: large;
+  font-size: 1vw;
 }

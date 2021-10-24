@@ -10,7 +10,7 @@
 } */
 
 .content {
-  background-color: white;
+  background-color: rgb(243, 243, 243);
 }
 .ant-layout-header {
   color: rgba(0, 0, 0, 0.5);
@@ -65,4 +65,8 @@
   .turing-title .ant-menu-title-content {
     font-size: 20px;
   }
+}
+.footer {
+  background-color: rgb(10, 11, 12);
+  opacity: 0.8;
 }
