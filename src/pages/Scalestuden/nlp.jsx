@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './scale.css'
-import { List, Card, Row, Col } from 'antd'
+import { Card, Row, Col } from 'antd'
 import { Pagination } from 'antd'
 import { Tooltip } from 'antd'
-
-import '../Leaderdetail/leaderdetail.css'
+import { Avatar } from 'antd'
 
 const { Meta } = Card
 export default class Nlp extends Component {

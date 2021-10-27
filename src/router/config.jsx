@@ -94,6 +94,14 @@ const routes = [
     },
   },
   {
+    path: '/notice',
+    component: lazy(() => import('../pages/Notice/notice')),
+    isExact: true,
+    meta: {
+      title: '团队公告',
+    },
+  },
+  {
     path: '/projectdetail/:id',
     component: lazy(() => import('../pages/Prodetail/prodetail')),
   },

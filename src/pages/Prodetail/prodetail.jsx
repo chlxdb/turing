@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import { Row, Col } from 'antd'
 import './prodetail.css'
 import axios from 'axios'
+import { Card, Carousel, Avatar, Tooltip } from 'antd'
 
+const contentStyle = {
+  width: '60vw',
+}
 export default class prodetail extends Component {
   constructor(props) {
     super(props)
@@ -17,14 +21,14 @@ export default class prodetail extends Component {
   }
   getdetail = () => {
     const { id } = this.props.match.params
-    console.log(id)
+    // console.log(id)
     axios
       .get('http://150.158.171.105:7777/guest/project/' + id, {})
       .then((response) => {
-        // console.log(response.data.data)
         // console.log(response.data.data.projectMember)
 
         const detail = response.data.data
+        console.log(detail)
         const member = response.data.data.projectMember
         this.setState({ detail })
         this.setState({ member })
@@ -33,93 +37,102 @@ export default class prodetail extends Component {
 
   render() {
     return (
-      <div>
-        <div className="paper">
-          <Row style={{ margin: '0 15%' }}>
-            <Col span={24} style={{}}>
-              <h1
-                style={{
-                  fontSize: '200%',
-                  textAlign: 'center',
+      <div className="div_box">
+        <Row className="box_row">
+          <Col
+            xs={{ span: 22, offset: 1 }}
+            sm={{ span: 20, offset: 2 }}
+            md={{ span: 18, offset: 3 }}
+            lg={{ span: 11, offset: 7 }}
+            xl={{ span: 10, offset: 6 }}
+          >
+            {/* element.projectName */}
+            <Card hoverable style={{ wordBreak: 'break-all' }}>
+              <Carousel autoplay>
+                <div style={contentStyle}>
+                  <img
+                    className="img"
+                    alt="example"
+                    src={
+                      'http://150.158.171.105:7777/' +
+                      this.state.detail.projectGif
+                    }
+                  ></img>
+                </div>
+              </Carousel>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            className="col_liveContent"
+            xs={{ span: 20, offset: 2 }}
+            sm={{ span: 20, offset: 2 }}
+            md={{ span: 18, offset: 3 }}
+            lg={{ span: 15, offset: 5 }}
+            xl={{ span: 18, offset: 3 }}
+          >
+            <h1>{this.state.detail.projectName}</h1>
+            <span className="span_time">{this.state.detail.date}</span>
+            <p className="projectcontent">{this.state.detail.projectContent}</p>
+          </Col>
+        </Row>
 
-                  color: '#515a6e',
-                }}
-              >
-                {this.state.detail.projectName}
-              </h1>
-              <p style={{ color: '', fontSize: '150%' }}>
-                {this.state.detail.projectContent}
-              </p>
-            </Col>
-          </Row>
-          <Row style={{ margin: '0 15%' }}>
-            <Col span={24}>
-              <img
-                style={{ width: '100%', height: '70%' }}
-                src={
-                  'http://150.158.171.105:7777/' + this.state.detail.projectGif
-                }
-                alt="none"
-              />
-            </Col>
-          </Row>
-        </div>
         <div className="paper2">
-          <Row style={{ margin: '0 15%' }}>
-            <Col span={24} style={{}}>
-              <h1
-                style={{
-                  fontSize: '200%',
-                  textAlign: 'center',
-                  color: '#515a6e',
-                }}
-              >
-                参与项目成员
-              </h1>
+          <Row>
+            <Col span={24}>
+              <h1 className="h1_joinmerber">参与项目成员</h1>
             </Col>
           </Row>
 
           {this.state.member.map((element, id) => {
             return (
-              <Row
-                key={id}
-                style={{
-                  margin: '3% 15%',
-                  boxShadow: '0px 6px 12px -4px #888888',
-                }}
-              >
-                <Col span={8}>
-                  <img
-                    style={{
-                      width: '150px',
-                      height: '150px',
-                      verticalAlign: 'middle',
-                    }}
-                    alt="example"
+              <Row key={id} className="joinmerber_row">
+                <Col>
+                  <Avatar
+                    size={80}
                     src={'http://150.158.171.105:7777/' + element.memberIconUrl}
                   />
                 </Col>
-                <Col span={12}>
-                  <p style={{ fontSize: '24px', marginRight: '15px' }}>
+                <Col
+                  xs={{ span: 20, offset: 1 }}
+                  sm={{ span: 20, offset: 1 }}
+                  md={{ span: 20, offset: 1 }}
+                  lg={{ span: 20, offset: 1 }}
+                  xl={{ span: 12, offset: 1 }}
+                >
+                  <p className="p_name" style={{ fontSize: '1.5vw' }}>
                     {element.memberName}
-                    <span style={{ fontSize: '15px' }}>
-                      ({element.memberMajor})
-                    </span>
+                    <span>({element.memberMajor})</span>
                   </p>
 
-                  <p style={{ fontSize: '18px' }}>
+                  <p className="p_memberTechnology">
                     学习方向：
-                    <span style={{ fontSize: '17px', fontFamily: 'monospace' }}>
+                    <span className="p_memberTechnology">
                       {element.memberTechnology}
                     </span>
                   </p>
-                  <p style={{ fontSize: '18px' }}>
-                    寄语：
-                    <span style={{ fontSize: '17px', fontFamily: 'monospace' }}>
-                      {element.memberIntroduction}
-                    </span>
-                  </p>
                 </Col>
+                <Tooltip placement="bottom" title={element.memberIntroduction}>
+                  <Col
+                    className="card_col_foot"
+                    xs={{ span: 20, offset: 1 }}
+                    sm={{ span: 20, offset: 1 }}
+                    md={{ span: 20, offset: 1 }}
+                    lg={{ span: 20, offset: 1 }}
+                    xl={{ span: 18, offset: 1 }}
+                  >
+                    <p>
+                      寄语：
+                      <span
+
+                      // style={{ fontSize: '17px', fontFamily: 'monospace' }}
+                      >
+                        {element.memberIntroduction}
+                      </span>
+                    </p>
+                  </Col>
+                </Tooltip>
               </Row>
             )
           })}

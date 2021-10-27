@@ -3,8 +3,11 @@ import axios from 'axios'
 import { Row, Col } from 'antd'
 import './leader.css'
 import { Link } from 'react-router-dom'
-import { Badge } from 'antd'
+import { Card, Carousel } from 'antd'
 
+const contentStyle = {
+  width: '60vw',
+}
 export default class leader extends Component {
   constructor(props) {
     super(props)
@@ -25,7 +28,6 @@ export default class leader extends Component {
       .then((e) => {
         const leaders = e.data.data
         this.setState({ leaders })
-        console.log(leaders)
       })
   }
 
@@ -33,39 +35,48 @@ export default class leader extends Component {
     const { leaders } = this.state
     return (
       <div>
-        {leaders.map((element, id) => {
-          return (
-            <div className="paper" key={id}>
-              <Link to={`/leaderdetail/${element.id}`}>
-                <Badge.Ribbon text="更多详情>>>" color="red"></Badge.Ribbon>
-              </Link>
-
-              <Row style={{ margin: '0 15%' }}>
-                <Col span={24} style={{}}>
-                  <h1
-                    style={{
-                      fontSize: '200%',
-                      textAlign: 'center',
-                      color: '#515a6e',
-                    }}
-                  >
-                    {element.title}
-                  </h1>
+        <Row className="box_row">
+          {leaders.map((element, id) => {
+            return (
+              <Col
+                key={id}
+                xs={{ span: 22, offset: 1 }}
+                sm={{ span: 20, offset: 2 }}
+                md={{ span: 18, offset: 2 }}
+                lg={{ span: 10, offset: 1 }}
+                xl={{ span: 9, offset: 2 }}
+              >
+                <Card hoverable style={{ wordBreak: 'break-all' }}>
+                  <Carousel autoplay>
+                    <div style={contentStyle}>
+                      <img
+                        className="img"
+                        alt="example"
+                        src={'http://150.158.171.105:7777/' + element.img}
+                      ></img>
+                    </div>
+                  </Carousel>
+                </Card>
+                <Col
+                  className="col_liveContent"
+                  xs={{ span: 20, offset: 1 }}
+                  sm={{ span: 20, offset: 1 }}
+                  md={{ span: 20, offset: 1 }}
+                  lg={{ span: 24, offset: 1 }}
+                  xl={{ span: 24, offset: 1 }}
+                  key={id}
+                >
+                  <h1>{element.title}</h1>
+                  <span className="span_time">{element.date}</span>
+                  &nbsp; &nbsp;
+                  <Link to={`/leaderdetail/${element.id}`}>
+                    更多详情 {'>>>'}
+                  </Link>
                 </Col>
-              </Row>
-              <Row style={{ margin: '0 15%', textAlign: 'center' }}>
-                <Col span={24}>
-                  <p style={{ fontSize: '20px' }}> {'时间：' + element.date}</p>
-                  <img
-                    style={{ width: '80%', height: '85%' }}
-                    src={'http://150.158.171.105:7777/' + element.img}
-                    alt="none"
-                  />
-                </Col>
-              </Row>
-            </div>
-          )
-        })}
+              </Col>
+            )
+          })}
+        </Row>
       </div>
     )
   }

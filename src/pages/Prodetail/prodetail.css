@@ -1,51 +1,38 @@
-.paper {
-  width: 80%;
-  height: auto;
-  margin: 25px auto;
-  padding: 30px 0;
-  border: 1px solid #efefef;
-  background-color: #fffffd;
-  /* background-image: url(paper.png); */
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.27),
-    0 0 40px rgba(0, 0, 0, 0.06) inset;
+.div_box {
+  margin-top: 3%;
 }
-.paper2 {
-  width: 80%;
-  height: 100%;
-  margin: 15px auto;
-  padding: 30px 0;
-  border: 1px solid #efefef;
-  background-color: #fffffd;
-  /* background-image: url(paper.png); */
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.27),
-    0 0 40px rgba(0, 0, 0, 0.06) inset;
+
+.span_time {
+  font-size: 1.2vw;
+  /* margin-left: 20%; */
+  color: rgb(128, 128, 128);
 }
-/* .paper ::before {
-  content: '';
-  z-index: -1;
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  width: 45%;
-  height: 55%;
-  max-height: 100px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  transform: skew(-15deg) rotate(-4deg);
+
+.img {
+  width: 100%;
+  height: 45vh;
 }
-.paper ::after {
-  content: '';
-  z-index: -1;
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  width: 45%;
-  height: 55%;
-  max-height: 100px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  transform: skew(-15deg) rotate(-4deg);
+.card_col_foot {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-.paper::after {
-  left: auto;
-  right: 10px;
-  transform: skew(15deg) rotate(4deg);
-} */
+.projectcontent {
+  font-size: 1.2vw;
+  color: rgb(128, 128, 128);
+}
+.p_name {
+  font-size: 1.5vw;
+}
+.p_memberTechnology {
+  font-size: 1.1vw;
+}
+.h1_joinmerber {
+  font-size: 1.8vw;
+  text-align: center;
+  color: #515a6e;
+}
+.joinmerber_row {
+  margin: 3% 20%;
+  /* box-shadow: '0px 6px 12px -4px #888888'; */
+}

@@ -3,6 +3,13 @@ import ViewRouter from './router/index'
 // 封装好的路由
 
 import jpg from './logo.jpg'
+import index from './index.png'
+import leader from './leader.png'
+import project from './project1.png'
+import honor from './honor.png'
+import active from './active.png'
+import join from './join.png'
+import meber from './meber.png'
 import './App.css'
 
 import { Layout, Menu } from 'antd'
@@ -36,35 +43,50 @@ export default class App extends Component {
               </Menu.Item>
               <Link to="/index" className="menus">
                 <Menu.Item style={{}} key={1}>
+                  <img style={{ width: '1.5vw' }} src={index}></img>
                   首页
                 </Menu.Item>
               </Link>
               <Link to="/leader" className="menus">
                 <Menu.Item style={{}} key={3}>
+                  <img style={{ width: '1.5vw' }} src={leader}></img>
                   领导视察
                 </Menu.Item>
               </Link>
               <Link to="/project" className="menus">
                 <Menu.Item style={{}} key={5}>
+                  <img style={{ width: '1.5vw' }} src={project}></img>
                   团队项目
                 </Menu.Item>
               </Link>
               <Link to="/honor" className="menus">
                 <Menu.Item style={{}} key={6}>
+                  <img style={{ width: '1.5vw' }} src={honor}></img>
                   团队荣誉
                 </Menu.Item>
               </Link>
               <Link to="/active" className="menus">
                 <Menu.Item style={{}} key={6}>
+                  <img style={{ width: '1.5vw' }} src={active}></img>
                   团队活动
                 </Menu.Item>
               </Link>
               <Link to="/join" className="menus">
                 <Menu.Item style={{}} key={7}>
+                  <img style={{ width: '1.5vw' }} src={join}></img>
                   加入我们
                 </Menu.Item>
               </Link>
-              <SubMenu style={{}} title="团队规模" className="menus">
+
+              <SubMenu
+                title={
+                  <div>
+                    <img style={{ width: '1.5vw' }} src={meber}></img>
+                    <span>团队规模</span>
+                  </div>
+                }
+                className="menus"
+              >
                 <Link to="/scaleteacher">
                   <Menu.Item key="1">指导老师</Menu.Item>
                 </Link>

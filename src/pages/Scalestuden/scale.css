@@ -6,26 +6,13 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.ant-card-head {
-  background-color: #6610f2;
-  color: #fff;
-}
+
 .ant-card-body {
   background-color: #fff;
   color: rgb(53, 51, 51);
 }
-.ant-card-head {
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-.ant-card-body {
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-.ant-card {
-  border-radius: 20px;
-}
+
 .card {
-  width: 15vw;
-  height: 30vw;
+  width: 30vw;
+  height: 30vh;
 }

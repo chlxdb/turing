@@ -2,16 +2,11 @@ import React, { Component } from 'react'
 
 import axios from 'axios'
 import { Row, Col } from 'antd'
-import { Carousel, Card, Tooltip } from 'antd'
+import { Carousel, Card } from 'antd'
 import './active.css'
 
 const contentStyle = {
-  // height: '600px',
   width: '60vw',
-  // color: 'black',
-  // lineHeight: '160px',
-  // textAlign: 'center',
-  // background: 'black',
 }
 
 export default class active extends Component {
@@ -71,7 +66,7 @@ export default class active extends Component {
                 sm={{ span: 20, offset: 2 }}
                 md={{ span: 18, offset: 3 }}
                 lg={{ span: 11, offset: 7 }}
-                xl={{ span: 9, offset: 2 }}
+                xl={{ span: 9, offset: 1 }}
                 key={id}
               >
                 <h1>{element.liveName}</h1>

@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import './index.css'
-import { Row, Col, Card } from 'antd'
+import { Row, Col, Card, Carousel } from 'antd'
 import axios from 'axios'
 
 import { Link } from 'react-router-dom'
+import project from './project1.png'
+import notice from './notice1.png'
+import notice2 from './notice2.png'
+import intro from './intro.png'
 
 export default class index extends Component {
   constructor(props) {
@@ -41,7 +45,6 @@ export default class index extends Component {
      */
 
     axios.get(`http://150.158.171.105:7777/guest/project`).then((e) => {
-      console.log(e.data.data)
       const project = e.data.data.slice(0, 4)
       this.setState({ project })
     })
@@ -58,55 +61,57 @@ export default class index extends Component {
     axios
       .get(`http://150.158.171.105:7777/guest/inform/top7Informs`)
       .then((e) => {
-        console.log(e.data)
         const notice = e.data.data
         this.setState({ notice })
       })
-    //   // 获取团队活动信息
-    //   axios.get(`http://150.158.171.105:7777/guest/live`).then((e) => {
-    //     console.log(e.data.data)
-    //     const teamactive = e.data.data.slice(-4)
-    //     this.setState({ teamactive })
-    //   })
   }
   render() {
     const { teamintroduct } = this.state
-    // 团队介绍
-    // console.log(teamintroduct)
-    // 国保老师的信息
-    // console.log(teacherguobao)
+
     this.state.preFourAwards = Array.from(this.state.preFourAwards)
-    // 最新的四个奖项
-    // console.log(preFourAwards)
-    // console.log(preFourTeamActivity)
+
     return (
-      <div className="paper">
+      <div>
+        <Row>
+          <Col
+            className="col_introduce"
+            xs={{ span: 10, offset: 3 }}
+            sm={{ span: 8, offset: 3 }}
+            md={{ span: 5, offset: 3 }}
+            lg={{ span: 10, offset: 3 }}
+            xl={{ span: 9, offset: 3 }}
+          >
+            {' '}
+            <img src={intro} className="left_img"></img>
+            <span className="left-text-introduce"> 团队简介</span>
+          </Col>
+        </Row>
         <Row>
           <Col
             xs={{ span: 18, offset: 3 }}
             sm={{ span: 18, offset: 3 }}
             md={{ span: 15, offset: 3 }}
             lg={{ span: 15, offset: 3 }}
-            xl={{ span: 10, offset: 2 }}
+            xl={{ span: 12, offset: 3 }}
           >
-            <video controls className="video">
-              <source
-                src={'http://150.158.171.105:7777/' + this.state.historyVideo}
-                type="video/mp4"
-              ></source>
-            </video>
+            <div>
+              <video controls className="video">
+                <source
+                  src={'http://150.158.171.105:7777/' + this.state.historyVideo}
+                  type="video/mp4"
+                ></source>
+              </video>
+            </div>
           </Col>
           <Col
+            className="introduct"
             xs={{ span: 18, offset: 3 }}
             sm={{ span: 18, offset: 3 }}
             md={{ span: 15, offset: 3 }}
             lg={{ span: 15, offset: 3 }}
-            xl={{ span: 10, offset: 1 }}
+            xl={{ span: 5, offset: 1 }}
           >
-            <p style={{ margin: '10% 0px 0px 0px' }}>
-              {' '}
-              {teamintroduct.historyInfo}
-            </p>
+            <p> {teamintroduct.historyInfo}</p>
           </Col>
         </Row>
         <br />
@@ -114,6 +119,20 @@ export default class index extends Component {
         <br />
         <br />
         <br />
+        <Row>
+          <Col
+            xs={{ span: 12, offset: 3 }}
+            sm={{ span: 12, offset: 3 }}
+            md={{ span: 12, offset: 3 }}
+            lg={{ span: 10, offset: 3 }}
+            xl={{ span: 5, offset: 3 }}
+            style={{}}
+          >
+            {' '}
+            <img src={notice2} className="left_img"></img>
+            <span className="left-text-project"> 团队通告</span>
+          </Col>
+        </Row>
         <Row>
           <Row>
             <Col
@@ -121,111 +140,51 @@ export default class index extends Component {
               sm={{ span: 18, offset: 6 }}
               md={{ span: 24, offset: 5 }}
               lg={{ span: 24, offset: 5 }}
-              xl={{ span: 24, offset: 10 }}
+              xl={{ span: 12, offset: 8 }}
             >
-              <Card
-                className="card"
-                title="最近公告"
-                extra={
-                  <a style={{ color: 'white' }} href="#">
-                    更多公告
-                  </a>
-                }
-              >
-                {this.state.notice.map((element, id) => {
-                  return (
-                    <Row>
-                      <Col
-                        className="notice-noout"
-                        xs={{ span: 18 }}
-                        sm={{ span: 20 }}
-                        md={{ span: 20 }}
-                        lg={{ span: 18 }}
-                        xl={{ span: 20 }}
-                        key={id}
-                      >
-                        {element.informContent}
-                      </Col>
-                      <Col>{element.informCreateTime}</Col>
-                    </Row>
-                  )
-                })}
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col
-              xs={{ span: 10, offset: 3 }}
-              sm={{ span: 6, offset: 8 }}
-              md={{ span: 5, offset: 10 }}
-              lg={{ span: 4, offset: 10 }}
-              xl={{ span: 3, offset: 6, push: 16 }}
-              className="right-col"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs/icons/layers.svg"
-                style={{
-                  margin: '10% 0px 0px 0px',
-                }}
-              ></img>
-            </Col>
-            <Col
-              xs={{ span: 10, offset: 3 }}
-              sm={{ span: 10, offset: 3 }}
-              md={{ span: 5, offset: 10 }}
-              lg={{ span: 10, offset: 0 }}
-              xl={{ span: 9, offset: 0, push: 16 }}
-              style={{
-                margin: '3% 0px 0px 0px',
-              }}
-            >
-              <span className="right-text-head">团队成员</span>
-              <Link className="link" to="/active">
-                详情{'>>>'}
-              </Link>
-            </Col>
-
-            <Col
-              xs={{ span: 10, offset: 3 }}
-              sm={{ span: 6, offset: 8 }}
-              md={{ span: 5, offset: 10 }}
-              lg={{ span: 4, offset: 10 }}
-              xl={{ span: 3, offset: 6, push: 16 }}
-            >
-              <img src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs/icons/monitor.svg"></img>
-            </Col>
-            <Col
-              xs={{ span: 10, offset: 1 }}
-              sm={{ span: 8, offset: 0 }}
-              md={{ span: 5, offset: 0 }}
-              lg={{ span: 10, offset: 0 }}
-              xl={{ span: 9, offset: 0, push: 16 }}
-            >
-              <sapn className="right-text-head">团队荣誉</sapn>
-              <Link className="link" to="/honor">
-                详情{'>>>'}
-              </Link>
-            </Col>
-            <Col
-              xs={{ span: 10, offset: 3 }}
-              sm={{ span: 6, offset: 8 }}
-              md={{ span: 5, offset: 10 }}
-              lg={{ span: 4, offset: 10 }}
-              xl={{ span: 3, offset: 6, push: 16 }}
-            >
-              <img src="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/imgs/icons/cloud.svg"></img>
-            </Col>
-
-            <Col
-              xs={{ span: 10, offset: 1 }}
-              sm={{ span: 8, offset: 0 }}
-              md={{ span: 5, offset: 0 }}
-              lg={{ span: 10, offset: 0 }}
-              xl={{ span: 9, offset: 0, push: 16 }}
-            >
-              <span className="right-text-head">团队活动</span>
-              <Link className="link" to="/active">
-                详情{'>>>'}
+              <Link to="/notice">
+                <Card className="card" hoverable>
+                  {this.state.notice.map((element, id) => {
+                    return (
+                      <Row>
+                        <Col
+                          className="notice-noout"
+                          xs={{ span: 18 }}
+                          sm={{ span: 20 }}
+                          md={{ span: 20 }}
+                          lg={{ span: 18 }}
+                          xl={{ span: 10 }}
+                          key={id}
+                        >
+                          <img src={notice} className="img_notice"></img>
+                          {element.informContent}
+                        </Col>
+                        <Col
+                          className="notice-noout"
+                          xs={{ span: 18 }}
+                          sm={{ span: 20 }}
+                          md={{ span: 20 }}
+                          lg={{ span: 18 }}
+                          xl={{ span: 5 }}
+                          key={id}
+                        >
+                          {element.informCreateTime}
+                        </Col>
+                      </Row>
+                    )
+                  })}
+                  <Link to="/notice">
+                    <Col
+                      xs={{ span: 18 }}
+                      sm={{ span: 20 }}
+                      md={{ span: 20 }}
+                      lg={{ span: 18 }}
+                      xl={{ span: 5 }}
+                    >
+                      更多通告{'>>>'}
+                    </Col>
+                  </Link>
+                </Card>
               </Link>
             </Col>
           </Row>
@@ -233,34 +192,41 @@ export default class index extends Component {
         <br /> <br /> <br /> <br />
         <Row>
           <Col
-            xs={12}
-            sm={12}
-            md={12}
+            xs={{ span: 12, offset: 3 }}
+            sm={{ span: 12, offset: 3 }}
+            md={{ span: 12, offset: 3 }}
             lg={{ span: 10, offset: 3 }}
-            xl={{ span: 5 }}
-            style={{ margin: '50px' }}
+            xl={{ span: 5, offset: 3 }}
+            style={{}}
           >
             {' '}
-            <span className="right-text-head"> 团队项目</span>
+            <img src={project} className="left_img"></img>
+            <span className="left-text-project"> 团队项目</span>
           </Col>
         </Row>
         <Row style={{ margin: '2%' }}>
           {this.state.project.map((element, id) => {
             return (
               <Col
-                xs={{ span: 15, offset: 5 }}
+                xs={{ span: 15, offset: 4 }}
                 sm={{ span: 15, offset: 4 }}
                 md={{ span: 10, offset: 1 }}
-                lg={{ span: 4, offset: 1 }}
-                xl={{ span: 5 }}
+                lg={{ span: 10, offset: 1 }}
+                xl={{ span: 9, offset: 2 }}
                 key={id}
               >
                 <Link to={`/projectdetail/${element.projectId}`}>
-                  <img
-                    className="project-img"
-                    alt="example"
-                    src={'http://150.158.171.105:7777/' + element.projectGif}
-                  />
+                  <Card hoverable style={{ wordBreak: 'break-all' }}>
+                    <Carousel autoplay>
+                      <img
+                        className="project-img"
+                        alt="example"
+                        src={
+                          'http://150.158.171.105:7777/' + element.projectGif
+                        }
+                      ></img>
+                    </Carousel>
+                  </Card>
                 </Link>
                 <Col
                   xs={{ span: 24, offset: 0 }}
@@ -278,9 +244,20 @@ export default class index extends Component {
             )
           })}
         </Row>
-        <Link to="/project" className=" link">
-          查看全部项目{'>>>'}
-        </Link>
+        <Row>
+          <Col
+            xs={{ span: 12, offset: 3 }}
+            sm={{ span: 12, offset: 3 }}
+            md={{ span: 12, offset: 3 }}
+            lg={{ span: 10, offset: 3 }}
+            xl={{ span: 5, offset: 3 }}
+            style={{ marginBottom: '5%' }}
+          >
+            <Link to="/project" className=" link">
+              查看全部项目{'>>>'}
+            </Link>
+          </Col>
+        </Row>
       </div>
     )
   }
