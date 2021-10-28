@@ -41,7 +41,7 @@ export default class active extends Component {
                 xl={{ span: 11, offset: 2 }}
               >
                 <Card hoverable style={{ wordBreak: 'break-all' }}>
-                  <Carousel autoplay>
+                  <Carousel autoplay vertical={true}>
                     {element.livePhotos.map((value, index) => {
                       return (
                         <div key={index} style={contentStyle}>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Row, Col, Card, Carousel } from 'antd'
 import './honor.css'
 import axios from 'axios'
+import Slider from 'react-slick'
 
 const contentStyle = {
   width: '60vw',
@@ -28,9 +29,43 @@ export default class honor extends Component {
   }
 
   render() {
+    var settings = {
+      className: '',
+      dots: true,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      adaptiveHeight: true,
+    }
     const { honorlists } = this.state
     return (
       <div>
+        <div>
+          <h2>Adaptive height</h2>
+          <Slider {...settings}>
+            <div>
+              <h3>1</h3>
+            </div>
+            <div>
+              <h3>2</h3>
+              <p>Hello</p>
+            </div>
+            <div>
+              <h3>3</h3>
+              <p>See ....</p>
+              <p>Height is adaptive</p>
+            </div>
+            <div>
+              <h3>4</h3>
+            </div>
+            <div>
+              <h3>5</h3>
+            </div>
+            <div>
+              <h3>6</h3>
+            </div>
+          </Slider>
+        </div>
         {honorlists.map((element, id) => {
           return (
             <Row key={id} className="box_row">
@@ -77,45 +112,6 @@ export default class honor extends Component {
                 <p> 时间：{element.awardTime}</p>
               </Col>
             </Row>
-            // <div className="paper" key={id}>
-            //   <Row style={{ margin: '0% 15%' }}>
-            //     <Col span={24} style={{}}>
-            //       <h1
-            //         style={{
-            //           fontSize: '200%',
-            //           textAlign: 'center',
-
-            //           color: '#515a6e',
-            //         }}
-            //       >
-            //         {element.awardName}
-            //       </h1>
-            //     </Col>
-            //   </Row>
-            //   <Row style={{ margin: '0 15%' }}>
-            //     <Col span={12}>
-            //       <img
-            //         style={{
-            //           width: '100%',
-            //           height: '90%',
-            //           verticalAlign: 'middle',
-            //         }}
-            //         src={'http://150.158.171.105:7777/' + element.awardPhoto}
-            //         alt="none"
-            //       />
-            //     </Col>
-            //     <Col span={10} style={{ margin: '8% 3%' }}>
-            //       <h style={{ fontSize: '21px' }}>获奖成员:</h>
-            //       <p style={{ fontSize: '18px' }}>
-            //         {element.awardMember.map((value, index) => {
-            //           return value + ' '
-            //         })}
-            //       </p>
-            //       &nbsp;&nbsp;&nbsp;
-            //       <p> 时间：{element.awardTime}</p>
-            //     </Col>
-            //   </Row>
-            // </div>
           )
         })}
       </div>

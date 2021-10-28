@@ -1,7 +1,7 @@
 @import '~antd/dist/antd.css';
 
 .nar {
-  /* margin-top: 30px; */
+  /* margin-top: 1%; */
   background-color: white;
 }
 /* .ant-layout-header {
@@ -27,7 +27,7 @@
 
 .menus {
   /* margin-left: auto; */
-  font-size: 1rem;
+  font-size: 1.2vw;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -69,4 +69,15 @@
 .footer {
   background-color: rgb(10, 11, 12);
   opacity: 0.8;
+}
+.footer_div {
+  color: white;
+  text-align: center;
+}
+.footer_div_p_name {
+  font-size: 2.5vw;
+  margin: 1.2em 0 0.1em;
+}
+.footer_div_p_litter {
+  font-size: 0.9vw;
 }

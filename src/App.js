@@ -28,9 +28,9 @@ export default class App extends Component {
               <Menu.Item
                 key={8}
                 style={{
-                  marginLeft: 'auto',
-                  marginRight: '30px',
-                  fontSize: '20px',
+                  marginLeft: '8%',
+
+                  fontSize: '1.4vw',
                 }}
                 className="turing-title"
               >
@@ -100,16 +100,9 @@ export default class App extends Component {
             <ViewRouter></ViewRouter>
           </Content>
           <Footer className="footer">
-            <div style={{ color: 'white', textAlign: 'center' }}>
-              <p
-                style={{
-                  fontSize: '28px',
-                  margin: '1.2em 0 0.1em',
-                }}
-              >
-                图灵智能创新团队
-              </p>
-              <p style={{ fontSize: '12px' }}>
+            <div className="footer_div">
+              <p className="footer_div_p_name">图灵智能创新团队</p>
+              <p className="footer_div_p_litter">
                 TURING©广东海洋大学第一个人工智能团队
                 {/* <img style={{ width: '100%' }} src={gif}></img> */}
               </p>

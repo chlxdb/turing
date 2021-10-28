@@ -61,7 +61,7 @@ export default class index extends Component {
     axios
       .get(`http://150.158.171.105:7777/guest/inform/top7Informs`)
       .then((e) => {
-        const notice = e.data.data
+        const notice = e.data.data.slice(0, 3)
         this.setState({ notice })
       })
   }
@@ -125,69 +125,67 @@ export default class index extends Component {
             sm={{ span: 12, offset: 3 }}
             md={{ span: 12, offset: 3 }}
             lg={{ span: 10, offset: 3 }}
-            xl={{ span: 5, offset: 3 }}
+            xl={{ span: 3, offset: 3 }}
             style={{}}
           >
             {' '}
             <img src={notice2} className="left_img"></img>
             <span className="left-text-project"> 团队通告</span>
           </Col>
-        </Row>
-        <Row>
-          <Row>
-            <Col
-              xs={{ span: 18, offset: 3 }}
-              sm={{ span: 18, offset: 6 }}
-              md={{ span: 24, offset: 5 }}
-              lg={{ span: 24, offset: 5 }}
-              xl={{ span: 12, offset: 8 }}
-            >
-              <Link to="/notice">
-                <Card className="card" hoverable>
-                  {this.state.notice.map((element, id) => {
-                    return (
-                      <Row>
-                        <Col
-                          className="notice-noout"
-                          xs={{ span: 18 }}
-                          sm={{ span: 20 }}
-                          md={{ span: 20 }}
-                          lg={{ span: 18 }}
-                          xl={{ span: 10 }}
-                          key={id}
-                        >
-                          <img src={notice} className="img_notice"></img>
-                          {element.informContent}
-                        </Col>
-                        <Col
-                          className="notice-noout"
-                          xs={{ span: 18 }}
-                          sm={{ span: 20 }}
-                          md={{ span: 20 }}
-                          lg={{ span: 18 }}
-                          xl={{ span: 5 }}
-                          key={id}
-                        >
-                          {element.informCreateTime}
-                        </Col>
-                      </Row>
-                    )
-                  })}
-                  <Link to="/notice">
-                    <Col
-                      xs={{ span: 18 }}
-                      sm={{ span: 20 }}
-                      md={{ span: 20 }}
-                      lg={{ span: 18 }}
-                      xl={{ span: 5 }}
-                    >
-                      更多通告{'>>>'}
-                    </Col>
-                  </Link>
-                </Card>
-              </Link>
-            </Col>
-          </Row>
+
+          <Col
+            xs={{ span: 18, offset: 3 }}
+            sm={{ span: 18, offset: 6 }}
+            md={{ span: 24, offset: 5 }}
+            lg={{ span: 24, offset: 5 }}
+            xl={{ span: 9, offset: 0 }}
+          >
+            <Link to="/notice">
+              <Card className="card" hoverable>
+                {this.state.notice.map((element, id) => {
+                  return (
+                    <Row>
+                      <Col
+                        className="notice-noout"
+                        xs={{ span: 18 }}
+                        sm={{ span: 20 }}
+                        md={{ span: 20 }}
+                        lg={{ span: 18 }}
+                        xl={{ span: 15 }}
+                        key={id}
+                      >
+                        <img src={notice} className="img_notice"></img>
+                        {element.informContent}
+                        看见发士大夫地方看见发士大夫地方看见发士大夫地方看见发士大夫地方看见发士大夫地方看见发士大夫地方
+                      </Col>
+                      <Col
+                        className="notice-noout"
+                        xs={{ span: 18 }}
+                        sm={{ span: 20 }}
+                        md={{ span: 20 }}
+                        lg={{ span: 18 }}
+                        xl={{ span: 5, offset: 2 }}
+                        key={id}
+                      >
+                        {element.informCreateTime}
+                      </Col>
+                    </Row>
+                  )
+                })}
+                <Link to="/notice">
+                  <Col
+                    xs={{ span: 18 }}
+                    sm={{ span: 20 }}
+                    md={{ span: 20 }}
+                    lg={{ span: 18 }}
+                    xl={{ span: 9 }}
+                  >
+                    更多通告{'>>>'}
+                  </Col>
+                </Link>
+              </Card>
+            </Link>
+          </Col>
         </Row>
         <br /> <br /> <br /> <br />
         <Row>
@@ -246,11 +244,11 @@ export default class index extends Component {
         </Row>
         <Row>
           <Col
-            xs={{ span: 12, offset: 3 }}
-            sm={{ span: 12, offset: 3 }}
-            md={{ span: 12, offset: 3 }}
-            lg={{ span: 10, offset: 3 }}
-            xl={{ span: 5, offset: 3 }}
+            xs={{ span: 8, offset: 12 }}
+            sm={{ span: 5, offset: 15 }}
+            md={{ span: 5, offset: 18 }}
+            lg={{ span: 5, offset: 19 }}
+            xl={{ span: 5, offset: 19 }}
             style={{ marginBottom: '5%' }}
           >
             <Link to="/project" className=" link">
