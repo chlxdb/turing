@@ -23,6 +23,7 @@ export default class scalestu extends Component {
       .then((e) => {
         const teachers = e.data.data
         this.setState({ teachers })
+        this.state.teachers = Array.from(this.state.teachers)
       })
   }
   componentDidMount() {
@@ -33,8 +34,6 @@ export default class scalestu extends Component {
   }
 
   render() {
-    this.state.teachers = Array.from(this.state.teachers)
-    console.log(this.state.teachers)
     return (
       <div>
         <div className="box_div">

@@ -61,6 +61,7 @@ export default class Cv extends Component {
                     <Meta
                       avatar={
                         <Avatar
+                          size={50}
                           src={
                             'http://150.158.171.105:7777/' +
                             element.memberIconUrl
@@ -88,55 +89,6 @@ export default class Cv extends Component {
                     </Tooltip>
                   </Card>
                 </Col>
-                // <Col
-                //   xs={{ span: 20, offset: 1 }}
-                //   sm={{ span: 10, offset: 1 }}
-                //   md={{ span: 10, offset: 1 }}
-                //   lg={{ span: 5, offset: 1 }}
-                //   xl={{ span: 5, offset: 1 }}
-                //   key={id}
-                // >
-                //   <Card
-                //     hoverable
-                //     style={{ wordBreak: 'break-all' }}
-                //     title={
-                //       element.memberName + ' : ' + element.memberTechnology
-                //     }
-                //   >
-                //     <Row>
-                //       <Col
-                //         xs={{ span: 15, offset: 3 }}
-                //         sm={{ span: 15, offset: 3 }}
-                //         md={{ span: 10, offset: 1 }}
-                //         lg={{ span: 20, offset: 1 }}
-                //         xl={{ span: 15, offset: 4 }}
-                //       >
-                //         <img
-                //           style={{ width: '100%', height: '100%' }}
-                //           src={
-                //             'http://150.158.171.105:7777/' +
-                //             element.memberIconUrl
-                //           }
-                //         ></img>
-                //       </Col>
-                //       <Tooltip
-                //         placement="bottom"
-                //         title={element.memberIntroduction}
-                //       >
-                //         <Col
-                //           className="card_col"
-                //           xs={{ span: 15, offset: 3 }}
-                //           sm={{ span: 15, offset: 3 }}
-                //           md={{ span: 10, offset: 1 }}
-                //           lg={{ span: 20, offset: 1 }}
-                //           xl={{ span: 15, offset: 4 }}
-                //         >
-                //           {element.memberIntroduction}
-                //         </Col>
-                //       </Tooltip>
-                //     </Row>
-                //   </Card>
-                // </Col>
               )
             })}
           </Row>

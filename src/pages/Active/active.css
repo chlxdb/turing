@@ -31,3 +31,6 @@
   width: 100%;
   height: 45vh;
 }
+.card_live {
+  word-break: break-all;
+}

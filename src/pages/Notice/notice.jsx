@@ -3,14 +3,9 @@ import axios from 'axios'
 import { Row, Col } from 'antd'
 import './notice.css'
 import noticepic from './notice.png'
-// import { Link } from 'react-router-dom'
-// import { Card, Carousel } from 'antd'
-// import { useState } from 'react'
+
 import { Timeline } from 'antd'
 
-const contentStyle = {
-  width: '60vw',
-}
 export default class notice extends Component {
   constructor(props) {
     super(props)
@@ -46,7 +41,12 @@ export default class notice extends Component {
             xl={{ span: 9, offset: 1 }}
           >
             {' '}
-            <img src={noticepic} style={{ width: '3vw' }}></img>
+            <img
+              src={noticepic}
+              alt="none"
+              className="img_notice"
+              style={{ width: '3vw' }}
+            ></img>
             <span className="left-text-notice"> 团队通告:</span>
           </Col>
         </Row>

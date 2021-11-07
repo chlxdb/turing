@@ -17,7 +17,9 @@
     "react-hot-loader": "^4.13.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "react-slick": "^0.28.1",
     "react-to-print": "^2.13.0",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import './index.css'
 import { Row, Col, Card, Carousel } from 'antd'
 import axios from 'axios'
+import Slider from 'react-slick'
 
 import { Link } from 'react-router-dom'
 import project from './project1.png'
-import notice from './notice1.png'
 import notice2 from './notice2.png'
 import intro from './intro.png'
 
@@ -28,17 +28,13 @@ export default class index extends Component {
     axios.get(`http://150.158.171.105:7777/guest/introduction`).then((e) => {
       const teamintroduct = e.data.data[0]
       this.setState({ teamintroduct })
+      let player = document.querySelector('#myvideo')
+      player.src =
+        'http://150.158.171.105:7777/' + this.state.teamintroduct.historyVideo
+      // player.play()
+      /* this.$myvideo.src =
+        'http://150.158.171.105:7777/' + this.state.teamintroduct.historyVideo*/
     })
-
-    //   /**
-    //    * 获取国保老师的信息
-    //    */
-    //   axios
-    //     .get(`http://150.158.171.105:7777/guest/teacher/getTeacherById/1`)
-    //     .then((e) => {
-    //       const teacherguobao = e.data.data
-    //       this.setState({ teacherguobao })
-    //     })
 
     /**
      * 获取团队项目的信息
@@ -50,25 +46,23 @@ export default class index extends Component {
     })
 
     axios
-      .get(`http://150.158.171.105:7777/guest/award/getAllAwards`)
-      .then((e) => {
-        const allAwards = e.data.awards
-        // 取最新的四个奖项
-        const preFourAwards = allAwards.slice(-4)
-        this.setState({ preFourAwards })
-      })
-
-    axios
       .get(`http://150.158.171.105:7777/guest/inform/top7Informs`)
       .then((e) => {
-        const notice = e.data.data.slice(0, 3)
+        const notice = e.data.data
         this.setState({ notice })
       })
   }
   render() {
-    const { teamintroduct } = this.state
+    const settings = {
+      dots: true,
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      vertical: true,
+      verticalSwiping: true,
+    }
 
-    this.state.preFourAwards = Array.from(this.state.preFourAwards)
+    const { teamintroduct } = this.state
 
     return (
       <div>
@@ -82,7 +76,7 @@ export default class index extends Component {
             xl={{ span: 9, offset: 3 }}
           >
             {' '}
-            <img src={intro} className="left_img"></img>
+            <img src={intro} alt="none" className="left_img"></img>
             <span className="left-text-introduce"> 团队简介</span>
           </Col>
         </Row>
@@ -95,12 +89,7 @@ export default class index extends Component {
             xl={{ span: 12, offset: 3 }}
           >
             <div>
-              <video controls className="video">
-                <source
-                  src={'http://150.158.171.105:7777/' + this.state.historyVideo}
-                  type="video/mp4"
-                ></source>
-              </video>
+              <video controls="controls" className="video" id="myvideo"></video>
             </div>
           </Col>
           <Col
@@ -129,7 +118,7 @@ export default class index extends Component {
             style={{}}
           >
             {' '}
-            <img src={notice2} className="left_img"></img>
+            <img src={notice2} alt="none" className="left_img"></img>
             <span className="left-text-project"> 团队通告</span>
           </Col>
 
@@ -138,40 +127,41 @@ export default class index extends Component {
             sm={{ span: 18, offset: 6 }}
             md={{ span: 24, offset: 5 }}
             lg={{ span: 24, offset: 5 }}
-            xl={{ span: 9, offset: 0 }}
+            xl={{ span: 15, offset: 0 }}
           >
             <Link to="/notice">
-              <Card className="card" hoverable>
-                {this.state.notice.map((element, id) => {
-                  return (
-                    <Row>
-                      <Col
-                        className="notice-noout"
-                        xs={{ span: 18 }}
-                        sm={{ span: 20 }}
-                        md={{ span: 20 }}
-                        lg={{ span: 18 }}
-                        xl={{ span: 15 }}
-                        key={id}
-                      >
-                        <img src={notice} className="img_notice"></img>
-                        {element.informContent}
-                        看见发士大夫地方看见发士大夫地方看见发士大夫地方看见发士大夫地方看见发士大夫地方看见发士大夫地方
-                      </Col>
-                      <Col
-                        className="notice-noout"
-                        xs={{ span: 18 }}
-                        sm={{ span: 20 }}
-                        md={{ span: 20 }}
-                        lg={{ span: 18 }}
-                        xl={{ span: 5, offset: 2 }}
-                        key={id}
-                      >
-                        {element.informCreateTime}
-                      </Col>
-                    </Row>
-                  )
-                })}
+              <Card className="card_index" hoverable>
+                <div>
+                  <Slider {...settings}>
+                    {this.state.notice.map((element, id) => {
+                      return (
+                        <Row>
+                          <Col
+                            key={id}
+                            className="notice-noout_index"
+                            xs={{ span: 18, offset: 2 }}
+                            sm={{ span: 20, offset: 2 }}
+                            md={{ span: 20, offset: 2 }}
+                            lg={{ span: 18, offset: 2 }}
+                            xl={{ span: 15, offset: 4 }}
+                          >
+                            {element.informContent}{' '}
+                          </Col>
+                          <Col
+                            className="notice-noout"
+                            xs={{ span: 18, offset: 2 }}
+                            sm={{ span: 20, offset: 2 }}
+                            md={{ span: 20, offset: 2 }}
+                            lg={{ span: 18, offset: 2 }}
+                            xl={{ span: 15, offset: 4 }}
+                          >
+                            {element.informCreateTime}
+                          </Col>
+                        </Row>
+                      )
+                    })}
+                  </Slider>
+                </div>
                 <Link to="/notice">
                   <Col
                     xs={{ span: 18 }}
@@ -198,7 +188,7 @@ export default class index extends Component {
             style={{}}
           >
             {' '}
-            <img src={project} className="left_img"></img>
+            <img src={project} alt="none" className="left_img"></img>
             <span className="left-text-project"> 团队项目</span>
           </Col>
         </Row>
@@ -206,12 +196,12 @@ export default class index extends Component {
           {this.state.project.map((element, id) => {
             return (
               <Col
+                key={id}
                 xs={{ span: 15, offset: 4 }}
                 sm={{ span: 15, offset: 4 }}
                 md={{ span: 10, offset: 1 }}
                 lg={{ span: 10, offset: 1 }}
                 xl={{ span: 9, offset: 2 }}
-                key={id}
               >
                 <Link to={`/projectdetail/${element.projectId}`}>
                   <Card hoverable style={{ wordBreak: 'break-all' }}>
@@ -232,7 +222,6 @@ export default class index extends Component {
                   md={{ span: 24, offset: 0 }}
                   lg={{ span: 24, offset: 0 }}
                   xl={{ span: 24, offset: 0 }}
-                  key={id}
                 >
                   <Link to={`/projectdetail/${element.projectId}`}>
                     <h1 className="project_content">{element.projectName}</h1>

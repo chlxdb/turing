@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col, Badge } from 'antd'
+import { Row, Col } from 'antd'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import './project.css'
@@ -42,7 +42,7 @@ export default class project extends Component {
                 lg={{ span: 11, offset: 7 }}
                 xl={{ span: 10, offset: 1 }}
               >
-                <Card hoverable style={{ wordBreak: 'break-all' }}>
+                <Card hoverable className="card_project">
                   <Carousel autoplay>
                     <div style={contentStyle}>
                       <img
@@ -63,11 +63,9 @@ export default class project extends Component {
                   md={{ span: 18, offset: 3 }}
                   lg={{ span: 18, offset: 3 }}
                   xl={{ span: 24, offset: 0 }}
-                  key={id}
                 >
                   <h1>{element.projectName}</h1>
-                  <span className="span_time">{element.date}</span>
-                  &nbsp; &nbsp;
+
                   <Link to={`/projectdetail/${element.projectId}`}>
                     更多详情 {'>>>'}
                   </Link>

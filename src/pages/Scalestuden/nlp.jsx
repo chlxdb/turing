@@ -5,7 +5,6 @@ import { Card, Row, Col } from 'antd'
 import { Pagination } from 'antd'
 import { Tooltip } from 'antd'
 import { Avatar } from 'antd'
-
 const { Meta } = Card
 export default class Nlp extends Component {
   constructor(props) {
@@ -38,7 +37,6 @@ export default class Nlp extends Component {
         {}
       )
       .then((response) => {
-        console.log(response.data.data.records)
         this.setState({ all: response.data.data.records })
       })
   }
@@ -52,51 +50,42 @@ export default class Nlp extends Component {
               return (
                 <Col
                   xs={{ span: 20, offset: 1 }}
-                  sm={{ span: 10, offset: 1 }}
-                  md={{ span: 10, offset: 1 }}
-                  lg={{ span: 5, offset: 1 }}
-                  xl={{ span: 5, offset: 1 }}
+                  sm={{ span: 20, offset: 1 }}
+                  md={{ span: 20, offset: 1 }}
+                  lg={{ span: 20, offset: 1 }}
+                  xl={{ span: 20, offset: 1 }}
                   key={id}
                 >
-                  <Card
-                    hoverable
-                    style={{ wordBreak: 'break-all' }}
-                    title={
-                      element.memberName + ' : ' + element.memberTechnology
-                    }
-                  >
-                    <Row>
-                      <Col
-                        xs={{ span: 15, offset: 3 }}
-                        sm={{ span: 15, offset: 3 }}
-                        md={{ span: 10, offset: 1 }}
-                        lg={{ span: 20, offset: 1 }}
-                        xl={{ span: 15, offset: 4 }}
-                      >
-                        <img
-                          style={{ width: '100%', height: '100%' }}
+                  <Card className="card_col">
+                    <Meta
+                      avatar={
+                        <Avatar
+                          size={50}
                           src={
                             'http://150.158.171.105:7777/' +
                             element.memberIconUrl
                           }
-                        ></img>
-                      </Col>
-                      <Tooltip
-                        placement="bottom"
-                        title={element.memberIntroduction}
+                        />
+                      }
+                      title={
+                        element.memberName + ' : ' + element.memberTechnology
+                      }
+                    />
+                    <Tooltip
+                      placement="bottom"
+                      title={element.memberIntroduction}
+                    >
+                      <Col
+                        className="card_col"
+                        xs={{ span: 20, offset: 3 }}
+                        sm={{ span: 20, offset: 3 }}
+                        md={{ span: 10, offset: 1 }}
+                        lg={{ span: 20, offset: 1 }}
+                        xl={{ span: 20, offset: 1 }}
                       >
-                        <Col
-                          className="card_col"
-                          xs={{ span: 20, offset: 3 }}
-                          sm={{ span: 20, offset: 3 }}
-                          md={{ span: 10, offset: 1 }}
-                          lg={{ span: 20, offset: 1 }}
-                          xl={{ span: 20, offset: 1 }}
-                        >
-                          {element.memberIntroduction}
-                        </Col>
-                      </Tooltip>
-                    </Row>
+                        {element.memberIntroduction}
+                      </Col>
+                    </Tooltip>
                   </Card>
                 </Col>
               )

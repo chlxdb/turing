@@ -7,7 +7,7 @@ export default class scaletea extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      teachers: {},
+      teachers: [],
     }
 
     axios
@@ -20,8 +20,7 @@ export default class scaletea extends Component {
 
   render() {
     // 老师们的信息
-    this.state.teachers = Array.from(this.state.teachers)
-    console.log(this.state.teachers)
+
     return (
       <div>
         <div className="box_div">
@@ -40,7 +39,7 @@ export default class scaletea extends Component {
               return (
                 <List.Item>
                   <Card
-                    style={{ wordBreak: 'break-all' }}
+                    className="card_teacher"
                     key={id}
                     title={
                       element.teacherName + ' : ' + element.teacherPosition
@@ -49,13 +48,14 @@ export default class scaletea extends Component {
                     <Row>
                       <Col span={4}>
                         <img
-                          style={{ width: '60%' }}
+                          className="img_teacher"
+                          alt="none"
                           src={
                             'http://150.158.171.105:7777/' + element.teacherImg
                           }
                         ></img>
                       </Col>
-                      <Col span={20} style={{ textIndent: '50px' }}>
+                      <Col span={20} className="descrip_teacher">
                         {' '}
                         <p>{element.teacherResearch}</p>
                         <p>{element.teacherAwardIntroduction}</p>

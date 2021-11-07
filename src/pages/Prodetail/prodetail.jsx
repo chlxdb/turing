@@ -124,12 +124,7 @@ export default class prodetail extends Component {
                   >
                     <p>
                       寄语：
-                      <span
-
-                      // style={{ fontSize: '17px', fontFamily: 'monospace' }}
-                      >
-                        {element.memberIntroduction}
-                      </span>
+                      <span>{element.memberIntroduction}</span>
                     </p>
                   </Col>
                 </Tooltip>

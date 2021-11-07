@@ -3,7 +3,7 @@
   width: 100%;
 }
 
-.card {
+.card_index {
   font-size: 1.2vm;
   width: 60vw;
 }
@@ -16,7 +16,7 @@
   color: rgb(102, 101, 101);
 }
 
-.notice-noout {
+.notice-noout_index {
   margin-top: 0px;
   overflow: hidden;
   white-space: nowrap;
@@ -61,4 +61,21 @@
 }
 .col_introduce {
   margin-top: 3%;
+}
+.slick-prev:before,
+.slick-next:before {
+  color: red;
+}
+.ant-col
+  ant-col-xs-18
+  ant-col-xs-offset-3
+  ant-col-sm-18
+  ant-col-sm-offset-6
+  ant-col-md-24
+  ant-col-md-offset-5
+  ant-col-lg-24
+  ant-col-lg-offset-5
+  ant-col-xl-15
+  ant-col-xl-offset-0 {
+  border-radius: 20%;
 }

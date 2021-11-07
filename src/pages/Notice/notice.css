@@ -1,7 +1,13 @@
 .div_notice {
-  margin-top: 5%;
+  margin: 3%;
+  background-color: #fff;
 }
 .left-text-notice {
-  margin: 5% 0px 0px 0px;
   font-size: 1.5vw;
+}
+.col_notice {
+  margin: 1% 0px 0px 1%;
+}
+.img_notice {
+  width: 3vw;
 }
