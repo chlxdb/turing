@@ -64,7 +64,7 @@
 }
 .slick-prev:before,
 .slick-next:before {
-  color: red;
+  display: none;
 }
 .ant-col
   ant-col-xs-18
@@ -78,4 +78,7 @@
   ant-col-xl-15
   ant-col-xl-offset-0 {
   border-radius: 20%;
+}
+.btn_honor {
+  margin-left: 50vw;
 }

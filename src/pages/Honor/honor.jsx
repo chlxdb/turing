@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col, Card } from 'antd'
+import { Row, Col, Card, Button } from 'antd'
 
 import './honor.css'
 import axios from 'axios'
@@ -8,6 +8,8 @@ import Slider from 'react-slick'
 export default class honor extends Component {
   constructor(props) {
     super(props)
+    this.next = this.next.bind(this)
+    this.previous = this.previous.bind(this)
     this.state = {
       honorlists: [],
     }
@@ -25,21 +27,26 @@ export default class honor extends Component {
         this.setState({ honorlists })
       })
   }
+  next() {
+    this.slider.slickNext()
+  }
+  previous() {
+    this.slider.slickPrev()
+  }
 
   render() {
     var settings = {
-      className: '',
-      dots: true,
+      // dots: true,
       infinite: true,
+      speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      adaptiveHeight: true,
     }
     const { honorlists } = this.state
     return (
       <div>
         <div className="slider_div">
-          <Slider {...settings}>
+          <Slider ref={(c) => (this.slider = c)} {...settings}>
             {honorlists.map((element, id) => {
               return (
                 <div>
@@ -87,6 +94,15 @@ export default class honor extends Component {
               )
             })}
           </Slider>
+          <div style={{ textAlign: 'center' }}>
+            <Button className="btn_honor" danger onClick={this.previous}>
+              Previous
+            </Button>
+            &nbsp;&nbsp; &nbsp;&nbsp;
+            <Button className="btn_honor" danger onClick={this.next}>
+              Next
+            </Button>
+          </div>
         </div>
       </div>
     )

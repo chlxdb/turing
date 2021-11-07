@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './index.css'
-import { Row, Col, Card, Carousel } from 'antd'
+import { Row, Col, Card, Carousel, Button } from 'antd'
 import axios from 'axios'
 import Slider from 'react-slick'
 
@@ -12,6 +12,8 @@ import intro from './intro.png'
 export default class index extends Component {
   constructor(props) {
     super(props)
+    this.next = this.next.bind(this)
+    this.previous = this.previous.bind(this)
     this.state = {
       teamintroduct: {},
       teacherguobao: {},
@@ -52,9 +54,16 @@ export default class index extends Component {
         this.setState({ notice })
       })
   }
+  next() {
+    this.slider.slickNext()
+  }
+  previous() {
+    this.slider.slickPrev()
+  }
+
   render() {
     const settings = {
-      dots: true,
+      speed: 200,
       infinite: true,
       slidesToShow: 3,
       slidesToScroll: 1,
@@ -127,54 +136,59 @@ export default class index extends Component {
             sm={{ span: 18, offset: 6 }}
             md={{ span: 24, offset: 5 }}
             lg={{ span: 24, offset: 5 }}
-            xl={{ span: 15, offset: 0 }}
+            xl={{ span: 15, offset: 5 }}
           >
-            <Link to="/notice">
-              <Card className="card_index" hoverable>
-                <div>
-                  <Slider {...settings}>
-                    {this.state.notice.map((element, id) => {
-                      return (
-                        <Row>
-                          <Col
-                            key={id}
-                            className="notice-noout_index"
-                            xs={{ span: 18, offset: 2 }}
-                            sm={{ span: 20, offset: 2 }}
-                            md={{ span: 20, offset: 2 }}
-                            lg={{ span: 18, offset: 2 }}
-                            xl={{ span: 15, offset: 4 }}
-                          >
-                            {element.informContent}{' '}
-                          </Col>
-                          <Col
-                            className="notice-noout"
-                            xs={{ span: 18, offset: 2 }}
-                            sm={{ span: 20, offset: 2 }}
-                            md={{ span: 20, offset: 2 }}
-                            lg={{ span: 18, offset: 2 }}
-                            xl={{ span: 15, offset: 4 }}
-                          >
-                            {element.informCreateTime}
-                          </Col>
-                        </Row>
-                      )
-                    })}
-                  </Slider>
-                </div>
-                <Link to="/notice">
-                  <Col
-                    xs={{ span: 18 }}
-                    sm={{ span: 20 }}
-                    md={{ span: 20 }}
-                    lg={{ span: 18 }}
-                    xl={{ span: 9 }}
-                  >
-                    更多通告{'>>>'}
-                  </Col>
-                </Link>
-              </Card>
-            </Link>
+            <Card className="card_index" hoverable>
+              <Button className="btn_honor" danger onClick={this.previous}>
+                Previous
+              </Button>
+              <div>
+                <Slider ref={(c) => (this.slider = c)} {...settings}>
+                  {this.state.notice.map((element, id) => {
+                    return (
+                      <Row>
+                        <Col
+                          key={id}
+                          className="notice-noout_index"
+                          xs={{ span: 18, offset: 2 }}
+                          sm={{ span: 20, offset: 2 }}
+                          md={{ span: 20, offset: 2 }}
+                          lg={{ span: 18, offset: 2 }}
+                          xl={{ span: 15, offset: 4 }}
+                        >
+                          {element.informContent}{' '}
+                        </Col>
+                        <Col
+                          className="notice-noout"
+                          xs={{ span: 18, offset: 2 }}
+                          sm={{ span: 20, offset: 2 }}
+                          md={{ span: 20, offset: 2 }}
+                          lg={{ span: 18, offset: 2 }}
+                          xl={{ span: 15, offset: 4 }}
+                        >
+                          {element.informCreateTime}
+                        </Col>
+                      </Row>
+                    )
+                  })}
+                </Slider>
+              </div>
+
+              <Link to="/notice">
+                <Col
+                  xs={{ span: 18 }}
+                  sm={{ span: 20 }}
+                  md={{ span: 20 }}
+                  lg={{ span: 18 }}
+                  xl={{ span: 9 }}
+                >
+                  更多通告{'>>>'}
+                </Col>
+              </Link>
+              <Button className="btn_honor" danger onClick={this.next}>
+                TheNext
+              </Button>
+            </Card>
           </Col>
         </Row>
         <br /> <br /> <br /> <br />
