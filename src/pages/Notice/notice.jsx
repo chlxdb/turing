@@ -41,12 +41,7 @@ export default class notice extends Component {
             xl={{ span: 9, offset: 1 }}
           >
             {' '}
-            <img
-              src={noticepic}
-              alt="none"
-              className="img_notice"
-              style={{ width: '3vw' }}
-            ></img>
+            <img src={noticepic} alt="none" className="img_notice"></img>
             <span className="left-text-notice"> 团队通告:</span>
           </Col>
         </Row>
