@@ -32,7 +32,7 @@ export default class index extends Component {
       this.setState({ teamintroduct })
       let player = document.querySelector('#myvideo')
       player.src =
-        'http://150.158.171.105:7777/' + this.state.teamintroduct.historyVideo
+        'https://farmtool.oss-cn-beijing.aliyuncs.com/video/%E8%A7%86%E9%A2%91.mp4'
       // player.play()
       /* this.$myvideo.src =
         'http://150.158.171.105:7777/' + this.state.teamintroduct.historyVideo*/
