@@ -22,16 +22,17 @@ export default class leaderdetail extends Component {
   }
   get = () => {
     const { id } = this.props.match.params
+    console.log(id)
 
     axios
       .get(
-        'http://150.158.171.105:7777/guest/leadInspection/getLeadInspcetionById/' +
+        'http://www.turingteam.me:8081/guest/leaderInspectionIncident/LeaderInspectionIncidentQuery?incidentId=' +
           id,
         {}
       )
       .then((response) => {
         console.log(response.data.data)
-        const detail = response.data.data
+        const detail = response.data.data.leaderInspectionIncident
         this.setState({ detail })
       })
   }
@@ -70,9 +71,9 @@ export default class leaderdetail extends Component {
             lg={{ span: 15, offset: 5 }}
             xl={{ span: 18, offset: 3 }}
           >
-            <h1>{detail.title}</h1>
+            <h1>{detail.incidentTitle}</h1>
             <span className="span_time">{detail.date}</span>
-            <p className="livecontent">{detail.content}</p>
+            <p className="livecontent">{detail.incidentContent}</p>
           </Col>
         </Row>
       </div>

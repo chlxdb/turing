@@ -19,10 +19,10 @@ export default class All extends Component {
     }
 
     axios
-      .get(`http://150.158.171.105:7777/guest/member/findAllMembers`)
+      .get(`http://www.turingteam.me:8081/guest/member/queryMember`)
       .then((e) => {
-        console.log(e.data.data.length)
-        this.setState({ datalength: e.data.data.length })
+        console.log(e.data.data)
+        this.setState({ datalength: e.data.data.Members })
       })
   }
   componentDidMount() {
@@ -80,7 +80,7 @@ export default class All extends Component {
                         />
                       }
                       title={
-                        element.memberName + ' : ' + element.memberTechnology
+                        element.memberName + ' : ' + element.memberDirection
                       }
                     />
                     <Tooltip

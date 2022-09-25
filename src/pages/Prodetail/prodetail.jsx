@@ -21,15 +21,17 @@ export default class prodetail extends Component {
   }
   getdetail = () => {
     const { id } = this.props.match.params
-    // console.log(id)
+    console.log(id)
     axios
-      .get('http://150.158.171.105:7777/guest/project/' + id, {})
+      .get(
+        'http://www.turingteam.me:8081/guest/project/queryProjectById?id=' + id,
+        {}
+      )
       .then((response) => {
-        // console.log(response.data.data.projectMember)
-
-        const detail = response.data.data
+        const detail = response.data.data.Project
         console.log(detail)
-        const member = response.data.data.projectMember
+        const member = response.data.data.Project.projectMemberName
+        console.log(member)
         this.setState({ detail })
         this.setState({ member })
       })

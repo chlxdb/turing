@@ -21,11 +21,14 @@ export default class project extends Component {
     this.get()
   }
   get = () => {
-    axios.get(`http://150.158.171.105:7777/guest/project`).then((e) => {
-      const projects = e.data.data
-      this.setState({ projects })
-      // console.log(projects)
-    })
+    axios
+      .get(`http://www.turingteam.me:8081/guest/project/queryProject`)
+      .then((e) => {
+        const projects = e.data.data.Projects
+        console.log(projects)
+        this.setState({ projects })
+        // console.log(projects)
+      })
   }
 
   render() {

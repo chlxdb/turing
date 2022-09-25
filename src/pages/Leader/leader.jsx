@@ -23,10 +23,12 @@ export default class leader extends Component {
   get = () => {
     axios
       .get(
-        `http://150.158.171.105:7777/guest/leadInspection/getAllLeadInspcetions`
+        `http://www.turingteam.me:8081/guest/leaderInspectionIncident/LeaderInspectionIncidentQueryAll`
       )
       .then((e) => {
-        const leaders = e.data.data
+        const leaders = e.data.data.leaderInspectionIncidents
+        console.log(leaders)
+
         this.setState({ leaders })
       })
   }
@@ -66,10 +68,10 @@ export default class leader extends Component {
                   xl={{ span: 24, offset: 1 }}
                   key={id}
                 >
-                  <h1>{element.title}</h1>
-                  <span className="span_time">{element.date}</span>
+                  <h1>{element.incidentTitle}</h1>
+                  <span className="span_time">{element.incidentDate}</span>
                   &nbsp; &nbsp;
-                  <Link to={`/leaderdetail/${element.id}`}>
+                  <Link to={`/leaderdetail/${element.incidentId}`}>
                     更多详情 {'>>>'}
                   </Link>
                 </Col>

@@ -11,9 +11,10 @@ export default class scaletea extends Component {
     }
 
     axios
-      .get(`http://150.158.171.105:7777/guest/teacher/getAllTeachers`)
+      .get(`http://www.turingteam.me:8081/guest/teacher/queryTeacher`)
       .then((e) => {
-        const teachers = e.data.data
+        const teachers = e.data.data.Teachers
+        console.log(teachers)
         this.setState({ teachers })
       })
   }

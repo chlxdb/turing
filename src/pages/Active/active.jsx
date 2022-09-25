@@ -21,11 +21,13 @@ export default class active extends Component {
     this.get()
   }
   get = () => {
-    axios.get(`http://150.158.171.105:7777/guest/live`).then((e) => {
-      console.log(e.data.data)
-      const teamactive = e.data.data
-      this.setState({ teamactive })
-    })
+    axios
+      .get(`http://www.turingteam.me:8081/guest/live/liveQuery`)
+      .then((e) => {
+        console.log(e.data.data.lives)
+        const teamactive = e.data.data.lives
+        this.setState({ teamactive })
+      })
   }
   render() {
     return (
@@ -42,7 +44,7 @@ export default class active extends Component {
               >
                 <Card hoverable className="card_live">
                   <Carousel autoplay vertical={true}>
-                    {element.livePhotos.map((value, index) => {
+                    {element.livePhotoUrl.map((value, index) => {
                       return (
                         <div key={index} style={contentStyle}>
                           <img
@@ -50,7 +52,7 @@ export default class active extends Component {
                             alt="example"
                             src={
                               'http://150.158.171.105:7777/' +
-                              value.livePhotoLoc
+                              value.livePhotoUrl
                             }
                           ></img>
                         </div>

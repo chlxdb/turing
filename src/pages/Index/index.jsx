@@ -27,30 +27,38 @@ export default class index extends Component {
     /**s
      * 获取团队简介
      */
-    axios.get(`http://150.158.171.105:7777/guest/introduction`).then((e) => {
-      const teamintroduct = e.data.data[0]
-      this.setState({ teamintroduct })
-      let player = document.querySelector('#myvideo')
-      player.src =
-        'https://farmtool.oss-cn-beijing.aliyuncs.com/video/%E8%A7%86%E9%A2%91.mp4'
-      // player.play()
-      /* this.$myvideo.src =
+    axios
+      .get(
+        `http://www.turingteam.me:8081/guest/introduction/introductionQueryLastingOne`
+      )
+      .then((e) => {
+        // console.log(e.data.data.introduction)
+        const teamintroduct = e.data.data.introduction
+        this.setState({ teamintroduct })
+        let player = document.querySelector('#myvideo')
+        player.src = 'E:\\test2022/introductionVideo/Xftp7_ko.pdf'
+        // player.play()
+        /* this.$myvideo.src =
         'http://150.158.171.105:7777/' + this.state.teamintroduct.historyVideo*/
-    })
+      })
 
     /**
      * 获取团队项目的信息
      */
 
-    axios.get(`http://150.158.171.105:7777/guest/project`).then((e) => {
-      const project = e.data.data.slice(0, 4)
-      this.setState({ project })
-    })
+    axios
+      .get(`http://www.turingteam.me:8081/guest/project/queryProject`)
+      .then((e) => {
+        console.log(e.data.data.Projects)
+        const project = e.data.data.Projects
+        this.setState({ project })
+      })
 
     axios
-      .get(`http://150.158.171.105:7777/guest/inform/top7Informs`)
+      .get(`http://www.turingteam.me:8081/guest/inform/informQuery`)
       .then((e) => {
-        const notice = e.data.data
+        console.log(e.data.data.informs)
+        const notice = e.data.data.informs
         this.setState({ notice })
       })
   }
@@ -109,7 +117,7 @@ export default class index extends Component {
             lg={{ span: 15, offset: 3 }}
             xl={{ span: 5, offset: 1 }}
           >
-            <p> {teamintroduct.historyInfo}</p>
+            <p> {teamintroduct.introductionInfo}</p>
           </Col>
         </Row>
         <br />
@@ -166,7 +174,7 @@ export default class index extends Component {
                           lg={{ span: 18, offset: 2 }}
                           xl={{ span: 15, offset: 4 }}
                         >
-                          {element.informCreateTime}
+                          {element.informEditTime}
                         </Col>
                       </Row>
                     )
@@ -224,7 +232,8 @@ export default class index extends Component {
                         className="project-img"
                         alt="example"
                         src={
-                          'http://150.158.171.105:7777/' + element.projectGif
+                          'http://www.turingteam.me:8081' +
+                          element.projectGifUrl
                         }
                       ></img>
                     </Carousel>
