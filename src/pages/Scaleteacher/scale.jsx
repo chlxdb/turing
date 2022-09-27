@@ -52,7 +52,8 @@ export default class scaletea extends Component {
                           className="img_teacher"
                           alt="none"
                           src={
-                            'http://150.158.171.105:7777/' + element.teacherImg
+                            'http://www.turingteam.me:8081/' +
+                            element.teacherImg
                           }
                         ></img>
                       </Col>

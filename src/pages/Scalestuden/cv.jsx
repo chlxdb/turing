@@ -21,7 +21,7 @@ export default class Cv extends Component {
   getall = () => {
     axios
       .get(
-        'http://150.158.171.105:7777/guest/member/findMembersByTechnology?technology=%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89&page=1&size=4'
+        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89&page=1&size=4'
       )
       .then((response) => {
         this.setState({ all: response.data.data.records })
@@ -31,7 +31,7 @@ export default class Cv extends Component {
   onChange = (page, pageSize) => {
     axios
       .get(
-        'http://150.158.171.105:7777/guest/member/findMembersByTechnology?technology=%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89&page=' +
+        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89&page=' +
           page +
           '&size=' +
           pageSize,
@@ -63,7 +63,7 @@ export default class Cv extends Component {
                         <Avatar
                           size={50}
                           src={
-                            'http://150.158.171.105:7777/' +
+                            'http://www.turingteam.me:8081/' +
                             element.memberIconUrl
                           }
                         />

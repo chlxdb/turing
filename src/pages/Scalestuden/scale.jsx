@@ -19,7 +19,7 @@ export default class scalestu extends Component {
     }
 
     axios
-      .get(`http://150.158.171.105:7777/guest/teacher/getAllTeachers`)
+      .get(`http://www.turingteam.me:8081/guest/teacher/getAllTeachers`)
       .then((e) => {
         const teachers = e.data.data
         this.setState({ teachers })

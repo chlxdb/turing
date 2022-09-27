@@ -52,7 +52,7 @@ export default class project extends Component {
                         className="img"
                         alt="example"
                         src={
-                          'http://150.158.171.105:7777/' + element.projectGif
+                          'http://www.turingteam.me:8081/' + element.projectGif
                         }
                       ></img>
                     </div>

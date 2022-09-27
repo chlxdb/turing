@@ -21,7 +21,7 @@ export default class Front extends Component {
   getall = () => {
     axios
       .get(
-        'http://150.158.171.105:7777/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&page=1&size=4'
+        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&page=1&size=4'
       )
       .then((response) => {
         this.setState({ all: response.data.data.records })
@@ -31,7 +31,7 @@ export default class Front extends Component {
   onChange = (page, pageSize) => {
     axios
       .get(
-        'http://150.158.171.105:7777/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&page=' +
+        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&page=' +
           page +
           '&size=' +
           pageSize,
@@ -62,7 +62,7 @@ export default class Front extends Component {
                       avatar={
                         <Avatar
                           src={
-                            'http://150.158.171.105:7777/' +
+                            'http://www.turingteam.me:8081/' +
                             element.memberIconUrl
                           }
                         />
