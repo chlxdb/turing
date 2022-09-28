@@ -20,24 +20,25 @@ export default class Nlp extends Component {
   getall = () => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&page=1&size=4'
+        'http://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&offset=4&page=1'
       )
       .then((response) => {
-        this.setState({ all: response.data.data.records })
-        this.setState({ datalength: response.data.data.total })
+        console.log(response.data.data.Members)
+        // this.setState({ all: response.data.data.Members })
+        // this.setState({ datalength: response.data.data.})
       })
   }
   onChange = (page, pageSize) => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&page=' +
-          page +
-          '&size=' +
-          pageSize,
+        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&offset=' +
+          pageSize +
+          '&page=' +
+          page,
         {}
       )
       .then((response) => {
-        this.setState({ all: response.data.data.records })
+        this.setState({ all: response.data.data.Members })
       })
   }
 

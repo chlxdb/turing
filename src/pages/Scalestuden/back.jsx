@@ -22,25 +22,26 @@ export default class Back extends Component {
   getall = () => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%90%8E%E5%8F%B0&page=1&size=4'
+        'http://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E5%90%8E%E5%8F%B0&offset=4&page=1'
       )
       .then((response) => {
-        this.setState({ all: response.data.data.records })
-        this.setState({ datalength: response.data.data.total })
+        console.log(response.data.data)
+        // this.setState({ all: response.data.data.Members })
+        // this.setState({ datalength: response.data.data.total })
       })
   }
   onChange = (page, pageSize) => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%90%8E%E5%8F%B0&page=' +
-          page +
-          '&size=' +
-          pageSize,
+        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%90%8E%E5%8F%B0&offset=' +
+          pageSize +
+          '&page=' +
+          page,
         {}
       )
       .then((response) => {
-        console.log(response.data.data.records)
-        this.setState({ all: response.data.data.records })
+        console.log(response.data.data.Members)
+        this.setState({ all: response.data.dat.Members })
       })
   }
 

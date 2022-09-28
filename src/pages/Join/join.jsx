@@ -79,7 +79,7 @@ export default class join extends Component {
 
     // 获取模板下载链接
     axios
-      .get(`http://150.158.171.105:8080/guest/resume/getMobanUrl`)
+      .get(`http://www.turingteam.me:8081//guest/resume/getMobanUrl`)
       .then((e) => {
         const downloadurls = e.data
         this.setState({ downloadurls })
@@ -260,7 +260,7 @@ export default class join extends Component {
         : 'postResume'
     axios({
       method: 'post',
-      url: `http://150.158.171.105:8080/guest/resume/${tailurl}`,
+      url: `http://www.turingteam.me:8081/guest/resume/resumeInnovateAdd?resumeDirect=${tailurl}`,
       params: {
         resumeName: name,
         resumeStudentId: number,
@@ -274,6 +274,7 @@ export default class join extends Component {
         resumeOther: others,
       },
     }).then((res) => {
+      console.log(res)
       let outputstring = ''
       for (let i in res.data) {
         outputstring += res.data[i] + '\n'
@@ -293,8 +294,8 @@ export default class join extends Component {
     let downloadElement = document.createElement('a')
     downloadElement.href =
       placeholders.title === '图灵智能创新团队创新组招新简历'
-        ? 'http://150.158.171.105:8080' + downloadurls['创新组模板']
-        : 'http://150.158.171.105:8080' + downloadurls['创业组模板']
+        ? 'http://www.turingteam.me:8081/' + downloadurls['创新组模板']
+        : 'http://www.turingteam.me:8081/' + downloadurls['创业组模板']
     document.body.appendChild(downloadElement)
     downloadElement.click()
     document.body.removeChild(downloadElement)

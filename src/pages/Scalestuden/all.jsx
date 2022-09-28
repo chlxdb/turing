@@ -21,7 +21,7 @@ export default class All extends Component {
     axios
       .get(`http://www.turingteam.me:8081/guest/member/queryMember`)
       .then((e) => {
-        console.log(e.data.data)
+        console.log(e.data.data.Members)
         this.setState({ datalength: e.data.data.Members })
       })
   }
@@ -32,10 +32,10 @@ export default class All extends Component {
   getall = () => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findAllMembersByPage?page=1&size=4'
+        'http://www.turingteam.me:8081/guest/member/queryMember?offset=1&page=4'
       )
       .then((response) => {
-        this.setState({ all: response.data.data.records })
+        this.setState({ all: response.data.data.Members })
       })
   }
 
@@ -43,13 +43,13 @@ export default class All extends Component {
     axios
       .get('http://www.turingteam.me:8081/guest/member/findAllMembersByPage?', {
         params: {
+          offset: pageSize,
           page: page,
-          size: pageSize,
         },
       })
       .then((response) => {
-        console.log(response.data.data.records)
-        this.setState({ all: response.data.data.records })
+        console.log(response.data.data.Members)
+        this.setState({ all: response.data.data.Members })
       })
   }
 

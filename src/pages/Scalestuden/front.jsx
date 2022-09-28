@@ -21,24 +21,26 @@ export default class Front extends Component {
   getall = () => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&page=1&size=4'
+        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&offset=4&page=1'
       )
       .then((response) => {
-        this.setState({ all: response.data.data.records })
-        this.setState({ datalength: response.data.data.total })
+        console.log(response.data)
+        this.setState({ all: response.data.data.Members })
+        // this.setState({ datalength: response.data.data.total })
       })
   }
   onChange = (page, pageSize) => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&page=' +
-          page +
-          '&size=' +
-          pageSize,
+        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&offset=' +
+          pageSize +
+          '&page=' +
+          page,
         {}
       )
       .then((response) => {
-        this.setState({ all: response.data.data.records })
+        console.log(response.data)
+        this.setState({ all: response.data.data.Members })
       })
   }
 
