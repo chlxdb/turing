@@ -20,7 +20,7 @@ export default class honor extends Component {
      * 奖项具体信息请在控制台输出查看
      */
     axios
-      .get(`http://www.turingteam.me:8081/guest/award/awardQuery`)
+      .get(`https://www.turingteam.me:8081/guest/award/awardQuery`)
       .then((e) => {
         const honorlists = e.data.data.awards
         console.log(e.data.data.awards)
@@ -61,10 +61,10 @@ export default class honor extends Component {
                         <img
                           className="img"
                           alt="example"
-                          src="xx"
-                          // src={
-                          //   'http://150.158.171.105:7777/' + element.awardPhoto
-                          // }
+                          src={
+                            'https://www.turingteam.me:8081/' +
+                            element.awardPhotoUrl[0]
+                          }
                         ></img>
                       </Card>
                     </Col>

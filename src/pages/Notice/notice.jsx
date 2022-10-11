@@ -21,7 +21,7 @@ export default class notice extends Component {
   }
   get = () => {
     axios
-      .get(`http://150.158.171.105:7777/guest/inform/getAllInforms`)
+      .get(`https://150.158.171.105:7777/guest/inform/getAllInforms`)
       .then((e) => {
         const notices = e.data.data
         this.setState({ notices })

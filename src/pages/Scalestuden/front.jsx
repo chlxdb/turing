@@ -21,7 +21,7 @@ export default class Front extends Component {
   getall = () => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&offset=4&page=1'
+        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&offset=4&page=1'
       )
       .then((response) => {
         console.log(response.data)
@@ -32,7 +32,7 @@ export default class Front extends Component {
   onChange = (page, pageSize) => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&offset=' +
+        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&offset=' +
           pageSize +
           '&page=' +
           page,
@@ -64,7 +64,7 @@ export default class Front extends Component {
                       avatar={
                         <Avatar
                           src={
-                            'http://www.turingteam.me:8081/' +
+                            'https://www.turingteam.me:8081/' +
                             element.memberIconUrl
                           }
                         />

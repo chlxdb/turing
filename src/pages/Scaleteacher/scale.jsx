@@ -11,7 +11,7 @@ export default class scaletea extends Component {
     }
 
     axios
-      .get(`http://www.turingteam.me:8081/guest/teacher/queryTeacher`)
+      .get(`https://www.turingteam.me:8081/guest/teacher/queryTeacher`)
       .then((e) => {
         const teachers = e.data.data.Teachers
         console.log(teachers)
@@ -52,7 +52,7 @@ export default class scaletea extends Component {
                           className="img_teacher"
                           alt="none"
                           src={
-                            'http://www.turingteam.me:8081/' +
+                            'https://www.turingteam.me:8081/' +
                             element.teacherImg
                           }
                         ></img>

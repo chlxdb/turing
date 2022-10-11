@@ -29,7 +29,7 @@ export default class index extends Component {
      */
     axios
       .get(
-        `http://www.turingteam.me:8081/guest/introduction/introductionQueryLastingOne`
+        `https://www.turingteam.me:8081/guest/introduction/introductionQueryLastingOne`
       )
       .then((e) => {
         // console.log(e.data.data.introduction)
@@ -39,7 +39,7 @@ export default class index extends Component {
         player.src = 'E:\\test2022/introductionVideo/Xftp7_ko.pdf'
         // player.play()
         /* this.$myvideo.src =
-        'http://150.158.171.105:7777/' + this.state.teamintroduct.historyVideo*/
+        'https://150.158.171.105:7777/' + this.state.teamintroduct.historyVideo*/
       })
 
     /**
@@ -47,7 +47,7 @@ export default class index extends Component {
      */
 
     axios
-      .get(`http://www.turingteam.me:8081/guest/project/queryProject`)
+      .get(`https://www.turingteam.me:8081/guest/project/queryProject`)
       .then((e) => {
         console.log(e.data.data.Projects)
         const project = e.data.data.Projects
@@ -55,7 +55,7 @@ export default class index extends Component {
       })
 
     axios
-      .get(`http://www.turingteam.me:8081/guest/inform/informQuery`)
+      .get(`https://www.turingteam.me:8081/guest/inform/informQuery`)
       .then((e) => {
         console.log(e.data.data.informs)
         const notice = e.data.data.informs
@@ -232,7 +232,7 @@ export default class index extends Component {
                         className="project-img"
                         alt="example"
                         src={
-                          'http://www.turingteam.me:8081' +
+                          'https://www.turingteam.me:8081/' +
                           element.projectGifUrl
                         }
                       ></img>

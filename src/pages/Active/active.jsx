@@ -22,7 +22,7 @@ export default class active extends Component {
   }
   get = () => {
     axios
-      .get(`http://www.turingteam.me:8081/guest/live/liveQuery`)
+      .get(`https://www.turingteam.me:8081/guest/live/liveQuery`)
       .then((e) => {
         console.log(e.data.data.lives)
         const teamactive = e.data.data.lives
@@ -50,10 +50,7 @@ export default class active extends Component {
                           <img
                             className="img"
                             alt="example"
-                            src={
-                              'http://150.158.171.105:7777/' +
-                              value.livePhotoUrl
-                            }
+                            src={'https://www.turingteam.me:8081/' + value}
                           ></img>
                         </div>
                       )

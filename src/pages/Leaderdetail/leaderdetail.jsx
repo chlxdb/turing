@@ -26,7 +26,7 @@ export default class leaderdetail extends Component {
 
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/leaderInspectionIncident/LeaderInspectionIncidentQuery?incidentId=' +
+        'https://www.turingteam.me:8081/guest/leaderInspectionIncident/LeaderInspectionIncidentQuery?incidentId=' +
           id,
         {}
       )
@@ -55,7 +55,10 @@ export default class leaderdetail extends Component {
                   <img
                     className="img"
                     alt="example"
-                    src={'http://150.158.171.105:7777/' + detail.img}
+                    src={
+                      'https://www.turingteam.me:8081/' +
+                      detail.incidentPhotoUrl
+                    }
                   ></img>
                 </div>
               </Carousel>

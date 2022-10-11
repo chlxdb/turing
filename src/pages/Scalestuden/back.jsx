@@ -22,7 +22,7 @@ export default class Back extends Component {
   getall = () => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E5%90%8E%E5%8F%B0&offset=4&page=1'
+        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E5%90%8E%E5%8F%B0&offset=4&page=1'
       )
       .then((response) => {
         console.log(response.data.data)
@@ -33,7 +33,7 @@ export default class Back extends Component {
   onChange = (page, pageSize) => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%90%8E%E5%8F%B0&offset=' +
+        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%90%8E%E5%8F%B0&offset=' +
           pageSize +
           '&page=' +
           page,
@@ -65,7 +65,7 @@ export default class Back extends Component {
                       avatar={
                         <Avatar
                           src={
-                            'http://www.turingteam.me:8081/' +
+                            'https://www.turingteam.me:8081/' +
                             element.memberIconUrl
                           }
                         />

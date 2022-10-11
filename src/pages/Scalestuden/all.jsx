@@ -19,7 +19,7 @@ export default class All extends Component {
     }
 
     axios
-      .get(`http://www.turingteam.me:8081/guest/member/queryMember`)
+      .get(`https://www.turingteam.me:8081/guest/member/queryMember`)
       .then((e) => {
         console.log(e.data.data.Members)
         this.setState({ datalength: e.data.data.Members })
@@ -32,7 +32,7 @@ export default class All extends Component {
   getall = () => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/queryMember?offset=1&page=4'
+        'https://www.turingteam.me:8081/guest/member/queryMember?offset=1&page=4'
       )
       .then((response) => {
         this.setState({ all: response.data.data.Members })
@@ -41,12 +41,15 @@ export default class All extends Component {
 
   onChange = (page, pageSize) => {
     axios
-      .get('http://www.turingteam.me:8081/guest/member/findAllMembersByPage?', {
-        params: {
-          offset: pageSize,
-          page: page,
-        },
-      })
+      .get(
+        'https://www.turingteam.me:8081/guest/member/findAllMembersByPage?',
+        {
+          params: {
+            offset: pageSize,
+            page: page,
+          },
+        }
+      )
       .then((response) => {
         console.log(response.data.data.Members)
         this.setState({ all: response.data.data.Members })
@@ -74,7 +77,7 @@ export default class All extends Component {
                         <Avatar
                           size={50}
                           src={
-                            'http://www.turingteam.me:8081/' +
+                            'https://www.turingteam.me:8081/' +
                             element.memberIconUrl
                           }
                         />

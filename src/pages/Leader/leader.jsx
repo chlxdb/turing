@@ -23,7 +23,7 @@ export default class leader extends Component {
   get = () => {
     axios
       .get(
-        `http://www.turingteam.me:8081/guest/leaderInspectionIncident/LeaderInspectionIncidentQueryAll`
+        `https://www.turingteam.me:8081/guest/leaderInspectionIncident/LeaderInspectionIncidentQueryAll`
       )
       .then((e) => {
         const leaders = e.data.data.leaderInspectionIncidents
@@ -54,7 +54,10 @@ export default class leader extends Component {
                       <img
                         className="img"
                         alt="example"
-                        src={'http://150.158.171.105:7777/' + element.img}
+                        src={
+                          'https://www.turingteam.me:8081/' +
+                          element.incidentPhotoUrl
+                        }
                       ></img>
                     </div>
                   </Carousel>

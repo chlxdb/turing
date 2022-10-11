@@ -20,7 +20,7 @@ export default class Nlp extends Component {
   getall = () => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&offset=4&page=1'
+        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&offset=4&page=1'
       )
       .then((response) => {
         console.log(response.data.data.Members)
@@ -31,7 +31,7 @@ export default class Nlp extends Component {
   onChange = (page, pageSize) => {
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&offset=' +
+        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&offset=' +
           pageSize +
           '&page=' +
           page,
@@ -63,7 +63,7 @@ export default class Nlp extends Component {
                         <Avatar
                           size={50}
                           src={
-                            'http://www.turingteam.me:8081/' +
+                            'https://www.turingteam.me:8081/' +
                             element.memberIconUrl
                           }
                         />

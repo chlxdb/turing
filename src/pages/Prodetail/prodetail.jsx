@@ -24,7 +24,8 @@ export default class prodetail extends Component {
     console.log(id)
     axios
       .get(
-        'http://www.turingteam.me:8081/guest/project/queryProjectById?id=' + id,
+        'https://www.turingteam.me:8081/guest/project/queryProjectById?id=' +
+          id,
         {}
       )
       .then((response) => {
@@ -56,8 +57,8 @@ export default class prodetail extends Component {
                     className="img"
                     alt="example"
                     src={
-                      'http://150.158.171.105:7777/' +
-                      this.state.detail.projectGif
+                      'https://www.turingteam.me:8081/' +
+                      this.state.detail.projectGifUrl
                     }
                   ></img>
                 </div>
@@ -93,7 +94,9 @@ export default class prodetail extends Component {
                 <Col>
                   <Avatar
                     size={80}
-                    src={'http://150.158.171.105:7777/' + element.memberIconUrl}
+                    src={
+                      'https://150.158.171.105:7777/' + element.memberIconUrl
+                    }
                   />
                 </Col>
                 <Col

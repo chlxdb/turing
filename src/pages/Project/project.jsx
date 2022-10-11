@@ -22,7 +22,7 @@ export default class project extends Component {
   }
   get = () => {
     axios
-      .get(`http://www.turingteam.me:8081/guest/project/queryProject`)
+      .get(`https://www.turingteam.me:8081/guest/project/queryProject`)
       .then((e) => {
         const projects = e.data.data.Projects
         console.log(projects)
@@ -52,7 +52,8 @@ export default class project extends Component {
                         className="img"
                         alt="example"
                         src={
-                          'http://www.turingteam.me:8081/' + element.projectGif
+                          'https://www.turingteam.me:8081/' +
+                          element.projectGifUrl
                         }
                       ></img>
                     </div>
