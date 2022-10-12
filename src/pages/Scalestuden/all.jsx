@@ -32,7 +32,7 @@ export default class All extends Component {
   getall = () => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/queryMember?offset=1&page=4'
+        'https://www.turingteam.me:8081/guest/member/queryMember?offset=4&page=1'
       )
       .then((response) => {
         // console.log(response.data.data)
