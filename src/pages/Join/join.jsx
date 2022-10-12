@@ -276,17 +276,23 @@ export default class join extends Component {
       },
     }).then((res) => {
       console.log(res)
-      let outputstring = ''
-      for (let i in res.data) {
-        outputstring += res.data[i] + '\n'
+      if (res.data.data.success) {
+        alert('提交' + res.data.message)
+      } else {
+        alert('提交失败！！' + res.data.data.error1)
       }
-      setTimeout(() => {
-        alert(outputstring)
-      }, 0)
 
-      if (res.data.result === 'success') {
-        this.setState({ issubmit: !issubmit })
-      }
+      //   let outputstring = ''
+      //   for (let i in res.data) {
+      //     outputstring += res.data[i] + '\n'
+      //   }
+      //   setTimeout(() => {
+      //     alert(outputstring)
+      //   }, 0)
+
+      //   if (res.data.result === 'success') {
+      //     this.setState({ issubmit: !issubmit })
+      //   }
     })
   }
   // 模板下载

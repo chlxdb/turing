@@ -14,21 +14,20 @@ export default class Cv extends Component {
       all: [],
       datalength: 10,
     }
-  }
-  componentDidMount() {
-    this.getall()
-  }
-  getall = () => {
+
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89&offset=4&page=1'
+        `https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89`
       )
-      .then((response) => {
-        console.log(response.data.data)
-        this.setState({ all: response.data.data.Members })
-        this.setState({ datalength: response.data.data.Members.length })
+      .then((e) => {
+        console.log(e.data.data)
+        this.setState({ datalength: e.data.data.Members.length })
       })
   }
+  componentDidMount() {
+    this.onChange(1, 4)
+  }
+
   onChange = (page, pageSize) => {
     axios
       .get(

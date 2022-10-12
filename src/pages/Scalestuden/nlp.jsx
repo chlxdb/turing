@@ -13,21 +13,18 @@ export default class Nlp extends Component {
       all: [],
       datalength: 10,
     }
-  }
-  componentDidMount() {
-    this.getall()
-  }
-  getall = () => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&offset=4&page=1'
+        `https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86`
       )
-      .then((response) => {
-        // console.log(response.data.data.Members)
-        this.setState({ all: response.data.data.Members })
-        this.setState({ datalength: response.data.data.Members.length })
+      .then((e) => {
+        this.setState({ datalength: e.data.data.Members.length })
       })
   }
+  componentDidMount() {
+    this.onChange(1, 4)
+  }
+
   onChange = (page, pageSize) => {
     axios
       .get(
@@ -38,6 +35,7 @@ export default class Nlp extends Component {
         {}
       )
       .then((response) => {
+        console.log(response.data)
         this.setState({ all: response.data.data.Members })
       })
   }

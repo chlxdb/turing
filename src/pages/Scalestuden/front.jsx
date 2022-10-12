@@ -14,21 +14,19 @@ export default class Front extends Component {
       all: [],
       datalength: 10,
     }
-  }
-  componentDidMount() {
-    this.getall()
-  }
-  getall = () => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E5%89%8D%E7%AB%AF&offset=4&page=1'
+        `https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E5%89%8D%E7%AB%AF`
       )
-      .then((response) => {
-        console.log(response.data)
-        this.setState({ all: response.data.data.Members })
-        this.setState({ datalength: response.data.data.Members.length })
+      .then((e) => {
+        // console.log(e.data.data.Members)
+        this.setState({ datalength: e.data.data.Members.length })
       })
   }
+  componentDidMount() {
+    this.onChange(1, 4)
+  }
+
   onChange = (page, pageSize) => {
     axios
       .get(
@@ -39,7 +37,7 @@ export default class Front extends Component {
         {}
       )
       .then((response) => {
-        console.log(response.data)
+        // console.log(response.data.data)
         this.setState({ all: response.data.data.Members })
       })
   }

@@ -15,16 +15,16 @@ export default class scalestu extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      teachers: {},
+      // teachers: {},
     }
 
-    axios
-      .get(`https://www.turingteam.me:8081/guest/teacher/getAllTeachers`)
-      .then((e) => {
-        const teachers = e.data.data
-        this.setState({ teachers })
-        this.state.teachers = Array.from(this.state.teachers)
-      })
+    // axios
+    //   .get(`https://www.turingteam.me:8081/guest/teacher/getAllTeachers`)
+    //   .then((e) => {
+    //     const teachers = e.data.data
+    //     this.setState({ teachers })
+    //     this.state.teachers = Array.from(this.state.teachers)
+    //   })
   }
   componentDidMount() {
     this.callback()

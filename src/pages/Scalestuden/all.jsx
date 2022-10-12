@@ -18,42 +18,27 @@ export default class All extends Component {
       datalength: 10,
     }
 
-    // axios
-    //   .get(`https://www.turingteam.me:8081/guest/member/queryMember`)
-    //   .then((e) => {
-    //     console.log(e.data.data.Members)
-    //     this.setState({ datalength: e.data.data.Members.length })
-    //   })
+    axios
+      .get(`https://www.turingteam.me:8081/guest/member/queryMember`)
+      .then((e) => {
+        console.log(e.data.data.Members)
+        this.setState({ datalength: e.data.data.Members.length })
+      })
   }
   componentDidMount() {
-    this.getall()
-  }
-
-  getall = () => {
-    axios
-      .get(
-        'https://www.turingteam.me:8081/guest/member/queryMember?offset=4&page=1'
-      )
-      .then((response) => {
-        // console.log(response.data.data)
-        this.setState({ all: response.data.data.Members })
-        this.setState({ datalength: response.data.data.Members.length })
-      })
+    this.onChange(1, 4)
   }
 
   onChange = (page, pageSize) => {
+    console.log(page, pageSize)
     axios
-      .get(
-        'https://www.turingteam.me:8081/guest/member/findAllMembersByPage?',
-        {
-          params: {
-            offset: pageSize,
-            page: page,
-          },
-        }
-      )
+      .get('https://www.turingteam.me:8081/guest/member/queryMember?', {
+        params: {
+          offset: pageSize,
+          page: page,
+        },
+      })
       .then((response) => {
-        console.log(response.data.data.Members)
         this.setState({ all: response.data.data.Members })
       })
   }
@@ -119,9 +104,9 @@ export default class All extends Component {
             xl={{ span: 20, offset: 1 }}
           >
             <Pagination
+              defaultCurrent={1}
               defaultPageSize={4}
               onChange={this.onChange}
-              defaultCurrent={1}
               total={this.state.datalength}
             />
           </Col>

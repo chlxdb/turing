@@ -13,27 +13,24 @@ export default class Ui extends Component {
     super(props)
     this.state = {
       all: [],
-      datalength: 10,
+      datalength: 4,
     }
-  }
-  componentDidMount() {
-    this.getall()
-  }
-  getall = () => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=UI&offset=4&page=1'
+        `https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=UI`
       )
-      .then((response) => {
-        // console.log(response.data.data)
-        this.setState({ all: response.data.data.Members })
-        this.setState({ datalength: response.data.data.Members.length })
+      .then((e) => {
+        this.setState({ datalength: e.data.data.Members.length })
       })
   }
+  componentDidMount() {
+    this.onChange(1, 4)
+  }
+
   onChange = (page, pageSize) => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=UI&offset=' +
+        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=UI&offset=' +
           pageSize +
           '&page=' +
           page,
@@ -100,9 +97,9 @@ export default class Ui extends Component {
             xl={{ span: 20, offset: 1 }}
           >
             <Pagination
+              defaultCurrent={1}
               defaultPageSize={4}
               onChange={this.onChange}
-              defaultCurrent={1}
               total={this.state.datalength}
             />
           </Col>

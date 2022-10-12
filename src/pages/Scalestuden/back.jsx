@@ -14,34 +14,30 @@ export default class Back extends Component {
       all: [],
       datalength: 10,
     }
-  }
-  componentDidMount() {
-    this.getall()
-  }
-  s
-  getall = () => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E5%90%8E%E5%8F%B0&offset=4&page=1'
+        `https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E5%90%8E%E5%8F%B0`
       )
-      .then((response) => {
-        console.log(response.data.data)
-        this.setState({ all: response.data.data.Members })
-        this.setState({ datalength: response.data.data.length })
+      .then((e) => {
+        console.log(e.data.data)
+        this.setState({ datalength: e.data.data.Members.length })
       })
   }
+  componentDidMount() {
+    this.onChange(1, 4)
+  }
+
   onChange = (page, pageSize) => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%90%8E%E5%8F%B0&offset=' +
+        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E5%90%8E%E5%8F%B0&offset=' +
           pageSize +
           '&page=' +
           page,
         {}
       )
       .then((response) => {
-        console.log(response.data.data.Members)
-        this.setState({ all: response.data.dat.Members })
+        this.setState({ all: response.data.data.Members })
       })
   }
 
@@ -104,9 +100,9 @@ export default class Back extends Component {
             xl={{ span: 20, offset: 1 }}
           >
             <Pagination
+              defaultCurrent={1}
               defaultPageSize={4}
               onChange={this.onChange}
-              defaultCurrent={1}
               total={this.state.datalength}
             />
           </Col>
