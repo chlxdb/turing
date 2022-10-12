@@ -5,7 +5,6 @@ import { Card } from 'element-react'
 import 'element-theme-default'
 import axios from 'axios'
 import ReactToPrint from 'react-to-print'
-
 import evaluationpng from './img/evaluation.png'
 import class1png from './img/class1.png'
 import directionpng from './img/direction.png'
@@ -253,7 +252,7 @@ export default class join extends Component {
       expectation,
       experience,
       others,
-      issubmit,
+      // issubmit,
     } = this.state
     const tailurl =
       this.state.placeholders.buttonname === '切换创新组'
@@ -276,10 +275,14 @@ export default class join extends Component {
       },
     }).then((res) => {
       console.log(res)
-      if (res.data.data.success) {
+      if (res.data.success) {
         alert('提交' + res.data.message)
+        // this.setState({ issubmit: !issubmit })
       } else {
         alert('提交失败！！' + res.data.data.error1)
+        if (res.data.result === 'success') {
+          // this.setState({ issubmit: !issubmit })
+        }
       }
 
       //   let outputstring = ''
@@ -289,10 +292,9 @@ export default class join extends Component {
       //   setTimeout(() => {
       //     alert(outputstring)
       //   }, 0)
-
-      //   if (res.data.result === 'success') {
-      //     this.setState({ issubmit: !issubmit })
-      //   }
+      // if (res.data.result === 'success') {
+      //   this.setState({ issubmit: !issubmit })
+      // }
     })
   }
   // 模板下载
