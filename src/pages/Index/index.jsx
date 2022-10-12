@@ -32,11 +32,13 @@ export default class index extends Component {
         `https://www.turingteam.me:8081/guest/introduction/introductionQueryLastingOne`
       )
       .then((e) => {
-        // console.log(e.data.data.introduction)
+        console.log(e.data.data.introduction)
         const teamintroduct = e.data.data.introduction
         this.setState({ teamintroduct })
         let player = document.querySelector('#myvideo')
-        player.src = 'E:\\test2022/introductionVideo/Xftp7_ko.pdf'
+        player.src =
+          'https://www.turingteam.me:8081/' +
+          this.state.teamintroduct.introductionVideoUrl
         // player.play()
         /* this.$myvideo.src =
         'https://150.158.171.105:7777/' + this.state.teamintroduct.historyVideo*/

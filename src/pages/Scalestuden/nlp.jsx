@@ -23,15 +23,15 @@ export default class Nlp extends Component {
         'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&offset=4&page=1'
       )
       .then((response) => {
-        console.log(response.data.data.Members)
-        // this.setState({ all: response.data.data.Members })
-        // this.setState({ datalength: response.data.data.})
+        // console.log(response.data.data.Members)
+        this.setState({ all: response.data.data.Members })
+        this.setState({ datalength: response.data.data.Members.length })
       })
   }
   onChange = (page, pageSize) => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&offset=' +
+        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86&offset=' +
           pageSize +
           '&page=' +
           page,
@@ -68,9 +68,7 @@ export default class Nlp extends Component {
                           }
                         />
                       }
-                      title={
-                        element.memberName + ' : ' + element.memberTechnology
-                      }
+                      title={element.memberName + ' : ' + element.memberMajor}
                     />
                     <Tooltip
                       placement="bottom"

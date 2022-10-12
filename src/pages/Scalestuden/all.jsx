@@ -18,12 +18,12 @@ export default class All extends Component {
       datalength: 10,
     }
 
-    axios
-      .get(`https://www.turingteam.me:8081/guest/member/queryMember`)
-      .then((e) => {
-        console.log(e.data.data.Members)
-        this.setState({ datalength: e.data.data.Members })
-      })
+    // axios
+    //   .get(`https://www.turingteam.me:8081/guest/member/queryMember`)
+    //   .then((e) => {
+    //     console.log(e.data.data.Members)
+    //     this.setState({ datalength: e.data.data.Members.length })
+    //   })
   }
   componentDidMount() {
     this.getall()
@@ -35,7 +35,9 @@ export default class All extends Component {
         'https://www.turingteam.me:8081/guest/member/queryMember?offset=1&page=4'
       )
       .then((response) => {
+        // console.log(response.data.data)
         this.setState({ all: response.data.data.Members })
+        this.setState({ datalength: response.data.data.Members.length })
       })
   }
 

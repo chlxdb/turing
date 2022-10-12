@@ -26,8 +26,8 @@ export default class Back extends Component {
       )
       .then((response) => {
         console.log(response.data.data)
-        // this.setState({ all: response.data.data.Members })
-        // this.setState({ datalength: response.data.data.total })
+        this.setState({ all: response.data.data.Members })
+        this.setState({ datalength: response.data.data.length })
       })
   }
   onChange = (page, pageSize) => {
@@ -64,19 +64,18 @@ export default class Back extends Component {
                     <Meta
                       avatar={
                         <Avatar
+                          size={50}
                           src={
                             'https://www.turingteam.me:8081/' +
                             element.memberIconUrl
                           }
                         />
                       }
-                      title={
-                        element.memberName + ' : ' + element.memberTechnology
-                      }
+                      title={element.memberName + ' : ' + element.memberMajor}
                     />
                     <Tooltip
                       placement="bottom"
-                      title={element.memberIntroduction}
+                      title={element.memberAfterGraduatedDestination}
                     >
                       <Col
                         className="card_col"

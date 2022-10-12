@@ -21,18 +21,18 @@ export default class Front extends Component {
   getall = () => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&offset=4&page=1'
+        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E5%89%8D%E7%AB%AF&offset=4&page=1'
       )
       .then((response) => {
         console.log(response.data)
         this.setState({ all: response.data.data.Members })
-        // this.setState({ datalength: response.data.data.total })
+        this.setState({ datalength: response.data.data.Members.length })
       })
   }
   onChange = (page, pageSize) => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=%E5%89%8D%E7%AB%AF&offset=' +
+        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=%E5%89%8D%E7%AB%AF&offset=' +
           pageSize +
           '&page=' +
           page,
@@ -63,15 +63,14 @@ export default class Front extends Component {
                     <Meta
                       avatar={
                         <Avatar
+                          size={50}
                           src={
                             'https://www.turingteam.me:8081/' +
                             element.memberIconUrl
                           }
                         />
                       }
-                      title={
-                        element.memberName + ' : ' + element.memberTechnology
-                      }
+                      title={element.memberName + ' : ' + element.memberMajor}
                     />
                     <Tooltip
                       placement="bottom"

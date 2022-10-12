@@ -22,24 +22,25 @@ export default class Ui extends Component {
   getall = () => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=ui&page=1&size=4'
+        'https://www.turingteam.me:8081/guest/member/queryMemberByDirection?direction=UI&offset=4&page=1'
       )
       .then((response) => {
-        this.setState({ all: response.data.data.records })
-        this.setState({ datalength: response.data.data.total })
+        // console.log(response.data.data)
+        this.setState({ all: response.data.data.Members })
+        this.setState({ datalength: response.data.data.Members.length })
       })
   }
   onChange = (page, pageSize) => {
     axios
       .get(
-        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=ui&page=' +
-          page +
-          '&size=' +
-          pageSize,
+        'https://www.turingteam.me:8081/guest/member/findMembersByTechnology?technology=UI&offset=' +
+          pageSize +
+          '&page=' +
+          page,
         {}
       )
       .then((response) => {
-        this.setState({ all: response.data.data.records })
+        this.setState({ all: response.data.data.Members })
       })
   }
 
@@ -69,14 +70,9 @@ export default class Ui extends Component {
                           }
                         />
                       }
-                      title={
-                        element.memberName + ' : ' + element.memberTechnology
-                      }
+                      title={element.memberName + ' : ' + element.memberMajor}
                     />
-                    <Tooltip
-                      placement="bottom"
-                      title={element.memberIntroduction}
-                    >
+                    <Tooltip placement="bottom" title={element.memberMajor}>
                       <Col
                         className="card_col"
                         xs={{ span: 20, offset: 3 }}

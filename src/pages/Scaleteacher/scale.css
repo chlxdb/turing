@@ -10,3 +10,7 @@
 .card_teacher {
   word-break: break-all;
 }
+.ant-card-body {
+  background-color: #fff;
+  color: rgb(53, 51, 51);
+}
