@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import './scale.css'
 import { Tabs } from 'antd'
 import All from './all'
