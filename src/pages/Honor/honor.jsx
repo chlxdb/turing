@@ -6,27 +6,27 @@ import './honor.css'
 // import Slider from 'react-slick'
 
 export default class honor extends Component {
-  constructor(props) {
-    super(props)
-    // this.next = this.next.bind(this)
-    // this.previous = this.previous.bind(this)
-    // this.state = {
-    //   honorlists: [],
-    // }
+  // constructor(props) {
+  //   super(props)
+  // this.next = this.next.bind(this)
+  // this.previous = this.previous.bind(this)
+  // this.state = {
+  //   honorlists: [],
+  // }
 
-    /**
-     * 获取奖项的接口
-     * 返回honorlists为奖项数组
-     * 奖项具体信息请在控制台输出查看
-     */
-    // axios
-    //   .get(`https://www.turingteam.me:8081/guest/award/awardQuery`)
-    //   .then((e) => {
-    //     const honorlists = e.data.data.awards
-    //     console.log(e.data.data.awards)
-    //     this.setState({ honorlists })
-    //   })
-  }
+  /**
+   * 获取奖项的接口
+   * 返回honorlists为奖项数组
+   * 奖项具体信息请在控制台输出查看
+   */
+  // axios
+  //   .get(`https://www.turingteam.me:8081/guest/award/awardQuery`)
+  //   .then((e) => {
+  //     const honorlists = e.data.data.awards
+  //     console.log(e.data.data.awards)
+  //     this.setState({ honorlists })
+  //   })
+  //}
   // next() {
   //   this.slider.slickNext()
   // }

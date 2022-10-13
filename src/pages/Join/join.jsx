@@ -256,11 +256,11 @@ export default class join extends Component {
     } = this.state
     const tailurl =
       this.state.placeholders.buttonname === '切换创新组'
-        ? 'postEntrepreneurshipResume'
-        : 'postResume'
+        ? 'resumeInnovateAdd'
+        : 'resumeEntrepreneurshipAdd'
     axios({
       method: 'post',
-      url: `https://www.turingteam.me:8081/guest/resume/resumeInnovateAdd?resumeDirect=${tailurl}`,
+      url: `https://www.turingteam.me:8081/guest/resume/${tailurl}?`,
       params: {
         resumeName: name,
         resumeStudentId: number,
