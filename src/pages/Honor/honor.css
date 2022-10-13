@@ -17,23 +17,25 @@
   width: 100%;
   height: 50%;
 }
-.slick-arrow slick-next {
-  background-color: aqua;
-}
+
 .slick-prev:before,
 .slick-next:before {
-  display: none;
+  color: red;
 }
 .slider_div {
   margin: 2% auto;
-  width: 70vw;
-  height: 10%;
+  width: 60vw;
+  height: 80vh;
   background-color: hsla(14, 91%, 87%, 0.6);
 }
 .honor_time {
   font-size: 1vw;
 }
-.btn_honor {
+/* .btn_honor {
   font-size: 1vw;
   width: 12vw;
+} */
+.slick-arrow slick-next {
+  margin-top: 0;
+  padding-top: 0;
 }

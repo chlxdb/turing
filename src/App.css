@@ -84,6 +84,7 @@
 .footer {
   background-color: rgb(10, 11, 12);
   opacity: 0.8;
+  padding-top: 100vh;
 }
 .footer_div {
   color: white;
@@ -99,7 +100,7 @@
 }
 .footer_gif {
   width: 8vw;
-  height: 12vh;
+  /* height: 5vh; */
 }
 .footer_app {
   width: 8vw;
@@ -109,10 +110,6 @@
 }
 .col_footer_gif {
   padding: 2% 1%;
-}
-.slick-prev:before,
-.slick-next:before {
-  color: red;
 }
 
 .slick-prev:before,

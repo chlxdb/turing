@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './index.css'
+import './index000.css'
 import { Row, Col, Card, Carousel, Button } from 'antd'
 import axios from 'axios'
 import Slider from 'react-slick'
